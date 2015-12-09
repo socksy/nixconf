@@ -1,0 +1,105 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
+  # Use the GRUB 2 boot loader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  # Define on which hard drive you want to install Grub.
+  boot.loader.grub.device = "/dev/sda";
+
+  networking.hostName = "benix"; # Define your hostname.
+  networking.hostId = "0fc6da67";
+  # networking.wireless.enable = true;  # Enables wireless.
+
+  # Select internationalisation properties.
+  # i18n = {
+  #   consoleFont = "lat9w-16";
+  #   consoleKeyMap = "us";
+  #   defaultLocale = "en_US.UTF-8";
+  # };
+
+  # List packages installed in system profile. To search by name, run:
+  # $ nix-env -qaP | grep wget
+  environment.systemPackages = with pkgs; [
+	  wget firefox-with-plugins luakit
+	  chromium
+	  dropbox
+	  zsh silver-searcher
+	  keepass
+	  fontconfig
+	  vim tmux tree emacs
+	  leiningen
+	  git
+	  fira fira-code fira-mono
+	  numix-gtk-theme lxappearance
+	  scrot
+	  #xfce4-terminal
+	  #thunar
+  ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    firefox = {
+      enableGoogleTalkPlugin = true;
+      #enableAdobeFlash = true;
+    };
+    chromium = {
+      enablePepperFlash = true;
+      enablePepperPDF = true;
+    };
+  };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Enable CUPS to print documents.
+  # services.printing.enable = true;
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+  services.xserver.layout = "gb";
+  services.xserver.xkbVariant = "mac";
+  services.xserver.windowManager.default = "awesome";
+  services.xserver.windowManager.awesome.enable = true;
+  services.xserver.xkbOptions = "eurosign:e";
+
+  #what used to be infinality
+  fonts.fontconfig.ultimate.enable = true;
+  fonts.fontconfig.ultimate.rendering = pkgs.fontconfig-ultimate.rendering.osx;
+
+  #VirtualBox stuff for vagrant
+  virtualisation.virtualbox.host.enable = true;
+  #services.virtualboxHost.enable = true;
+
+  # Enable the KDE Desktop Environment.
+  services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.kde4.enable = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.extraUsers.ben = {
+    isNormalUser = true;
+    home = "/home/ben";
+    description = "Ben Lovell";
+    extraGroups = [ "wheel" "video" "audio" "vboxusers"];
+    uid = 1000;
+  };
+
+  time.timeZone = "Europe/Berlin";
+
+ # fileSystems."/virtualboxshare" = {
+ #   fsType = "vboxsf";
+ #   device = "nameofthesharedfolder";
+ #   options = "rw";
+ # };
+}
