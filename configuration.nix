@@ -39,6 +39,7 @@
 
   # puts browser profiles into RAM, preventing a lot of read/write to USB
   services.psd.enable = true;
+  services.psd.users = ["ben"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ben = {
