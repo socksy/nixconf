@@ -28,6 +28,9 @@
 
   # List services that you want to enable:
 
+  # why not?
+  services.dbus.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -40,6 +43,8 @@
   # puts browser profiles into RAM, preventing a lot of read/write to USB
   services.psd.enable = true;
   services.psd.users = ["ben"];
+
+  services.acpid.enable = true;
 
   services.redshift = {
     enable = true;
