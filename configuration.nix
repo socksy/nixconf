@@ -41,6 +41,14 @@
   services.psd.enable = true;
   services.psd.users = ["ben"];
 
+  services.redshift = {
+    enable = true;
+
+    #Berlin
+    latitude = "52.31";
+    longitude = "13.22";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ben = {
     isNormalUser = true;
