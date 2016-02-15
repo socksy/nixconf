@@ -10,19 +10,26 @@
      #xmodmap
      #xmonad-with-packages
      arandr
+     autorandr
      conky
      dmenu
      dzen2
+     evtest
      gnome.gnomeicontheme
      gtk
      haskellPackages.xmonad
      haskellPackages.yeganesh
      lxappearance
      numix-gtk-theme
+     numix-icon-theme-circle
      xcape
+     xclip
      xcompmgr
      xfontsel
      xlsfonts
+     xorg.xbitmaps
+     xorg.xev
+     xorg.xineramaproto
 
      #printing
      gutenprint
@@ -32,40 +39,75 @@
      acpi
      dmidecode
      exfat
+     fftw
+     glxinfo
+     hdparm
+     intel-gpu-tools
+     jack2Full
      pciutils
+     smartmontools
+     udev
+     udisks2
      usbutils
      #pommed-light
 
      # cli utils
+     aspell
+     aspellDicts.en
      awscli
      bc
      binutils
+     chrpath
+     cowsay
      encfs
      feh
      htop
+     keychain
+     lsof
      manpages
+     openvpn
+     python27Packages.pkgconfig
      psmisc
+     rlwrap
      scrot
      shared_mime_info
      silver-searcher
      sshfsFuse
      sudo
+     tarsnap
+     telnet
+     tmux
      tree
+     unzip
      wget
+     which
+     whois
+     zip
      zsh
 
      # web
      chromium
+     #dwb
      firefox-wrapper
      luakit
 
      # gui utils
      dropbox
      evince
+     evtest
      gimp
+     gparted
+     gpicview
+     #gnome3.cheese
+     gnome3.gnome-font-viewer
      hipchat
      keepass
      pinta
+     qbittorrent
+     qjackctl
+     shotwell
+     skype
+     spotify
      vlc
      wpa_supplicant_gui
      xfce.thunar
@@ -73,21 +115,39 @@
 
      # dev
      ansible
+     boost
+     boost-build
      boot
+     compass
      emacs
      gcc
      ghc
      git
+     gitAndTools.gitflow
      gnumake
+     jdk
+     jekyll
      leiningen
+     mariadb
+     neovim
+     nodejs
+     nodePackages.npm2nix
      python
+     #pypyPackages.ipython
+     R
      ruby
+     sqlite
      vagrant
      vimHugeX
 
      # misc
      mplayer
+     flashplayer
      gstreamer
+     hal-flash #DRM for flashplayer
+     wineUnstable
+     winetricks
+     #pypyPackages.wxPython30
 
      #games
      openlierox
