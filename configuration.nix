@@ -45,6 +45,11 @@
   services.psd.users = ["ben"];
 
   services.acpid.enable = true;
+  services.udev.extraRules = ''
+    KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/ben/.Xauthority", RUN+="${pkgs.stdenv.shell} -c '/home/ben/.screenlayout/auto.sh'"
+  ''
+  ;
+  #
 
   services.redshift = {
     enable = true;
