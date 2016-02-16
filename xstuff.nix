@@ -20,18 +20,20 @@
       buttonsMap = [ 1 3 2 ];
     };
 
+
+    desktopManager.default = "none";
+    desktopManager.xterm.enable = false;
+    
+    windowManager.default = "xmonad";
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
-    #windowManager.xmonad.extraPackages = self: [ self.xmonadContrib ];
-    windowManager.default = "xmonad";
-
-    desktopManager.xterm.enable = false;
-    desktopManager.default = "none";
 
     displayManager = {
       slim = {
         enable = true;
         defaultUser = "ben";
+        # needs to be to tar.gz, not pkg
+        #theme = pkgs.slimThemes.archlinuxSimple;
       };
       sessionCommands = ''
         ${pkgs.xlibs.xrdb}/bin/xrdb -merge ~/.Xresources
