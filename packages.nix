@@ -73,7 +73,6 @@
      shared_mime_info
      silver-searcher
      sshfsFuse
-     sudo
      tarsnap
      telnet
      tmux

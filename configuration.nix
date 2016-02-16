@@ -63,6 +63,8 @@
   services.avahi.ipv6 = true;
   services.avahi.nssmdns = true;
 
+  security.sudo.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ben = {
     isNormalUser = true;
