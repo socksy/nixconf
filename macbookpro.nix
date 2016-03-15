@@ -7,6 +7,9 @@
     boot.loader.gummiboot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    #boot.blacklistedKernelModules = ["bdc_pci"];
+    hardware.facetimehd.enable = true;
+
     networking.enableB43Firmware = true;
     networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
