@@ -164,8 +164,10 @@
        enablePepperPDF = true;
        enableWideVine = true;
      };
-     packageOverrides = pkgs: {
-       bluez = pkgs.bluez5;
+     packageOverrides = pkgs: import ./mypackages {
+       inherit pkgs;
+       # don't know if i can do this actually
+       #bluez = pkgs.bluez5;
      };
    };
 }
