@@ -149,8 +149,10 @@
      #pypyPackages.wxPython30
 
      #games
-     openlierox
-     xonotic
+     #openlierox
+     #xonotic
+
+     # unsorted
    ];
 
    nixpkgs.config = {
