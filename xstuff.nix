@@ -38,8 +38,8 @@
       sessionCommands = ''
         ${pkgs.xlibs.xrdb}/bin/xrdb -merge ~/.Xresources
         ${pkgs.xlibs.xsetroot}/bin/xsetroot -cursor_name left_ptr #sets cursor
-        ${pkgs.feh}/bin/feh --bg-fill ~/wallpapers/windy.jpg
-        ${pkgs.dropbox}/bin/dropbox &
+        /bin/sh /home/ben/.screenlayout/wallpaper.sh
+        #${pkgs.dropbox}/bin/dropbox &
         ${pkgs.xcape}/bin/xcape -e "Shift_L=parenleft;Shift_R=parenright"
 
         ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode   9 = Multi_key'
