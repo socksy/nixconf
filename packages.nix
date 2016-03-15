@@ -45,6 +45,7 @@
      intel-gpu-tools
      jack2Full
      pciutils
+     powertop
      smartmontools
      udev
      udisks2
@@ -109,6 +110,7 @@
      spotify
      vlc
      wpa_supplicant_gui
+     xdotool
      xfce.thunar
      xfce.terminal
 
