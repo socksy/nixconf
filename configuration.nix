@@ -16,8 +16,8 @@
   hardware.bluetooth.enable = true;
 
   networking.hostName = "benixos"; # Define your hostname.
-  networking.enableB43Firmware = true;
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.enableB43Firmware = true;
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 
   # no atime because it's to prevent so many USB drive writes
