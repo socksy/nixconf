@@ -20,8 +20,9 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 
-  fileSystems."/".options = "defaults,noatime";
-  fileSystems."/home".options = "defaults,noatime";
+  # no atime because it's to prevent so many USB drive writes
+  fileSystems."/".options = ["defaults" "noatime"];
+  fileSystems."/home".options = ["defaults" "noatime"];
 
   time.timeZone = "Europe/Berlin";
 
