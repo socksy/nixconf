@@ -13,6 +13,12 @@
       ./xstuff.nix
     ];
 
+
+  #i wonder if i'll regret this
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.systemWide = true;
+  hardware.pulseaudio.support32Bit = true;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
 
   networking.hostName = "benixos"; # Define your hostname.
