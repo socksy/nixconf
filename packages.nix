@@ -19,12 +19,14 @@
      gtk
      haskellPackages.xmonad
      haskellPackages.yeganesh
+     libnotify
      lxappearance
      numix-gtk-theme
      numix-icon-theme-circle
      xcape
      xclip
      xcompmgr
+     xfce.xfce4-notifyd
      xfontsel
      xlsfonts
      xorg.xbitmaps
