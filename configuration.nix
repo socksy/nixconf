@@ -86,6 +86,8 @@
     extraGroups = ["wheel" "video" "audio" "vboxusers"];
   };
 
+  users.users.root.extraGroups = ["grsecurity" "audio"];
+
   #virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enable = true;
 
