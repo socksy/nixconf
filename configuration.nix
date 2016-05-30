@@ -42,6 +42,8 @@
   # why not?
   #dbus.enable = true;
 
+    logind.extraConfig = "HandlePowerSwitch=ignore";
+
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
