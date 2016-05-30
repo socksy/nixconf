@@ -56,10 +56,10 @@
     psd.users = ["ben"];
 
     acpid.enable = true;
-    udev.extraRules = ''
-      KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/ben/.Xauthority", RUN+="${pkgs.stdenv.shell} -c '/home/ben/.screenlayout/auto.sh'"
-      ''
-      ;
+    #udev.extraRules = ''
+    #  KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/ben/.Xauthority", RUN+="${pkgs.stdenv.shell} -c '/home/ben/.screenlayout/auto.sh'"
+    #  ''
+    #  ;
 
     redshift = {
       enable = true;

@@ -95,9 +95,9 @@
   };
 
   environment.shellInit = ''
-  #to find GTK themes
+    #to find GTK themes
     export GTK_DATA_PREFIX=${config.system.path}
-  '';
+    '';
 
   environment.pathsToLink = [ "/share/themes" "/share/mime" "/lib/gtk-2.0"];
 

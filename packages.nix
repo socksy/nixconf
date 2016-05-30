@@ -49,7 +49,7 @@
      pciutils
      powertop
      smartmontools
-     udev
+  #   udev #breaks config with list->string type errors now?
      udisks2
      usbutils
      #pommed-light
