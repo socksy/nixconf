@@ -157,6 +157,7 @@
      #xonotic
 
      # unsorted
+     # mysql-workbench
    ];
 
    nixpkgs.config = {
