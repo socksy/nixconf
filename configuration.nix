@@ -90,6 +90,12 @@
 
   users.users.root.extraGroups = ["grsecurity" "audio"];
 
+  environment.variables = {
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+  };
+
+
   #virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enable = true;
 
