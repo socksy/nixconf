@@ -26,7 +26,7 @@
      xcape
      xclip
      xcompmgr
-     xfce.xfce4-notifyd
+     xfce.xfce4notifyd
      xfontsel
      xlsfonts
      xorg.xbitmaps
@@ -60,7 +60,7 @@
      awscli
      bc
      binutils
-     chrpath
+     #chrpath
      cowsay
      encfs
      feh
