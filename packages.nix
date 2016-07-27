@@ -109,7 +109,7 @@
      qjackctl
      shotwell
      skype
-     spotify
+     #spotify
      vlc
      wpa_supplicant_gui
      xdotool
