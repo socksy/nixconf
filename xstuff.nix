@@ -27,7 +27,7 @@
       Driver "intel"
       Option "TearFree" "true"
     EndSection
-    ''
+    '';
 
     desktopManager.default = "none";
     desktopManager.xterm.enable = false;
