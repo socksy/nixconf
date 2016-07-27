@@ -2,14 +2,15 @@
 
 # Enable the X11 windowing system.
 {
+
+  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   services.xserver = {
     enable = true;
 
     layout = "gb";
     xkbVariant = "mac";
     xkbOptions = "caps:swapescape, numpad:mac";
-    videoDrivers = [ "intel" "nouveau" "vesa" ];
-    vaapiDrivers = [ pkgs.vaapiIntel ];
+    #videoDrivers = [ "intel" "nouveau" "vesa" ];
 
     multitouch.enable = true;
     synaptics = {
@@ -20,6 +21,13 @@
       buttonsMap = [ 1 3 2 ];
     };
 
+    config = ''
+    Section "Device"
+      Identifier "Intel Graphics"
+      Driver "intel"
+      Option "TearFree" "true"
+    EndSection
+    ''
 
     desktopManager.default = "none";
     desktopManager.xterm.enable = false;
