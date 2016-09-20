@@ -69,6 +69,7 @@
       #Berlin
       latitude = "52.31";
       longitude = "13.22";
+      temperature.day = 6500;
     };
 
     avahi.enable = true;
