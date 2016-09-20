@@ -19,7 +19,4 @@
     options snd_hda_intel index=1 model=intel-mac-auto id=HDMI
     options hid_apple fnmode=2
     '';
-
-    # wifi driver (make sure nixpkgs.config.allowUnfree)
-    boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 }
