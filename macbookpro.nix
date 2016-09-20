@@ -20,9 +20,6 @@
     options hid_apple fnmode=2
     '';
 
-    # this is seemingly a requirement for wifi to work
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
     # wifi driver (make sure nixpkgs.config.allowUnfree)
     boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 }
