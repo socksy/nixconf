@@ -85,7 +85,7 @@
     home = "/home/ben";
     shell = "${pkgs.zsh}/bin/zsh";
     description = "Ben Lovell";
-    extraGroups = ["wheel" "video" "audio" "vboxusers"];
+    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty"];
   };
 
   users.users.root.extraGroups = ["grsecurity" "audio"];
