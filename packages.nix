@@ -47,6 +47,7 @@
      intel-gpu-tools
      jack2Full
      pciutils
+     pommed-light
      powertop
      smartmontools
   #   udev #breaks config with list->string type errors now?

@@ -61,4 +61,42 @@ rec {
     '';
   };
 
-}
+
+
+  pommed-light = pkgs.stdenv.mkDerivation rec {
+    name = "pommed-light-1.45";
+    src = pkgs.fetchgit {
+      url = "https://github.com/bytbox/pommed-light.git";
+      rev = "ff5bb856aaf6aeaf004c41fa5026cf7e69e18404";
+      sha256 = "1nphqj2mia064cc9i85d9f729gmflzmxxrqd5cg9r7sdsgv3gpk8";
+    };
+    buildInputs = with pkgs; [
+      pciutils
+        confuse
+        alsaLib
+        audiofile
+        pkgconfig
+        gettext
+        libzip
+    ];
+    installPhase = ''
+      mkdir -p $out/bin $out/share/pommed $out/etc $out/lib/systemd/system $out/share/man/man1
+      install -v -m755 pommed/pommed $out/bin/pommed
+      install -v -m644 pommed/data/* $out/share/pommed
+      install -v -m644 pommed.conf.mactel $out/etc/pommed.conf
+      install -v -m644 pommed.conf.pmac $out/etc/pommed.conf.pmac
+      install -v -m644 pommed.init $out/etc/init.d
+      install -v -m644 pommed.service $out/lib/systemd/system/pommed.service
+      install -v -m644 pommed.1 $out/share/man/man1/pommed.1
+      '';
+      meta = {
+      description = "A tool to handle hotkeys on Apple laptop keyboards";
+      homepage = http://www.technologeek.org/projects/pommed/index.html;
+      license = pkgs.stdenv.lib.licenses.gpl2;
+      };
+      };
+
+
+
+
+      }
