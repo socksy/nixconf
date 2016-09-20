@@ -118,7 +118,7 @@
      xfce.terminal
 
      # dev
-     ansible
+     ansible2
      boost
      boost-build
      boot
