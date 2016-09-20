@@ -5,7 +5,7 @@
 
 {
   imports =
-    [ <nixos/modules/hardware/network/broadcom-43xx.nix>
+    [ <nixpkgs/nixos/modules/hardware/network/broadcom-43xx.nix>
       <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
