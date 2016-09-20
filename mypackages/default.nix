@@ -9,7 +9,7 @@ rec {
       owner = "Arcaena";
       repo = "i3lock-color";
       inherit rev;
-      sha256 = "0r5rv0s2z16brqjsy8cxjiq108dxdrr0f8iizy3324hz99jrcslc";
+      sha256 = "0s31a5h507dqw1i4999m3221arm1x7wpi37avjdbbbj0fz4118zl";
     };
   });
 
