@@ -89,7 +89,7 @@
      zsh
 
      # web
-     #chromium
+     chromium
      #dwb
      firefox-wrapper
      luakit
