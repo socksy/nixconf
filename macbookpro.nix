@@ -4,7 +4,7 @@
 {
     # Use the gummiboot efi boot loader.
     # n.b. no GRUB settings like everyone tells you to do
-    boot.loader.gummiboot.enable = true;
+    boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
     #boot.blacklistedKernelModules = ["bdc_pci"];
