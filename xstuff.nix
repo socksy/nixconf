@@ -68,7 +68,6 @@
     fonts = with pkgs; [
       anonymousPro
       aurulent-sans
-      baekmuk-ttf
       bakoma_ttf
       caladea
       cantarell_fonts
