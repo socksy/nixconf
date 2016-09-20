@@ -24,7 +24,7 @@
     };
     bluetooth.enable = true;
   };
-
+ 
   networking.hostName = "benixos"; # Define your hostname.
   #networking.enableB43Firmware = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -85,7 +85,7 @@
     home = "/home/ben";
     shell = "${pkgs.zsh}/bin/zsh";
     description = "Ben Lovell";
-    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty"];
+    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker"];
   };
 
   users.users.root.extraGroups = ["grsecurity" "audio"];
@@ -98,6 +98,7 @@
 
   #virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.docker.enable = true;
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
