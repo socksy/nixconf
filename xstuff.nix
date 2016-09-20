@@ -98,7 +98,7 @@
       ubuntu_font_family
     ];
     fontconfig.ultimate.enable = true;
-    fontconfig.ultimate.rendering = pkgs.fontconfig-ultimate.rendering.osx;
+    fontconfig.ultimate.preset = "osx";
   };
 
   environment.shellInit = ''
