@@ -43,6 +43,7 @@
      exfat
      fftw
      glxinfo
+     gnupg1
      hdparm
      intel-gpu-tools
      jack2Full
@@ -65,7 +66,11 @@
      cowsay
      encfs
      feh
+     ffmpeg-full
+     graphicsmagick
+     gst_all_1.gst-libav
      htop
+     iotop
      keychain
      lsof
      manpages
@@ -77,7 +82,6 @@
      shared_mime_info
      silver-searcher
      sshfsFuse
-     tarsnap
      telnet
      tmux
      tree
@@ -95,13 +99,15 @@
      luakit
 
      # gui utils
+     baobab
+     calibre
      dropbox
      evince
      evtest
      gimp
      gparted
      gpicview
-     #gnome3.cheese
+     gnome3.cheese
      gnome3.gnome-font-viewer
      hipchat
      keepass
@@ -119,9 +125,9 @@
 
      # dev
      ansible2
-     boost
-     boost-build
      boot
+     chromedriver
+     cmake
      compass
      emacs
      gcc
@@ -136,6 +142,7 @@
      neovim
      nodejs
      nodePackages.npm2nix
+     pixie
      python
      #pypyPackages.ipython
      R
