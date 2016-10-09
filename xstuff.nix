@@ -86,6 +86,7 @@
       gyre-fonts
       hack-font
       hasklig
+      iosevka
       inconsolata
     #  ipafont
       liberation_ttf
