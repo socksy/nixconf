@@ -104,6 +104,7 @@
   environment.shellInit = ''
     #to find GTK themes
     export GTK_DATA_PREFIX=${config.system.path}
+    export GTK_PATH=$GTK_PATH:${pkgs.gtk-engine-murrine}/lib/gtk-2.0:${pkgs.pkgsi686Linux.gtk-engine-murrine}/lib/gtk-2.0
     '';
 
   environment.pathsToLink = [ "/share/themes" "/share/mime" "/lib/gtk-2.0"];
