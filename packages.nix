@@ -129,6 +129,7 @@
      chromedriver
      cmake
      compass
+     dust #from pixie
      emacs
      gcc
      ghc
@@ -144,6 +145,9 @@
      nodePackages.npm2nix
      pixie
      python
+     python27Packages.boto
+     python27Packages.virtualenv
+     python27Packages.virtualenvwrapper
      #pypyPackages.ipython
      R
      ruby
@@ -156,8 +160,8 @@
      flashplayer
      gstreamer
      hal-flash #DRM for flashplayer
-     wineUnstable
-     winetricks
+     #wineUnstable
+     #winetricks
      #pypyPackages.wxPython30
 
      #games
