@@ -125,6 +125,7 @@
      xfce.terminal
 
      # dev
+     ansible
      ansible2
      boot
      chromedriver
