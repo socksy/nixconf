@@ -9,7 +9,7 @@
 
     hardware.facetimehd.enable = true;
 
-    networking.enableB43Firmware = true;
+    #networking.enableB43Firmware = true;
     networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     #to get the sound card to work
