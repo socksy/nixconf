@@ -86,6 +86,7 @@
       gyre-fonts
       hack-font
       hasklig
+      helvetica-neue-lt-std
       iosevka
       inconsolata
     #  ipafont
@@ -94,7 +95,9 @@
       powerline-fonts
       terminus_font
       noto-fonts
+      noto-fonts-emoji
       source-code-pro
+      source-sans-pro
       vistafonts
       ubuntu_font_family
     ];
