@@ -97,6 +97,7 @@
      #dwb
      firefox-wrapper
      luakit
+     tdesktop
 
      # gui utils
      baobab
