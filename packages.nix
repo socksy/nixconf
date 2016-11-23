@@ -102,7 +102,7 @@
      # gui utils
      baobab
      calibre
-     dropbox
+     #dropbox
      evince
      evtest
      gimp
