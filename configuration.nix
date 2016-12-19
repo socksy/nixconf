@@ -39,9 +39,6 @@
 
   # List services that you want to enable:
   services = {
-  # why not?
-  #dbus.enable = true;
-
     logind.extraConfig = "HandlePowerKey=ignore";
 
     # Enable the OpenSSH daemon.
