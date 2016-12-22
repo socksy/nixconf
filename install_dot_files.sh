@@ -44,3 +44,8 @@ config config status.showUntrackedFiles no
 # Vim should work from first run due to how vimrc is written
 echo "Installing spacemacs for .emacs.d"
 git clone https://github.com/syl20bnr/spacemacs $USERHOME/.emacs.d
+
+sudo ln -s $USERHOME/.vim /root/.vim
+sudo ln -s $USERHOME/.vimrc /root/.vimrc
+sudo ln -s $USERHOME/.gitconfig /root/.gitconfig
+
