@@ -73,9 +73,18 @@
     avahi.ipv6 = true;
     avahi.nssmdns = true;
 
+    syncthing = {
+      enable = true;
+      #openDefaultPorts = true;
+      useInotify = true;
+    };
+
+
+
    # hardware.pommed-light.enable = true;
   };
 
+  # services.cassandra.enable = true;
 
     
     #TODO put this in the module instead
@@ -107,7 +116,7 @@
     extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker"];
   };
 
-  users.users.root.extraGroups = ["grsecurity" "audio"];
+  users.users.root.extraGroups = ["grsecurity" "audio" "syncthing"];
 
   environment.variables = {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
