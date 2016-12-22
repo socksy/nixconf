@@ -18,6 +18,10 @@ ARCHIVE="$(sudo tarsnap --list-archives --keyfile $KEYFILE | grep benixos-secret
 mkdir -p $USERHOME && cd $USERHOME && sudo tarsnap -xf $ARCHIVE --keyfile $KEYFILE
 sudo tarsnap -tf $ARCHIVE --keyfile $KEYFILE | xargs chown $USER
 
+# Wifi Passwords
+WPA_SUPPLICANT_ARCHIVE="$(sudo tarsnap --list-archives --keyfile $KEYFILE | grep wpa_supplicant | sort | tail -1)"
+cd / && sudo tarsnap -xf $WPA_SUPPLICANT_ARCHIVE --keyfile $KEYFILE
+
 cd $USERHOME && git clone --bare git@bitbucket.org:socksy/dotfiles.git $USERHOME/.cfg
 if [ $? != 0 ]; then
   echo "Dotfiles already have been cloned in $USERHOME"
