@@ -12,6 +12,7 @@
      arandr
      autorandr
      conky
+     compton
      dmenu
      dzen2
      evtest
@@ -51,9 +52,9 @@
      intel-gpu-tools
      jack2Full
      pciutils
-     pommed-light
      powertop
      smartmontools
+     tarsnap
   #   udev #breaks config with list->string type errors now?
      udisks2
      usbutils
@@ -65,6 +66,7 @@
      awscli
      bc
      binutils
+     bluez
      #chrpath
      cowsay
      encfs
