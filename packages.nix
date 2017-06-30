@@ -5,10 +5,7 @@
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
      # X/GUI stuff
-     #haskellPackages.xmonadContrib
-     #haskellPackages.xmonadExtras
      xorg.xmodmap
-     #xmonad-with-packages
      arandr
      autorandr
      conky
