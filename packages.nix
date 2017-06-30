@@ -149,13 +149,9 @@
      mariadb
      neovim
      nodejs
-     nodePackages.npm2nix
      pixie
      python
      python27Packages.boto
-     python27Packages.virtualenv
-     python27Packages.virtualenvwrapper
-     #pypyPackages.ipython
      R
      ruby
      sqlite
