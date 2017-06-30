@@ -131,6 +131,9 @@
      chromedriver
      cmake
      compass
+     docker-edge
+     docker_compose
+     docker-gc
      dust #from pixie
      emacs
      gcc
