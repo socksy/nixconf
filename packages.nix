@@ -114,13 +114,13 @@
      gpicview
      gnome3.cheese
      gnome3.gnome-font-viewer
-     hipchat
      keepass
      pinta
      qbittorrent
      qjackctl
      shotwell
      skype
+     slack
      spotify
      vlc
      wpa_supplicant_gui
@@ -129,10 +129,7 @@
      xfce.terminal
 
      # dev
-     ansible
-     ansible2
      boot
-     chromedriver
      cmake
      compass
      docker-edge
@@ -176,9 +173,7 @@
      #games
      #openlierox
      #xonotic
-
-     # unsorted
-     # mysql-workbench
+     steam
    ];
 
    nixpkgs.config = {
