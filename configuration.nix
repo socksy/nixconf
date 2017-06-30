@@ -43,7 +43,7 @@
 
   # List services that you want to enable:
   services = {
-    logind.extraConfig = "HandlePowerKey=ignore";
+    illum.enable = true;
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
