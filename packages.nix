@@ -145,6 +145,7 @@
      jdk
      jekyll
      leiningen
+     #lumo
      mariadb
      neovim
      nodejs
