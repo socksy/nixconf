@@ -57,6 +57,8 @@
     # run updatedb every night so locate works  
     locate.enable = true;
 
+    dbus.packages = [ pkgs.gnome2.GConf.out ];
+
     # puts browser profiles into RAM, preventing a lot of read/write to USB
     psd.enable = true;
     psd.users = ["ben"];
