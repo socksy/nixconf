@@ -84,8 +84,11 @@
 
     syncthing = {
       enable = true;
-      #openDefaultPorts = true;
+      openDefaultPorts = true;
       useInotify = true;
+      user = "ben";
+      #group = "users";
+      dataDir = "/home/ben/.syncthing";
     };
 
 
@@ -106,7 +109,7 @@
     home = "/home/ben";
     shell = "${pkgs.zsh}/bin/zsh";
     description = "Ben Lovell";
-    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner"];
+    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner" "sync"];
   };
 
   users.users.root.extraGroups = ["grsecurity" "audio" "syncthing"];
