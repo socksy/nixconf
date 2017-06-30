@@ -33,6 +33,10 @@
   };
  
   networking.hostName = "benixos"; # Define your hostname.
+  networking.extraHosts =
+  ''
+  10.1.76.140 git.ge
+  '';
   #networking.enableB43Firmware = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
