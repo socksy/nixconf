@@ -72,6 +72,7 @@
      graphicsmagick
      gst_all_1.gst-libav
      htop
+     httpie
      iotop
      keychain
      lsof
