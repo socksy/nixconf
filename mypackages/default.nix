@@ -16,26 +16,6 @@ rec {
     };
   });
 
- # mysql-workbench = pkgs.mysqlWorkbench.overrideDerivation (old: rec{
- #   version = "6.0.4";
- #   pname = "mysql-workbench";
- #   name = "${pname}-${version}";
- #   src = pkgs.fetchurl {
- #     url = "http://mirror.cogentco.com/pub/mysql/MySQLGUITools/mysql-workbench-gpl-6.0.4-src.tar.gz";
- #     sha256 = "0gkk8ldhspy2a5yvx0l40ih9bm9gsx2qwf4z8pk961nlcpr2550i";
- #   };
- #   postConfigure = ''
- #   cmake $out -DCMAKE_INSTALL_PREFIX=$out -DCMAKE_BUILD_TYPE=Release
- #   '';
- #   nativeBuildInputs = with pkgs; [ boost cmake file glib glibc 
- #                                    libgnome_keyring gtk gtkmm intltool
- #                                    libctemplate gnome.libglade gnome.libgnome 
- #                                    libiodbc libsigcxx libuuid libxml2 libzip 
- #                                    lua makeWrapper mesa libmysql
- #                                    python27Packages.paramiko pcre  
- #                                    python27Packages.pexpect pkgconfig 
- #                                    python27Packages.pycrypto python27Packages.python sqlite ];
- # });
 
   i3lock-fancy = pkgs.stdenv.mkDerivation rec {
     rev = "b7005a0bfb3e2bef119e41c57ae2765d49aadea7";
