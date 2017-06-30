@@ -105,13 +105,9 @@ rec {
       install -v -m644 pommed.1 $out/share/man/man1/pommed.1
       '';
       meta = {
-      description = "A tool to handle hotkeys on Apple laptop keyboards";
-      homepage = http://www.technologeek.org/projects/pommed/index.html;
-      license = pkgs.stdenv.lib.licenses.gpl2;
+          description = "A tool to handle hotkeys on Apple laptop keyboards";
+          homepage = http://www.technologeek.org/projects/pommed/index.html;
+          license = pkgs.stdenv.lib.licenses.gpl2;
       };
-      };
-
-
-
-
-      }
+  };
+}
