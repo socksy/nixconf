@@ -7,7 +7,7 @@
      # X/GUI stuff
      #haskellPackages.xmonadContrib
      #haskellPackages.xmonadExtras
-     #xmodmap
+     xorg.xmodmap
      #xmonad-with-packages
      arandr
      autorandr
@@ -15,8 +15,11 @@
      dmenu
      dzen2
      evtest
-     gnome.gnomeicontheme
-     gtk
+     gnome2.gnome_icon_theme
+     # 16.09
+     #gnome.gnomeicontheme
+     gnome2.gtk
+     gnome3.gtk
      haskellPackages.xmonad
      haskellPackages.yeganesh
      libnotify
