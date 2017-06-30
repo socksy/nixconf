@@ -9,12 +9,16 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./packages.nix
-      ./macbookpro.nix
+      ./xps13.nix
       ./xstuff.nix
     ];
 
 
   hardware = {
+    opengl = {
+      driSupport = true;
+      driSupport32Bit = true;
+    };
     # i wonder if i'll regret this
     pulseaudio = {
       enable = true;
@@ -82,23 +86,7 @@
 
 
    # hardware.pommed-light.enable = true;
-  };
 
-  # services.cassandra.enable = true;
-
-    
-    #TODO put this in the module instead
-  systemd.services.pommed-light = {
-    description = "Pommed hotkey management for Apple Macs";
-    wantedBy = [ "multi-user.target" ]; 
-    after = [ "network.target" ];
-    serviceConfig = { 
-      User="root";
-      postStop = "rm -f /var/run/pommed.pid";
-      ExecStart = "${pkgs.pommed-light}/bin/pommed -f &";
-      ExecStop = "killall pommed";
- #     Type = "forking";
-    };
   };
 
 

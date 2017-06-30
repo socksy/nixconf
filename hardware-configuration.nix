@@ -5,28 +5,28 @@
 
 {
   imports =
-    [ <nixpkgs/nixos/modules/hardware/network/broadcom-43xx.nix>
-      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f013c0f6-997d-4378-adb4-af299d444da5";
-      fsType = "ext4";
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/b6cbad0a-27c3-48a4-952e-12a87624950e";
+    { device = "/dev/disk/by-uuid/9cbb1b0b-fb44-4b7c-9fea-3329eff520fe";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5A21-53C2";
+    { device = "/dev/disk/by-uuid/929A-C37C";
       fsType = "vfat";
     };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/d7288166-e48a-4a65-b799-4179b6b63bcb";
+      fsType = "ext4";
+    };
+
   swapDevices = [ ];
 
   nix.maxJobs = lib.mkDefault 4;

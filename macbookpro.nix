@@ -21,4 +21,19 @@
     # Reset XHCI USB devices on suspend/resume, fixes SD Card reader vanishing after suspend
     #options xhci_hcd quirks=0x80
     '';
+
+    #TODO put this in the module instead
+    systemd.services.pommed-light = {
+      description = "Pommed hotkey management for Apple Macs";
+      wantedBy = [ "multi-user.target" ]; 
+      after = [ "network.target" ];
+      serviceConfig = { 
+        User="root";
+        postStop = "rm -f /var/run/pommed.pid";
+        ExecStart = "${pkgs.pommed-light}/bin/pommed -f &";
+        ExecStop = "killall pommed";
+#     Type = "forking";
+      };
+    };
+
 }
