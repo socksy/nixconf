@@ -105,7 +105,7 @@
 
      # gui utils
      baobab
-     calibre
+     #calibre
      #dropbox
      evince
      evtest
