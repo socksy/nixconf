@@ -100,6 +100,7 @@
      chromium
      #dwb
      firefox-wrapper
+     google-chrome
      tdesktop
 
      # gui utils
@@ -184,7 +185,7 @@
      chromium = {
        enablePepperFlash = true;
        enablePepperPDF = true;
-       enableWideVine = true;
+#       enableWideVine = true;
      };
      packageOverrides = pkgs: import ./mypackages {
        inherit pkgs;
