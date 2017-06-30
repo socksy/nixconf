@@ -80,7 +80,7 @@
 
     avahi.enable = true;
     avahi.ipv6 = true;
-    avahi.nssmdns = true;
+    avahi.nssmdns = false;
 
     syncthing = {
       enable = true;
