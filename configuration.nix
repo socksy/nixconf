@@ -27,6 +27,9 @@
       package = pkgs.pulseaudioFull;
     };
     bluetooth.enable = true;
+
+    # enable scanning firmware
+    sane.enable = true;
   };
  
   networking.hostName = "benixos"; # Define your hostname.
@@ -101,7 +104,7 @@
     home = "/home/ben";
     shell = "${pkgs.zsh}/bin/zsh";
     description = "Ben Lovell";
-    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker"];
+    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner"];
   };
 
   users.users.root.extraGroups = ["grsecurity" "audio" "syncthing"];
