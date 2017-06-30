@@ -94,11 +94,6 @@
       #group = "users";
       dataDir = "/home/ben/.syncthing";
     };
-
-
-
-   # hardware.pommed-light.enable = true;
-
   };
 
 
