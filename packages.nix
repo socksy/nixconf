@@ -30,6 +30,7 @@
      xfce.xfce4notifyd
      xfontsel
      xlsfonts
+     xorg.xbacklight
      xorg.xbitmaps
      xorg.xev
      xorg.xineramaproto
@@ -52,10 +53,9 @@
      powertop
      smartmontools
      tarsnap
-  #   udev #breaks config with list->string type errors now?
+     #udev #breaks config with list->string type errors now?
      udisks2
      usbutils
-     #pommed-light
 
      # cli utils
      aspell
@@ -77,6 +77,7 @@
      lsof
      manpages
      openvpn
+     pavucontrol
      python27Packages.pkgconfig
      psmisc
      rlwrap
