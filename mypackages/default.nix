@@ -16,6 +16,38 @@ rec {
     };
   });
 
+  lumo = pkgs.stdenv.mkDerivation rec {
+    name = "lumo-${version}";
+    version = "1.3.0";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "anmonteiro";
+      repo = "lumo";
+      rev = "0675f02e73b79f018b8c35d46931960b9ca27761";
+      sha256 = "1dd48jf81mdzshb8pch3r6m4x8xszg34xl23vxxi0g3a3d5x0rwn";
+    };
+
+    buildInputs = with pkgs; [ boot git nodejs-6_x python2 ];
+    buildPhase = ''
+      export HOME=$TMP
+      npm install
+      PATH=$PATH:node_modules/.bin/
+      #boot release
+      '';
+    installPhase = ''
+      export HOME=$TMP
+      mkdir -p $out/bin
+      install -v -m755 build/lumo $out/bin/lumo
+      '';
+
+    meta = {
+      homepage = https://github.com/anmonteiro/lumo;
+      description = "Standalone ClojureScript REPL on Node.js.";
+      license = pkgs.stdenv.lib.licenses.epl10;
+    };
+
+  };
+
 
   i3lock-fancy = pkgs.stdenv.mkDerivation rec {
     rev = "b7005a0bfb3e2bef119e41c57ae2765d49aadea7";
