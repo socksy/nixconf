@@ -63,7 +63,7 @@
         # doing initial xmodmap key swaps
         ${pkgs.xlibs.xmodmap}/xmodmap -e 'remove mod1 = Alt_L'
         ${pkgs.xlibs.xmodmap}/xmodmap -e 'remove mod4 = Super_L'
-        
+
 
         # alt + super swapped
         ${pkgs.xlibs.xmodmap}/modmap -e 'keycode 133 = Alt_L Meta_L Alt_L Meta_L'

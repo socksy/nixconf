@@ -32,7 +32,7 @@
     # enable scanning firmware
     sane.enable = true;
   };
- 
+
   networking.hostName = "benixos"; # Define your hostname.
   networking.extraHosts =
   ''
@@ -52,6 +52,7 @@
   # List services that you want to enable:
   services = {
     illum.enable = true;
+    #nylas-mail.enable = true;
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
@@ -59,7 +60,7 @@
     # Enable CUPS to print documents.
     printing.enable = true;
 
-    # run updatedb every night so locate works  
+    # run updatedb every night so locate works
     locate.enable = true;
 
     dbus.packages = [ pkgs.gnome2.GConf.out ];
