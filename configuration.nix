@@ -82,10 +82,13 @@
       latitude = "52.31";
       longitude = "13.22";
       temperature.day = 6500;
+      #temperature.day = 2500;
     };
 
     avahi.enable = true;
     avahi.ipv6 = true;
+    #enable if you want local networking printing. Disable if you want work VPN to work. :\
+    #avahi.nssmdns = true;
     avahi.nssmdns = false;
 
     syncthing = {

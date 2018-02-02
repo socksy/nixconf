@@ -40,7 +40,7 @@
 
     desktopManager.default = "none";
     desktopManager.xterm.enable = false;
-    
+
     windowManager.default = "xmonad";
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
@@ -50,7 +50,7 @@
         enable = true;
         defaultUser = "ben";
         # needs to be to tar.gz, not pkg
-        #theme = pkgs.slimThemes.archlinuxSimple;
+        #theme = pkgs.slimThemes.rainbow;
       };
       sessionCommands = ''
         ${pkgs.xlibs.xrdb}/bin/xrdb -merge ~/.Xresources
