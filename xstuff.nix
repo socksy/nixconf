@@ -107,9 +107,11 @@
       dejavu_fonts
       dina-font
       eb-garamond
+      emacs-all-the-icons-fonts
       fantasque-sans-mono
       fira-code
       fira
+      font-awesome-ttf
       gentium
       gyre-fonts
       hack-font
@@ -124,6 +126,7 @@
       terminus_font
       noto-fonts
       noto-fonts-emoji
+      noto-fonts-cjk
       source-code-pro
       source-sans-pro
       vistafonts
