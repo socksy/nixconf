@@ -11,6 +11,7 @@
       ./packages.nix
       ./xps13.nix
       ./xstuff.nix
+#      ./stable-packages.nix
     ];
 
 
@@ -108,7 +109,7 @@
     home = "/home/ben";
     shell = "${pkgs.zsh}/bin/zsh";
     description = "Ben Lovell";
-    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner" "sync"];
+    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner" "sync" "lp"];
   };
 
   users.users.root.extraGroups = ["grsecurity" "audio" "syncthing"];

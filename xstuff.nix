@@ -147,6 +147,6 @@
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplip pkgs.gutenprint ];
+    drivers = [ pkgs.hplip pkgs.gutenprint pkgs.epson-escpr ];
   };
 }
