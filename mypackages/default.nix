@@ -5,6 +5,10 @@ rec {
   bluez = pkgs.bluez5;
   docker = pkgs.docker-edge;
 
+  keepass = pkgs.keepass.override {
+    plugins = [pkgs.keepass-keefox];
+  };
+
   i3lock-color = pkgs.i3lock.overrideDerivation (old: rec {
     rev = "177024ddc01d9f86fef8e9daa766166ee58aa04d";
     name = "i3lock-color-2016-02-09-${rev}";
