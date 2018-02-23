@@ -8,6 +8,7 @@
     xorg.xmodmap
     arandr
     autorandr
+    blueman
     conky
     compton
     dmenu
@@ -189,8 +190,6 @@
     };
     packageOverrides = pkgs: import ./mypackages {
       inherit pkgs;
-      # don't know if i can do this actually
-      #bluez = pkgs.bluez5;
     };
   };
 }
