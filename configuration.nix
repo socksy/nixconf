@@ -136,5 +136,5 @@
   virtualisation.docker.enable = true;
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "17.09";
+  system.nixos.stateVersion = "18.03";
 }
