@@ -111,6 +111,7 @@
 
 
   security.sudo.enable = true;
+  security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" "/etc/ssl/certs/prod01_intermediate_ca.pem" "/etc/ssl/certs/prod01_root_ca.pem"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ben = {
