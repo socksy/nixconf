@@ -23,16 +23,16 @@
     # i wonder if i'll regret this
     pulseaudio = {
       enable = true;
-      systemWide = true;
+    #  systemWide = true;
       support32Bit = true;
       package = pkgs.pulseaudioFull;
     };
     bluetooth = {
       enable = true;
-      extraConfig = ''
-        [general]
-        Enable=Source,Sink,Media,Socket
-      '';
+    #  extraConfig = ''
+    #    [general]
+    #    Enable=Source,Sink,Media,Socket
+    #  '';
     };
 
     # enable scanning firmware
