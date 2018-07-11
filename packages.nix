@@ -18,13 +18,17 @@
     # 16.09
     #gnome.gnomeicontheme
     gnome2.gtk
+    gnome3.adwaita-icon-theme
     gnome3.gtk
+    gnome3.simple-scan
     haskellPackages.xmonad
     haskellPackages.yeganesh
     libnotify
     lxappearance
     numix-gtk-theme
     numix-icon-theme-circle
+    xbrightness
+    xcalib
     xcape
     xclip
     xcompmgr
@@ -33,6 +37,7 @@
     xlsfonts
     xorg.xbacklight
     xorg.xbitmaps
+    xorg.xcursorthemes
     xorg.xev
     xorg.xineramaproto
 
@@ -48,10 +53,16 @@
     glxinfo
     gnupg1
     hdparm
+    hello
     intel-gpu-tools
     jack2Full
+    jmtpfs # for mtp access with phones
+    lshw
+    nfs-utils
+    p7zip
     pciutils
     powertop
+    rfkill
     smartmontools
     tarsnap
     #udev #breaks config with list->string type errors now?
@@ -59,18 +70,21 @@
     usbutils
 
     # cli utils
+    asciinema
     aspell
     aspellDicts.en
     awscli
     bc
     binutils
-    bluez
+    byzanz
     #chrpath
     cowsay
     encfs
+    elinks
     feh
     ffmpeg-full
     graphicsmagick
+    ghostscript
     gst_all_1.gst-libav
     htop
     httpie
@@ -78,19 +92,28 @@
     keychain
     lsof
     manpages
+    mosh
+    ngrok
+    nmap
+    openssl
     openvpn
+    pandoc
     pavucontrol
     python27Packages.pkgconfig
     psmisc
+    pv
+    ripgrep
     rlwrap
     scrot
     shared_mime_info
     silver-searcher
     sshfsFuse
     telnet
+    tldr
     tmux
     tree
     unzip
+    wavemon
     wget
     which
     whois
@@ -110,14 +133,17 @@
     #dropbox
     evince
     evtest
+    dpkg
     gimp
     gparted
     gpicview
     gnome3.cheese
     gnome3.gnome-font-viewer
+    inkscape
     keepass
+    libreoffice
     pinta
-    qbittorrent
+    #qbittorrent
     qjackctl
     shotwell
     skype
@@ -128,10 +154,14 @@
     xdotool
     xfce.thunar
     xfce.terminal
+    xournal
+    xsane
 
     # dev
+    aws
     boot
     cargo
+    clojure
     cmake
     compass
     ctop
@@ -140,31 +170,41 @@
     docker-gc
     dust #from pixie
     emacs
+    elixir
     gcc
     #ghc
     git
     gitAndTools.gitflow
+    go
+    gocode
     gnumake
+    j
     jdk
     jekyll
     leiningen
     #lumo
-    mariadb
-    neovim
+    lua
+    #neovim
     nodejs
+    patchelf
     pixie
+    protobuf
     python
+    python3
     python27Packages.boto
+    python36Packages.pip
+    python36Packages.pip
+    python36Packages.virtualenv
+    python36Packages.virtualenvwrapper
     R
     ruby
     rustc
     sqlite
-    vagrant
     vimHugeX
 
     # misc
     mplayer
-    #flashplayer
+    flashplayer
     gstreamer
     hal-flash #DRM for flashplayer
     #wineUnstable
