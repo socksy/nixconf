@@ -100,7 +100,6 @@
     syncthing = {
       enable = true;
       openDefaultPorts = true;
-      useInotify = true;
       user = "ben";
       #group = "users";
       dataDir = "/home/ben/.syncthing";
