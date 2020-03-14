@@ -13,20 +13,24 @@
     xkbOptions = "caps:swapescape, numpad:mac";
     videoDrivers = ["modesetting"];# "vesa" "intel" "nouveau"];
 
-    multitouch.enable = true;
+    #multitouch.enable = true;
+    dpi = 330;
     libinput = {
       #https://github.com/NixOS/nixpkgs/blob/release-16.09/nixos/modules/services/x11/hardware/libinput.nix
       enable = true;
       #buttonMapping = "1 3 2";
+      tapping = true;
       clickMethod = "clickfinger";
+      accelProfile = "flat";
+      accelSpeed = "0.5";
     };
-   # synaptics = {
-   #   enable = true;
-   #   dev = "/dev/input/event*";
-   #   twoFingerScroll = true;
-   #   #accelFactor = "0.001";
-   #   buttonsMap = [ 1 3 2 ];
-   # };
+    #synaptics = {
+    #  enable = true;
+    #  dev = "/dev/input/event15";
+    #  twoFingerScroll = true;
+    #  #accelFactor = "0.001";
+    #  buttonsMap = [ 1 3 2 ];
+    #};
 
     config = ''
     Section "Device"
@@ -38,25 +42,43 @@
     EndSection
     '';
 
-    desktopManager.default = "none";
-    desktopManager.xterm.enable = false;
-
-    windowManager.default = "xmonad";
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
+    displayManager = {
+      #lightdm.enable = true;
+      #lightdm.greeters.gtk.extraConfig = "xft-dpi=221";
+      sddm = {
+        enable = true;
+        enableHidpi = true;
+      };
+      defaultSession = "xfce+xmonad";
+    };
+    desktopManager = {
+      #default = "xfce";
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    windowManager = {
+      #default = "xmonad";
+      xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        extraPackages = haskellPackages : [
+          haskellPackages.xmonad-contrib
+          haskellPackages.xmonad-extras
+          haskellPackages.xmonad
+        ];
+      };
+    };
 
     displayManager = {
-      slim = {
-        enable = true;
-        defaultUser = "ben";
-        # needs to be to tar.gz, not pkg
-        #theme = pkgs.slimThemes.rainbow;
-      };
       sessionCommands = ''
+        PATH=$HOME/ben/bin:$PATH
         ${pkgs.xlibs.xrdb}/bin/xrdb -merge ~/.Xresources
         #${pkgs.xlibs.xsetroot}/bin/xsetroot -cursor_name left_ptr #sets cursor
         #/bin/sh /home/ben/.screenlayout/wallpaper.sh
-        #${pkgs.dropbox}/bin/dropbox &
         ${pkgs.xcape}/bin/xcape -e "Shift_L=parenleft;Shift_R=parenright"
 
 
@@ -80,8 +102,7 @@
         # US style
         ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode 12 = 3 numbersign 3 numbersign sterling numbersign sterling numbersign'
         ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode  49 = grave asciitilde grave asciitilde bar brokenbar bar'
-
-        '';
+      '';
     };
   };
 
@@ -91,7 +112,6 @@
 
   fonts = {
     enableFontDir = true;
-    enableCoreFonts = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       anonymousPro
@@ -108,6 +128,7 @@
       dina-font
       eb-garamond
       emacs-all-the-icons-fonts
+      etBook
       fantasque-sans-mono
       fira-code
       fira
@@ -129,8 +150,9 @@
       noto-fonts-cjk
       source-code-pro
       source-sans-pro
-      vistafonts
+      #vistafonts
       ubuntu_font_family
+      twemoji-color-font
     ];
     # removed from nixos and freetype in general... in cleartype we trust. Pity I hate MS' rendering
     # https://github.com/NixOS/nixpkgs/commit/65592837b6e62fb555d6e8c891f347428886c4f2
