@@ -14,6 +14,7 @@
 #      ./stable-packages.nix
     ];
 
+    #environment.ld-linux = true;
 
   hardware = {
     opengl = {
@@ -37,14 +38,15 @@
     sane.enable = true;
   };
 
+  #uncomment this line for protection on VPN
+  # n.b. need ipv6 for CIDER jack in to work
+  networking.enableIPv6=true;
   networking.hostName = "benixos"; # Define your hostname.
   # the /etc/hosts
   networking.extraHosts =
   ''
     #put your favourite hosts file stuff here
   '';
-  #networking.enableB43Firmware = true;
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 
   # no atime because it's to prevent so many USB drive writes
@@ -53,6 +55,11 @@
 
   time.timeZone = "Europe/Berlin";
 
+  location = {
+    #Berlin
+    latitude = 52.31;
+    longitude = 13.22;
+  };
 
   # List services that you want to enable:
   services = {
@@ -72,7 +79,6 @@
 
     # puts browser profiles into RAM, preventing a lot of read/write to USB
     psd.enable = true;
-    psd.users = ["ben"];
 
     acpid.enable = true;
     #udev.extraRules = ''
@@ -83,9 +89,6 @@
     redshift = {
       enable = true;
 
-      #Berlin
-      latitude = "52.31";
-      longitude = "13.22";
       temperature.day = 6500;
       #temperature.day = 2500;
     };
@@ -103,14 +106,17 @@
       #group = "users";
       dataDir = "/home/ben/.syncthing";
     };
+
+    blueman.enable = true;
   };
 
 
 
 
   security.sudo.enable = true;
-  security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" "/etc/ssl/certs/prod01_intermediate_ca.pem" "/etc/ssl/certs/prod01_root_ca.pem"];
+  security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];#"/etc/ssl/certs/prod01_intermediate_ca.pem" "/etc/ssl/certs/prod01_root_ca.pem"];
 
+  programs.adb.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ben = {
     isNormalUser = true;
@@ -118,7 +124,7 @@
     home = "/home/ben";
     shell = "${pkgs.zsh}/bin/zsh";
     description = "Ben Lovell";
-    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner" "sync" "lp"];
+    extraGroups = ["wheel" "video" "audio" "vboxusers" "tty" "docker" "scanner" "sync" "lp" "adbusers"];
   };
 
   users.users.root.extraGroups = ["grsecurity" "audio" "syncthing"];
@@ -127,13 +133,19 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     _JAVA_AWT_WM_NONREPARENTING = "1";
     GOROOT = "${pkgs.go.out}/share/go";
+    GDK_SCALE="2";
+    GDK_DPI_SCALE="0.5";
   };
 
 
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.host.enable = true;
   virtualisation.docker.enable = true;
+  #virtualisation.anbox.enable = true;
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.nixos.stateVersion = "18.03";
+  system.stateVersion = "19.09";
+  # FIXME lookup actual keys
+  # gc.automatic = true;
+  # gc.options = '--delete-older-than 30d';
 }
