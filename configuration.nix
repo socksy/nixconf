@@ -63,6 +63,13 @@
 
   # List services that you want to enable:
   services = {
+    # pitch app requires this
+    gnome3.gnome-keyring.enable=true;
+
+    # mainly for BIOS updates
+    fwupd.enable = true;
+
+
     illum.enable = true;
     #nylas-mail.enable = true;
 
@@ -81,6 +88,7 @@
     psd.enable = true;
 
     acpid.enable = true;
+    udev.packages = [ pkgs.android-udev-rules ];
     #udev.extraRules = ''
     #  KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/ben/.Xauthority", RUN+="${pkgs.stdenv.shell} -c '/home/ben/.screenlayout/auto.sh'"
     #  ''
@@ -96,8 +104,8 @@
     avahi.enable = true;
     avahi.ipv6 = true;
     #enable if you want local networking printing. Disable if you want work VPN to work. :\
-    #avahi.nssmdns = true;
-    avahi.nssmdns = false;
+    avahi.nssmdns = true;
+    #avahi.nssmdns = false;
 
     syncthing = {
       enable = true;
