@@ -39,11 +39,12 @@
     xorg.xbitmaps
     xorg.xcursorthemes
     xorg.xev
-    xorg.xineramaproto
+    #xorg.xineramaproto
 
     #printing
     gutenprint
-    hplip
+    #TODO fix hplip
+    #hplip
 
     # core system stuffs
     acpi
@@ -55,7 +56,6 @@
     hdparm
     hello
     intel-gpu-tools
-    jack2Full
     jmtpfs # for mtp access with phones
     lshw
     nfs-utils
@@ -79,21 +79,25 @@
     byzanz
     #chrpath
     cowsay
+    direnv
     encfs
     elinks
     feh
     ffmpeg-full
+    fzf
     graphicsmagick
     ghostscript
     gst_all_1.gst-libav
     htop
     httpie
     iotop
+    keybase
     keychain
     lsof
+    magic-wormhole
     manpages
     mosh
-    ngrok
+    #ngrok
     nmap
     openssl
     openvpn
@@ -125,9 +129,9 @@
     #dwb
     firefox-wrapper
     google-chrome
-    tdesktop
 
     # gui utils
+    anki
     baobab
     #calibre
     #dropbox
@@ -140,15 +144,18 @@
     gnome3.cheese
     gnome3.gnome-font-viewer
     inkscape
-    keepass
+    keepassxc
     libreoffice
     pinta
     #qbittorrent
     qjackctl
+    signal-desktop
     shotwell
-    skype
+    #skype
     slack
     spotify
+    #temporarily disabled while the build is broken, shadowing with stable.tdesktop
+    #tdesktop
     vlc
     wpa_supplicant_gui
     xdotool
@@ -156,8 +163,10 @@
     xfce.terminal
     xournal
     xsane
+    zoom-us
 
     # dev
+    atom
     aws
     boot
     cargo
@@ -185,7 +194,7 @@
     #lumo
     lua
     #neovim
-    nodejs
+    nodejs-12_x
     patchelf
     pixie
     protobuf
@@ -197,6 +206,7 @@
     python36Packages.virtualenv
     python36Packages.virtualenvwrapper
     R
+    racket
     ruby
     rustc
     sqlite
@@ -204,9 +214,10 @@
 
     # misc
     mplayer
-    flashplayer
+    # lol flashplayer is broken and no-one noticed
+    #flashplayer
     gstreamer
-    hal-flash #DRM for flashplayer
+    #hal-flash #DRM for flashplayer
     #wineUnstable
     #winetricks
     #pypyPackages.wxPython30
@@ -214,18 +225,21 @@
     #games
     #openlierox
     #xonotic
-    steam
+    #steam
   ];
 
   nixpkgs.config = {
     allowUnfree = true;
     firefox = {
-      enableGoogleTalkPlugin = true;
+      #enableGoogleTalkPlugin = true;
       #enableAdobeFlash = true;
+    };
+    emacs = {
+      withXwidgets = true;
     };
     chromium = {
       #enablePepperFlash = true;
-      enablePepperPDF = true;
+      #enablePepperPDF = true;
       #       enableWideVine = true;
     };
     packageOverrides = pkgs: import ./mypackages {
