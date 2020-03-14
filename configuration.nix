@@ -20,19 +20,17 @@
       driSupport = true;
       driSupport32Bit = true;
     };
-    # i wonder if i'll regret this
+
     pulseaudio = {
       enable = true;
     #  systemWide = true;
       support32Bit = true;
       package = pkgs.pulseaudioFull;
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
+
     bluetooth = {
       enable = true;
-    #  extraConfig = ''
-    #    [general]
-    #    Enable=Source,Sink,Media,Socket
-    #  '';
     };
 
     # enable scanning firmware
@@ -40,9 +38,10 @@
   };
 
   networking.hostName = "benixos"; # Define your hostname.
+  # the /etc/hosts
   networking.extraHosts =
   ''
-  10.1.76.140 git.ge
+    #put your favourite hosts file stuff here
   '';
   #networking.enableB43Firmware = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
