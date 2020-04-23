@@ -47,6 +47,7 @@
   ''
     #put your favourite hosts file stuff here
   '';
+  networking.nameservers = ["1.1.1.1" "8.8.8.8"];
 
 
   # no atime because it's to prevent so many USB drive writes
