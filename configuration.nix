@@ -85,9 +85,6 @@
 
     dbus.packages = [ pkgs.gnome2.GConf.out ];
 
-    # puts browser profiles into RAM, preventing a lot of read/write to USB
-    psd.enable = true;
-
     acpid.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
     #udev.extraRules = ''
