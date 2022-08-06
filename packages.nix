@@ -1,13 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, emacs, ... }:
 
 {
+  # TODO radically reduce this and make different nix profiles for different things
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     # X/GUI stuff
     xorg.xmodmap
     arandr
-    audacity
+    #audacity
     autorandr
     blueman
     cachix
@@ -23,7 +24,7 @@
     gnome.adwaita-icon-theme
     gtk3
     simple-scan
-    haskellPackages.xmonad
+    #haskellPackages.xmonad
     haskellPackages.yeganesh
     libnotify
     lxappearance
@@ -165,7 +166,6 @@
     #skype
     slack
     spotify
-    tdesktop
     vlc
     wire-desktop
     wpa_supplicant_gui
@@ -176,13 +176,11 @@
     gnome.sushi
     xournal
     xsane
-    zoom-us
+    #zoom-us
 
     # dev
-    atom
     androidenv.androidPkgs_9_0.platform-tools
     aws
-    boot
     cargo
     #clj-kondo
     clojure
@@ -230,7 +228,7 @@
 
     # misc
     mplayer
-    pulseaudio-ctl  
+    pulseaudio-ctl
     # lol flashplayer is broken and no-one noticed
     #flashplayer
     #gstreamer
@@ -261,11 +259,12 @@
       inherit pkgs;
     };
   };
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      #url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      url = https://github.com/nix-community/emacs-overlay/archive/fe1b51ee407a6c61162477ecac84c061bc15a600.tar.gz;
-      #url = https://github.com/nix-community/emacs-overlay/archive/fa641d34da805361a033c4682ce116f0965533f4.tar.gz;
-    }))
-  ];
+  nixpkgs.overlays = [ emacs.overlay ];
+  #nixpkgs.overlays = [
+  #  (import (builtins.fetchTarball {
+  #    #url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  #    url = https://github.com/nix-community/emacs-overlay/archive/fe1b51ee407a6c61162477ecac84c061bc15a600.tar.gz;
+  #    #url = https://github.com/nix-community/emacs-overlay/archive/fa641d34da805361a033c4682ce116f0965533f4.tar.gz;
+  #  }))
+  #];
 }

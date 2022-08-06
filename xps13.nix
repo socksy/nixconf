@@ -16,16 +16,29 @@
 
     #networking.enableB43Firmware = true;
     networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networking.wireless.interfaces = ["wlp58s0"];
 
     # arch wiki suggests enabling these for intel chipset
     # lol swapping the opt and command on mac keyboard, because we swap it back again in dkeys to make linux keyboards feel like mac ones
     boot.extraModprobeConfig = ''
-    options i915 modeset=1 enable_rc6=1 enable_fbc=1
       options hid_apple swap_opt_cmd=1
     '';
     boot.kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
+    boot.kernelParams = [ 
+      "i915.enable_fbc=1"
+      "i915.enable_psr=2"
+    ];
+
+    # much better youtube performance, but broken rn
+   environment.variables = { 
+     MESA_LOADER_DRIVER_OVERRIDE = "iris";
+   };
+   hardware.opengl.package = (pkgs.mesa.override {
+     galliumDrivers = ["nouveau" "virgl" "swrast" "iris" ];
+   }).drivers;
+
    # options snd_hda_intel index=0 model=intel-mac-auto id=PCH
    # options snd_hda_intel index=1 model=intel-mac-auto id=HDMI
    # options hid_apple fnmode=2

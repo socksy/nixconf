@@ -5,6 +5,31 @@ rec {
   bluez = pkgs.bluez5;
   docker = pkgs.docker-edge;
 
+  vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+
+  #clojure = pkgs.clojure.overrideAttrs (old: rec {
+  #  version = "1.10.1.727";
+  #  src = pkgs.fetchurl {
+  #    url = "https://download.clojure.org/install/clojure-tools-${version}.tar.gz";
+  #    sha256 = "1mnxvy4n7g72vcwhvrgr0xqri3p9d9w76c8a78kphhmd8lq0m92q";
+  #  };
+  #  installPhase =
+  #    let
+  #      binPath = pkgs.stdenv.lib.makeBinPath [ pkgs.rlwrap pkgs.jdk ];
+  #    in
+  #    ''
+  #    mkdir -p $out/libexec
+  #    cp clojure-tools-${version}.jar $out/libexec
+  #    cp example-deps.edn $out
+  #    cp deps.edn $out
+  #    cp exec.jar $out
+  #    substituteInPlace clojure --replace PREFIX $out
+  #    install -Dt $out/bin clj clojure
+  #    wrapProgram $out/bin/clj --prefix PATH : $out/bin:${binPath}
+  #    wrapProgram $out/bin/clojure --prefix PATH : $out/bin:${binPath}
+  #    installManPage clj.1 clojure.1
+  #    '';
+  #  });
 
   efivar = pkgs.efivar.overrideDerivation (finalAttrs: rec {
     version = "37";

@@ -3,14 +3,15 @@
 # Enable the X11 windowing system.
 {
 
-  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl intel-media-driver ];
   services.xserver = {
     enable = true;
     exportConfiguration = true; #for sanity debugging reasons
 
     layout = "gb";
     xkbVariant = "mac";
-    xkbOptions = "caps:swapescape, numpad:mac";
+    xkbOptions = "caps:swapescape;numpad:mac;ctrl:nocaps";
     videoDrivers = ["modesetting"];# "vesa" "intel" "nouveau"];
 
     #multitouch.enable = true;
@@ -19,10 +20,13 @@
       #https://github.com/NixOS/nixpkgs/blob/release-16.09/nixos/modules/services/x11/hardware/libinput.nix
       enable = true;
       #buttonMapping = "1 3 2";
-      tapping = true;
-      clickMethod = "clickfinger";
-      accelProfile = "flat";
-      accelSpeed = "0.5";
+      touchpad = {
+        tapping = true;
+        clickMethod = "clickfinger";
+        calibrationMatrix = "8 0 0 0 8 0 0 0 1";
+        accelSpeed = "0.5";
+        accelProfile = "flat";
+      };
     };
     #synaptics = {
     #  enable = true;
@@ -45,10 +49,11 @@
     displayManager = {
       #lightdm.enable = true;
       #lightdm.greeters.gtk.extraConfig = "xft-dpi=221";
-      sddm = {
-        enable = true;
-        enableHidpi = true;
-      };
+      #sddm = {
+      #  enable = true;
+      #  enableHidpi = true;
+      #};
+      gdm.enable = true;
       defaultSession = "xfce+xmonad";
     };
     desktopManager = {
@@ -79,7 +84,7 @@
         ${pkgs.xlibs.xrdb}/bin/xrdb -merge ~/.Xresources
         #${pkgs.xlibs.xsetroot}/bin/xsetroot -cursor_name left_ptr #sets cursor
         #/bin/sh /home/ben/.screenlayout/wallpaper.sh
-        ${pkgs.xcape}/bin/xcape -e "Shift_L=parenleft;Shift_R=parenright"
+        ${pkgs.xcape}/bin/xcape -e "Shift_L=parenleft;Shift_R=parenright;Control_L=Escape"
 
 
         # doing initial xmodmap key swaps
@@ -95,6 +100,8 @@
         ${pkgs.xlibs.xmodmap}/xmodmap -e 'add mod1 = Alt_L'
         ${pkgs.xlibs.xmodmap}/xmodmap -e 'add mod4 = Super_L'
 
+        # N.B. the escape key is already swapped with the caps_lock due to
+        #xkb option caps:swapescape
         # old escape key now compose key
         ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode   9 = Multi_key'
         ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'clear Lock'
@@ -111,7 +118,7 @@
   };
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       anonymousPro
@@ -140,6 +147,7 @@
       helvetica-neue-lt-std
       iosevka
       inconsolata
+      inter
     #  ipafont
       liberation_ttf
       libertine
@@ -150,10 +158,12 @@
       noto-fonts-cjk
       source-code-pro
       source-sans-pro
+      symbola
       #vistafonts
       ubuntu_font_family
       twemoji-color-font
     ];
+    fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
     # removed from nixos and freetype in general... in cleartype we trust. Pity I hate MS' rendering
     # https://github.com/NixOS/nixpkgs/commit/65592837b6e62fb555d6e8c891f347428886c4f2
     #fontconfig.ultimate.enable = true;
