@@ -189,6 +189,7 @@
   programs.autojump.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
   programs.mosh.enable = true;
+  programs.steam.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ben = {
     isNormalUser = true;
