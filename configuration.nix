@@ -11,7 +11,7 @@
       ./packages.nix
       ./xps13.nix
       ./xstuff.nix
-      ./cachix.nix
+      #./cachix.nix # substitutors setting not found?
 #      ./stable-packages.nix
     ];
 
