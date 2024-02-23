@@ -168,11 +168,18 @@
     };
 
     blueman.enable = true;
-  };
 
-  systemd.user.services.pulseaudio.environment = {
-    JACK_PROMISCUOUS_SERVER = "jackaudio";
+    tlp.enable = true;
+    tlp.settings = {
+      INTEL_GPU_MIN_FREQ_ON_AC = 500;
+    };
+    thermald.enable = true;
   };
+  powerManagement.enable = true;
+
+  #systemd.user.services.pulseaudio.environment = {
+  #  JACK_PROMISCUOUS_SERVER = "jackaudio";
+  #};
 
 
   security.sudo.enable = true;
