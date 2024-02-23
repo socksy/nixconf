@@ -6,6 +6,8 @@
     # n.b. no GRUB settings like everyone tells you to do
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.grub.device = "nodev";
+    boot.loader.grub.efiSupport = true;
     boot.blacklistedKernelModules = [ "psmouse" ];
 
     boot.kernelPackages = pkgs.linuxPackages_latest;

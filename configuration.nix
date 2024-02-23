@@ -138,7 +138,6 @@
     #  wlr.enable = true;
     #  extraPortals [ pkgs.xdg-desktop-portal-gtk ];
     #};
-    dbus.packages = [ pkgs.gnome2.GConf.out ];
 
     acpid.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
@@ -227,4 +226,5 @@
   # FIXME lookup actual keys
   # gc.automatic = true;
   # gc.options = '--delete-older-than 30d';
+    nixpkgs.config.allowUnfree = true;
 }

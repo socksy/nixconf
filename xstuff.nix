@@ -81,34 +81,34 @@
     displayManager = {
       sessionCommands = ''
         PATH=$HOME/ben/bin:$PATH
-        ${pkgs.xlibs.xrdb}/bin/xrdb -merge ~/.Xresources
-        #${pkgs.xlibs.xsetroot}/bin/xsetroot -cursor_name left_ptr #sets cursor
+        ${pkgs.xorg.xrdb}/bin/xrdb -merge ~/.Xresources
+        #${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr #sets cursor
         #/bin/sh /home/ben/.screenlayout/wallpaper.sh
         ${pkgs.xcape}/bin/xcape -e "Shift_L=parenleft;Shift_R=parenright;Control_L=Escape"
 
 
         # doing initial xmodmap key swaps
-        ${pkgs.xlibs.xmodmap}/xmodmap -e 'remove mod1 = Alt_L'
-        ${pkgs.xlibs.xmodmap}/xmodmap -e 'remove mod4 = Super_L'
+        ${pkgs.xorg.xmodmap}/xmodmap -e 'remove mod1 = Alt_L'
+        ${pkgs.xorg.xmodmap}/xmodmap -e 'remove mod4 = Super_L'
 
 
         # alt + super swapped
-        ${pkgs.xlibs.xmodmap}/modmap -e 'keycode 133 = Alt_L Meta_L Alt_L Meta_L'
-        ${pkgs.xlibs.xmodmap}/modmap -e 'keycode 64 = Super_L'
-        ${pkgs.xlibs.xmodmap}/modmap -e 'keycode 108 = Super_L'
+        ${pkgs.xorg.xmodmap}/modmap -e 'keycode 133 = Alt_L Meta_L Alt_L Meta_L'
+        ${pkgs.xorg.xmodmap}/modmap -e 'keycode 64 = Super_L'
+        ${pkgs.xorg.xmodmap}/modmap -e 'keycode 108 = Super_L'
 
-        ${pkgs.xlibs.xmodmap}/xmodmap -e 'add mod1 = Alt_L'
-        ${pkgs.xlibs.xmodmap}/xmodmap -e 'add mod4 = Super_L'
+        ${pkgs.xorg.xmodmap}/xmodmap -e 'add mod1 = Alt_L'
+        ${pkgs.xorg.xmodmap}/xmodmap -e 'add mod4 = Super_L'
 
         # N.B. the escape key is already swapped with the caps_lock due to
         #xkb option caps:swapescape
         # old escape key now compose key
-        ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode   9 = Multi_key'
-        ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'clear Lock'
+        ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode   9 = Multi_key'
+        ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'clear Lock'
 
         # US style
-        ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode 12 = 3 numbersign 3 numbersign sterling numbersign sterling numbersign'
-        ${pkgs.xlibs.xmodmap}/bin/xmodmap -e 'keycode  49 = grave asciitilde grave asciitilde bar brokenbar bar'
+        ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode 12 = 3 numbersign 3 numbersign sterling numbersign sterling numbersign'
+        ${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode  49 = grave asciitilde grave asciitilde bar brokenbar bar'
       '';
     };
   };
@@ -120,12 +120,12 @@
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       anonymousPro
       aurulent-sans
       bakoma_ttf
       caladea
-      cantarell_fonts
+      cantarell-fonts
       carlito
       comfortaa
       corefonts
@@ -139,7 +139,7 @@
       fantasque-sans-mono
       fira-code
       fira
-      font-awesome-ttf
+      font-awesome
       gentium
       gyre-fonts
       hack-font
@@ -153,9 +153,12 @@
       libertine
       powerline-fonts
       terminus_font
+      nerdfonts
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk
+      ipaexfont
+      kochi-substitute
       source-code-pro
       source-sans-pro
       symbola

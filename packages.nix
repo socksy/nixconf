@@ -1,4 +1,4 @@
-{ config, pkgs, emacs, ... }:
+{ config, pkgs, ... }: #emacs, ... }:
 
 {
   # TODO radically reduce this and make different nix profiles for different things
@@ -13,7 +13,7 @@
     blueman
     cachix
     conky
-    compton
+    picom
     dmenu
     dzen2
     evtest
@@ -27,6 +27,8 @@
     #haskellPackages.xmonad
     haskellPackages.yeganesh
     libnotify
+    #version of electron too old
+    #logseq
     lxappearance
     numix-gtk-theme
     numix-icon-theme-circle
@@ -38,7 +40,7 @@
     xcape
     xclip
     xcompmgr
-    xfce.xfce4notifyd
+    xfce.xfce4-notifyd
     xfontsel
     xlsfonts
     xorg.xbacklight
@@ -100,7 +102,7 @@
     keychain
     lsof
     magic-wormhole
-    manpages
+    man-pages
     mosh
     mpv
     #ngrok
@@ -114,10 +116,11 @@
     ripgrep
     rlwrap
     scrot
-    shared_mime_info
+    shared-mime-info
     silver-searcher
-    sshfsFuse
-    telnet
+    sshfs-fuse
+    starship
+    inetutils
     tldr
     tmux
     tree
@@ -132,14 +135,15 @@
     # web
     chromium
     #dwb
-    firefox-wrapper
-    google-chrome
+    firefox
+    chromium
+    #google-chrome
     midori
     #luakit
 
     # gui utils
     alacritty
-    anki
+    anki-bin
     baobab
     blender
     #calibre
@@ -172,7 +176,7 @@
     wpa_supplicant_gui
     xdotool
     xfce.thunar
-    xfce.terminal
+    xfce.xfce4-terminal
     gnome.nautilus
     gnome.sushi
     xournal
@@ -181,7 +185,7 @@
 
     # dev
     androidenv.androidPkgs_9_0.platform-tools
-    aws
+    awscli2
     cargo
     #clj-kondo
     clojure
@@ -189,11 +193,11 @@
     cmake
     compass
     ctop
-    docker-edge
-    docker_compose
-    docker-gc
-    #emacs
-    emacsGit
+    docker
+    #docker_compose
+    #docker-gc
+    emacs29
+    #emacs-git
     elixir
     gcc
     #ghc
@@ -212,13 +216,12 @@
     #lumo
     lua
     neovim
-    nodejs-12_x
     patchelf
     protobuf
     python3
-    python38Packages.pip
-    python38Packages.virtualenv
-    python38Packages.virtualenvwrapper
+    #python38Packages.pip
+    #python38Packages.virtualenv
+    #python38Packages.virtualenvwrapper
     R
     racket
     ruby
@@ -260,7 +263,7 @@
       inherit pkgs;
     };
   };
-  nixpkgs.overlays = [ emacs.overlay ];
+  #nixpkgs.overlays = [ emacs.overlay ];
   #nixpkgs.overlays = [
   #  (import (builtins.fetchTarball {
   #    #url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
