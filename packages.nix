@@ -31,6 +31,7 @@
     numix-gtk-theme
     numix-icon-theme-circle
     #ocenaudio #audacity alternative
+    pulseaudio # for pactl backwards compatibility until i port scripts
     rofi #better dmenu
     xbrightness
     xcalib

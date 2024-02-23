@@ -23,16 +23,16 @@
       driSupport32Bit = true;
     };
 
-    pulseaudio = {
-      enable = true;
-    #  systemWide = true;
-      support32Bit = true;
-      package = pkgs.pulseaudioFull;
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
-      extraConfig = "
-        load-module module-switch-on-connect
-      ";
-    };
+    #pulseaudio = {
+    #  enable = true;
+    ##  systemWide = true;
+    #  support32Bit = true;
+    #  package = pkgs.pulseaudioFull;
+    #  #extraModules = [ pkgs.pulseaudio-modules-bt ];
+    #  extraConfig = "
+    #    load-module module-switch-on-connect
+    #  ";
+    #};
 
     bluetooth = {
       enable = true;
@@ -122,14 +122,21 @@
     #  };
     #};
     ## mutually exclusive with pulseaudio
-    #pipewire = {
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
+    };
+    dbus.packages = [ pkgs.gnome2.GConf.out ];
+    dbus.enable = true;
+    #xdg.portal = {
     #  enable = true;
-    #  alsa = {
-    #    enable = true;
-    #    support32Bit = true;
-    #  };
-    #  pulse.enable = true;
-    #  jack.enable = true;
+    #  wlr.enable = true;
+    #  extraPortals [ pkgs.xdg-desktop-portal-gtk ];
     #};
     dbus.packages = [ pkgs.gnome2.GConf.out ];
 
