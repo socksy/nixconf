@@ -1,28 +1,40 @@
 {
   nixConfig = {
-    extra-substitutors =  [ "https://nix-community.cachix.org" ];
-    extra-trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8ZY7bkq5CX+/rkCWyvRCYg3Fs="];
+    extra-substitutors =
+      [ "https://nix-community.cachix.org" "https://hyprland.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8ZY7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
   };
-  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixos-23.11;
-  inputs.nixpkgs-unstable.url = github:NixOS/nixpkgs;
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.swaymonad = {
+    url = "github:nicolasavru/swaymonad";
+    inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+  };
+  inputs.hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
+
+  inputs.xremap-flake.url = "github:xremap/nix-flake";
   #inputs.emacs.url = github:nix-community/emacs-overlay/2e23449;
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ...}@inputs: 
-                                               #emacs, ...}@inputs: 
-  {
-    nixosConfigurations.benixos = nixpkgs.lib.nixosSystem {
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, swaymonad, hyprland, ... }@inputs:
+    let
       system = "x86_64-linux";
-      specialArgs = inputs;
-      modules = [
-#        ({ config, pkgs, ... }: 
-#        let
-#          overlay-unstable = final: prev: { unstable = nixpkgs-unstable.legacyPackages.x86_64-linux; };
-#        in
-#        { nixpkgs.overlays = [ overlay-unstable ]; 
-#        environment.systemPackages = with pkgs; [ unstable.tdesktop ];
-#      }
-#      )
-      ./configuration.nix ];
+      user = "ben";
+      overlay-unstable = final: prev: {
+        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+      };
+    in {
+      nixosConfigurations.benixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit system user inputs; };
+        modules = [ 
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          inputs.xremap-flake.nixosModules.default 
+          ./configuration.nix
+        ];
+      };
     };
-  };
 }

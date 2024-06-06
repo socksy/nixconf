@@ -17,8 +17,8 @@
    # hardware.facetimehd.enable = true;
 
     #networking.enableB43Firmware = true;
-    networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networking.wireless.interfaces = ["wlp58s0"];
+    #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    #networking.wireless.interfaces = ["wlp58s0"];
 
     # arch wiki suggests enabling these for intel chipset
     # lol swapping the opt and command on mac keyboard, because we swap it back again in dkeys to make linux keyboards feel like mac ones
@@ -37,9 +37,9 @@
    environment.variables = { 
      MESA_LOADER_DRIVER_OVERRIDE = "iris";
    };
-   hardware.opengl.package = (pkgs.mesa.override {
-     galliumDrivers = ["nouveau" "virgl" "swrast" "iris" ];
-   }).drivers;
+   #hardware.opengl.package = (pkgs.mesa.override {
+   #  galliumDrivers = ["nouveau" "virgl" "swrast" "iris" ];
+   #}).drivers;
    hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl intel-media-driver ];
 
