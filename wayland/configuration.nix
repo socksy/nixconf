@@ -39,7 +39,8 @@ let
     '';
   };
   hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
+  hyprland-nixpkgs =
+    inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
 
 in {
   imports = [ # Include the results of the hardware scan.
@@ -97,6 +98,8 @@ in {
     bc
     playerctl
     evince
+    clojure
+    clojure-lsp
 
     # core gui tools
     pavucontrol
@@ -121,13 +124,13 @@ in {
   ];
 
   hardware = {
-  pulseaudio.enable = false;
+    pulseaudio.enable = false;
     opengl = {
       driSupport = true;
       driSupport32Bit = true;
 
       # matching mesa versions, see https://github.com/hyprwm/Hyprland/issues/5148
-      
+
       package = hyprland-nixpkgs.mesa.drivers;
       package32 = hyprland-nixpkgs.pkgsi686Linux.mesa.drivers;
 
@@ -205,18 +208,18 @@ in {
 
   #programs.regreet.enable = true;
   services.greetd = {
-     enable = true;
-     settings = rec {
-       initial_session = {
-         command = "${hyprland-flake}/bin/Hyprland";
-         user = user;
-       };
-       default_session = initial_session;
-     };
-   };
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${hyprland-flake}/bin/Hyprland";
+        user = user;
+      };
+      default_session = initial_session;
+    };
+  };
   services = {
-  #XSERVER.desktopManager.gnome.enable = true;
-  #xserver.displayManager.gdm.enable = true;
+    #XSERVER.desktopManager.gnome.enable = true;
+    #xserver.displayManager.gdm.enable = true;
     # pitch app requires this
     gnome.gnome-keyring.enable = true;
 
@@ -280,120 +283,123 @@ in {
     thermald.enable = true;
     fstrim.enable = true;
 
-#interception-tools = {
-#  enable = true;
-#  # seems to be unneeded due to breakage https://github.com/NixOS/nixpkgs/issues/126681#issuecomment-860071968
-#  #plugins = [ unstable-pkgs.interception-tools-plugins.caps2esc ];
-#  udevmonConfig = ''
-#- JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-#DEVICE:
-#  EVENTS:
-#    EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-#'';
-#};
+    #interception-tools = {
+    #  enable = true;
+    #  # seems to be unneeded due to breakage https://github.com/NixOS/nixpkgs/issues/126681#issuecomment-860071968
+    #  #plugins = [ unstable-pkgs.interception-tools-plugins.caps2esc ];
+    #  udevmonConfig = ''
+    #- JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+    #DEVICE:
+    #  EVENTS:
+    #    EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+    #'';
+    #};
     xremap = {
       withWlroots = true;
       userName = user;
       serviceMode = "user";
       config = {
         modmap = [
-        {
-          name = "Global";
-          remap = {
-            "Capslock" = {
-              "held" = "Control_R";
-              "alone" = "Esc";
-              #"skip_key_event" = true;
+          {
+            name = "Global";
+            remap = {
+              "Capslock" = {
+                "held" = "Control_R";
+                "alone" = "Esc";
+                #"skip_key_event" = true;
+              };
+              "Esc" = {
+                # don't be fooled, this actually assigns it to the menu key...
+                # reassigning _that_ using xkboptions to compose:menu should
+                # actually give you the compose key
+                "alone" = "Compose";
+                "held" = "RightAlt";
+                #"skip_key_event" = true;
+              };
             };
-            "Esc" = {
-            # don't be fooled, this actually assigns it to the menu key...
-            # reassigning _that_ using xkboptions to compose:menu should
-            # actually give you the compose key
-              "alone"= "Compose"; 
-              "held" = "RightAlt";
-#"skip_key_event" = true;
-            };
-          };
-        }
-        {
-          name = "lisp-shiftkeys";
-          application.not = "blender";
+          }
+          {
+            name = "lisp-shiftkeys";
+            application.not = "blender";
 
-          remap = {
-            "LeftShift" = {
-              "held" = "LeftShift";
-              "alone" = "KPLeftParen";
+            remap = {
+              "LeftShift" = {
+                "held" = "LeftShift";
+                "alone" = "KPLeftParen";
+              };
+              "RightShift" = {
+                "held" = "RightShift";
+                "alone" = "KPRightParen";
+              };
             };
-            "RightShift" = {
-              "held" = "RightShift";
-              "alone" = "KPRightParen";
+          }
+          {
+            name = "apple-keyboard";
+            device.only = "Apple Inc. Magic Keyboard";
+            remap = {
+              "LeftMeta" = "LeftAlt";
+              "LeftAlt" = "LeftMeta";
+              "RightAlt" = "RightMeta";
+              "RightMeta" = "RightAlt";
             };
-          };
-        }
-        {
-          name = "apple-keyboard";
-          device.only = "Apple Inc. Magic Keyboard";
-          remap = {
-            "LeftMeta" = "LeftAlt";
-            "LeftAlt" = "LeftMeta";
-            "RightAlt" = "RightMeta";
-            "RightMeta" = "RightAlt";
-          };
-        }
-        {
-          name = "xps-keyboard";
-          device.only = "AT Translated Set 2 keyboard";
-          remap = {
-            "LeftMeta" = "LeftAlt";
-            "LeftAlt" = "LeftMeta";
-            "RightAlt" = "RightMeta";
-          };
-        }
+          }
+          {
+            name = "xps-keyboard";
+            device.only = "AT Translated Set 2 keyboard";
+            remap = {
+              "LeftMeta" = "LeftAlt";
+              "LeftAlt" = "LeftMeta";
+              "RightAlt" = "RightMeta";
+            };
+          }
         ];
-        keymap = [ 
-        { name = "Global";
-          remap= {
-            #"RightAlt-Enter" = "Super-Enter";
-          };}
-        { name = "Emacsy";
-          remap = {
-            "Super-a" = "C-a";
-            "Super-z" = "C-z";
-            "Super-x" = "C-x";
-            "Super-c" = "C-c";
-            "Super-Shift-c" = "Super-Shift-c";
-            "Super-v" = "C-v";
-            "Super-w" = "C-w";
-            "Super-r" = "C-r";
-            "Super-h" = "C-h";
-            "Super-j" = "C-j";
-            "Super-k" = "C-k";
-            "Super-l" = "C-l";
-            # very annoyingly have to always override the combos
-            # if you just override one value
-            "Super-Ctrl-h" = "Super-Ctrl-h" ;
-            "Super-Ctrl-j" = "Super-Ctrl-j" ;
-            "Super-Ctrl-k" = "Super-Ctrl-k" ;
-            "Super-Ctrl-l" = "Super-Ctrl-l" ;
-            "Super-Shift-h" = "Super-Shift-h" ;
-            "Super-Shift-j" = "Super-Shift-j" ;
-            "Super-Shift-k" = "Super-Shift-k" ;
-            "Super-Shift-l" = "Super-Shift-l" ;
-            "Super-LeftAlt-h" = "Super-LeftAlt-h" ;
-            "Super-LeftAlt-j" = "Super-LeftAlt-j" ;
-            "Super-LeftAlt-k" = "Super-LeftAlt-k" ;
-            "Super-LeftAlt-l" = "Super-LeftAlt-l" ;
-            "Super-LeftBrace" = "C-LeftBrace";
-            "Super-RightBrace" = "C-RightBrace";
-            "Super-Equal" = "C-Equal";
-            "Super-Minus" = "C-Minus";
-            "Super-t" = "C-t";
-            "C-a" = "home";
-            "C-e" = "end";
-            "C-w" = ["C-Shift-left" "delete"];
-          };
-          application.not = ["kitty"];
-        }
+        keymap = [
+          {
+            name = "Global";
+            remap = {
+              #"RightAlt-Enter" = "Super-Enter";
+            };
+          }
+          {
+            name = "Emacsy";
+            remap = {
+              "Super-a" = "C-a";
+              "Super-z" = "C-z";
+              "Super-x" = "C-x";
+              "Super-c" = "C-c";
+              "Super-Shift-c" = "Super-Shift-c";
+              "Super-v" = "C-v";
+              "Super-w" = "C-w";
+              "Super-r" = "C-r";
+              "Super-h" = "C-h";
+              "Super-j" = "C-j";
+              "Super-k" = "C-k";
+              "Super-l" = "C-l";
+              # very annoyingly have to always override the combos
+              # if you just override one value
+              "Super-Ctrl-h" = "Super-Ctrl-h";
+              "Super-Ctrl-j" = "Super-Ctrl-j";
+              "Super-Ctrl-k" = "Super-Ctrl-k";
+              "Super-Ctrl-l" = "Super-Ctrl-l";
+              "Super-Shift-h" = "Super-Shift-h";
+              "Super-Shift-j" = "Super-Shift-j";
+              "Super-Shift-k" = "Super-Shift-k";
+              "Super-Shift-l" = "Super-Shift-l";
+              "Super-LeftAlt-h" = "Super-LeftAlt-h";
+              "Super-LeftAlt-j" = "Super-LeftAlt-j";
+              "Super-LeftAlt-k" = "Super-LeftAlt-k";
+              "Super-LeftAlt-l" = "Super-LeftAlt-l";
+              "Super-LeftBrace" = "C-LeftBrace";
+              "Super-RightBrace" = "C-RightBrace";
+              "Super-Equal" = "C-Equal";
+              "Super-Minus" = "C-Minus";
+              "Super-t" = "C-t";
+              "C-a" = "home";
+              "C-e" = "end";
+              "C-w" = [ "C-Shift-left" "delete" ];
+            };
+            application.not = [ "kitty" ];
+          }
         ];
       };
     };
@@ -411,7 +417,7 @@ in {
   ]; # "/etc/ssl/certs/prod01_intermediate_ca.pem" "/etc/ssl/certs/prod01_root_ca.pem"];
 
   # this would happen by default with programs.sway.enable
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   programs.adb.enable = true;
   programs.autojump.enable = true;
@@ -436,6 +442,7 @@ in {
   programs.waybar.enable = true;
   programs.firefox.enable = true;
   programs.chromium.enable = true;
+  programs.command-not-found.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.${user} = {
@@ -501,7 +508,7 @@ in {
   };
 
   i18n.inputMethod.enabled = "ibus";
-    fonts = {
+  fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
     packages = with pkgs; [
@@ -532,7 +539,8 @@ in {
       iosevka
       inconsolata
       inter
-    #  ipafont
+      jetbrains-mono
+      #  ipafont
       liberation_ttf
       libertine
       powerline-fonts
@@ -555,10 +563,11 @@ in {
   };
 
   nix.settings = {
-    substituters = ["https://nix-community.cachix.org" "https://hyprland.cachix.org"];
+    substituters =
+      [ "https://nix-community.cachix.org" "https://hyprland.cachix.org" ];
     trusted-public-keys = [
-	    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8ZY7bkq5CX+/rkCWyvRCYg3Fs="
-	    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8ZY7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
   nixpkgs.config.allowUnfree = true;

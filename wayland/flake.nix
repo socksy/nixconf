@@ -18,6 +18,11 @@
   inputs.xremap-flake.url = "github:xremap/nix-flake";
   #inputs.emacs.url = github:nix-community/emacs-overlay/2e23449;
 
+  inputs.nix-index-database = {
+    url = "github:nix-community/nix-index-database";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   outputs =
     { self, nixpkgs, nixpkgs-unstable, swaymonad, hyprland, ... }@inputs:
     let
@@ -30,9 +35,11 @@
       nixosConfigurations.benixos = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit system user inputs; };
-        modules = [ 
+        modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-          inputs.xremap-flake.nixosModules.default 
+          inputs.xremap-flake.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
           ./configuration.nix
         ];
       };
