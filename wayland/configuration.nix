@@ -298,6 +298,7 @@ in {
       withWlroots = true;
       userName = user;
       serviceMode = "user";
+      watch = true;
       config = {
         modmap = [
           {
