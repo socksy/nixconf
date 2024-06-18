@@ -77,6 +77,7 @@ in {
     mako # notification system developed by swaywm maintainer
     wdisplays # tool to configure displays
     wallutils # dynamic wallpapers and more
+    yadm
 
     # basic survival
     vim
