@@ -121,6 +121,7 @@ in {
     inkscape
     libreoffice
     pinta
+    signal-desktop
 
   ];
 
