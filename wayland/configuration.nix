@@ -57,6 +57,7 @@ in {
     #swaymonad.defaultPackage.${system} # autotiler
     #eww-wayland
     kitty
+    polkit-kde-agent
 
     wofi
     rofi-wayland
@@ -483,6 +484,7 @@ in {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
+  environment.shells = with pkgs; [ zsh bashInteractive ];
 
   #virtualisation.virtualbox.host.enable = true;
   virtualisation.docker.enable = true;
