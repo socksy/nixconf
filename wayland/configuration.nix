@@ -188,7 +188,7 @@ in {
   # the /etc/hosts
   networking.extraHosts = ''
     #put your favourite hosts file stuff here
-    192.168.178.57 rpi
+    192.168.178.61 rpi0
   '';
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   networking.firewall.allowedTCPPortRanges = [{
