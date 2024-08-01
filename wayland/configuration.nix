@@ -123,6 +123,7 @@ in {
     libreoffice
     pinta
     signal-desktop
+    wire-desktop
 
   ];
 
