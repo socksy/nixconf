@@ -55,7 +55,7 @@ in {
     swayidle
     swaybg
     #swaymonad.defaultPackage.${system} # autotiler
-    #eww-wayland
+    eww
     kitty
     polkit-kde-agent
 
