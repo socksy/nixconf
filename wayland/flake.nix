@@ -13,7 +13,7 @@
     url = "github:nicolasavru/swaymonad";
     inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
   };
-  inputs.hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
+  inputs.hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
   inputs.xremap-flake.url = "github:xremap/nix-flake";
   #inputs.emacs.url = github:nix-community/emacs-overlay/2e23449;

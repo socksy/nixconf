@@ -102,6 +102,9 @@ in {
     evince
     clojure
     clojure-lsp
+    unzip
+    tree
+    killall
 
     # core gui tools
     pavucontrol
@@ -111,8 +114,11 @@ in {
     # use later version
     #logseq
     mplayer
+    mpv
     xfce.thunar
     keepassxc
+    slack
+    spotify
 
     # nice to haves
     anki-bin
@@ -120,7 +126,7 @@ in {
     baobab
     ncdu
     inkscape
-    libreoffice
+    #libreoffice
     pinta
     signal-desktop
     wire-desktop
@@ -449,6 +455,11 @@ in {
   programs.firefox.enable = true;
   programs.chromium.enable = true;
   programs.command-not-found.enable = false;
+  programs.weylus = {
+    enable = false;
+    openFirewall = true;
+    users = [ user ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.${user} = {
