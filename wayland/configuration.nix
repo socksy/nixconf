@@ -110,7 +110,8 @@ in {
     pavucontrol
     blueman
     vlc
-    emacs29-pgtk
+    ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
+    #emacs29-pgtk
     # use later version
     #logseq
     mplayer
