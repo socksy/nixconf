@@ -119,6 +119,7 @@ in {
     keepassxc
     slack
     spotify
+    mesa-demos
 
     # nice to haves
     anki-bin
