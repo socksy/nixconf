@@ -56,7 +56,7 @@ in {
     swaybg
     #swaymonad.defaultPackage.${system} # autotiler
     eww
-    kitty
+    hyprland-nixpkgs.kitty
     polkit-kde-agent
 
     wofi
