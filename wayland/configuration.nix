@@ -219,21 +219,26 @@ in {
   };
 
   #programs.regreet.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${hyprland-flake}/bin/Hyprland";
-        user = user;
-      };
-      default_session = initial_session;
-    };
-  };
   services = {
+
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${hyprland-flake}/bin/Hyprland";
+          user = user;
+        };
+        default_session = initial_session;
+      };
+    };
     #XSERVER.desktopManager.gnome.enable = true;
     #xserver.displayManager.gdm.enable = true;
     # pitch app requires this
     gnome.gnome-keyring.enable = true;
+
+    # trash and automounting
+    gvfs.enable = true;
+    udisks2.enable = true;
 
     # mainly for BIOS updates
     fwupd.enable = true;
@@ -295,17 +300,6 @@ in {
     thermald.enable = true;
     fstrim.enable = true;
 
-    #interception-tools = {
-    #  enable = true;
-    #  # seems to be unneeded due to breakage https://github.com/NixOS/nixpkgs/issues/126681#issuecomment-860071968
-    #  #plugins = [ unstable-pkgs.interception-tools-plugins.caps2esc ];
-    #  udevmonConfig = ''
-    #- JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-    #DEVICE:
-    #  EVENTS:
-    #    EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-    #'';
-    #};
     xremap = {
       withWlroots = true;
       userName = user;
