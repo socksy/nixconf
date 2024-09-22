@@ -1,14 +1,16 @@
-#!/bin/env bash
+#!/usr/bin/env bash
+set -x
 KEYFILE="${TARSNAP_KEYFILE-/root/tarsnap.key}"
 USER="${DOTFILES_USER-ben}"
 USERHOME="${DOTFILES_USERHOME-/home/ben}"
 
+# NB must be gpg v1!
 command -v gpg >/dev/null 2>&1 || { echo "gpg not found, aborting" >&2; exit 1;}
 command -v tarsnap >/dev/null 2>&1 || { echo "tarsnap not found, aborting" >&2; exit 1;}
 command -v yadm >/dev/null 2>&1 || { echo "yadm not found, aborting" >&2; exit 1;}
 
 echo "Decrypting the tarsnap key, enter root password:"
-su --command "mv $KEYFILE `echo $KEYFILE`.old && gpg --output $KEYFILE --decrypt tarsnap.key.gpg"
+#su --command "mv $KEYFILE `echo $KEYFILE`.old && gpg --output $KEYFILE --decrypt tarsnap.key.gpg"
 if [ $? != 0 ]; then
   echo "Failed decrypting tarsnap key, please check if $KEYFILE exists and has 700 permissions."
   exit 1
