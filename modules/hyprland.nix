@@ -167,10 +167,10 @@ in
               name = "apple-keyboard";
               device.only = "Apple Inc. Magic Keyboard";
               remap = {
-                "LeftMeta" = "LeftAlt";
-                "LeftAlt" = "LeftMeta";
-                "RightAlt" = "RightMeta";
-                "RightMeta" = "RightAlt";
+                #"LeftMeta" = "LeftAlt";
+                #"LeftAlt" = "LeftMeta";
+                #"RightAlt" = "RightMeta";
+                #"RightMeta" = "RightAlt";
               };
             }
             {

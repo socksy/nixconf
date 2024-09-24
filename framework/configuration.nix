@@ -218,7 +218,13 @@
     jack.enable = true;
   };
   services.fstrim.enable = true;
+
+  # AI stuff
   services.ollama.enable = true;
+  services.ollama.package = pkgs.unstable.ollama;
+  # ollama gui
+  #services.open-webui.enable = true;
+  #services.open-webui.port = 10203;
 
   hardware = {
     bluetooth = {
