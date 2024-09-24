@@ -91,6 +91,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.rocmSupport = true;
   nix = {
     package = pkgs.nixVersions.latest;
     gc = {
@@ -115,6 +116,8 @@
     yadm
     nix-output-monitor
     nixfmt-rfc-style
+    git
+    delta
 
     # basic survival
     vim
@@ -144,6 +147,7 @@
     #killall # useless on nixos?
     wget
     jq
+    gh
 
     # core gui tools
     vlc
@@ -151,12 +155,13 @@
     #emacs29-pgtk
     # use later version
     #logseq
+    discord
+    keepassxc
     mplayer
     mpv
-    xfce.thunar
-    keepassxc
     slack
     spotify
+    xfce.thunar
     mesa-demos
 
     # nice to haves
@@ -213,6 +218,7 @@
     jack.enable = true;
   };
   services.fstrim.enable = true;
+  services.ollama.enable = true;
 
   hardware = {
     bluetooth = {
