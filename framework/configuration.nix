@@ -161,6 +161,7 @@
     mpv
     slack
     spotify
+    todoist-electron
     xfce.thunar
     mesa-demos
 
