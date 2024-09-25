@@ -231,7 +231,14 @@ in
                   "delete"
                 ];
               };
-              application.not = [ "kitty" ];
+              application.not = [
+                "kitty"
+                "qemu"
+                "quickemu"
+                "virt-manager"
+                "qemu_x86_64"
+                ".qemu-system-x86_64-wrapped"
+              ];
             }
           ];
         };
