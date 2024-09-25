@@ -66,6 +66,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd"
     ];
     shell = "${pkgs.zsh}/bin/zsh";
     uid = 1000;
@@ -178,14 +179,13 @@
     signal-desktop
     telegram-desktop
 
-    qemu
+    qemu_full
     quickemu
     # quickgui is flutter, which can't seem to find GL
     # probably related to hyprland using different version
     # however, at time of writing, unstable version fails to build
     #unstable.quickgui
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -275,6 +275,17 @@
   security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];
 
   virtualisation.podman.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+      };
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
