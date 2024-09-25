@@ -180,7 +180,10 @@
 
     qemu
     quickemu
-    quickgui
+    # quickgui is flutter, which can't seem to find GL
+    # probably related to hyprland using different version
+    # however, at time of writing, unstable version fails to build
+    #unstable.quickgui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
