@@ -205,6 +205,11 @@
 
   # ability to flash firmware updates
   services.fwupd.enable = true;
+  services.fprintd.enable = true;
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
   # brightness keys
   services.illum.enable = true;
   # SSH server
