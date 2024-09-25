@@ -178,6 +178,9 @@
     signal-desktop
     telegram-desktop
 
+    qemu
+    quickemu
+    quickgui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
