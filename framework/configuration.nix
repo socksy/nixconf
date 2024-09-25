@@ -25,7 +25,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-d1e77924-0945-457d-b924-fe614e87069a".device = "/dev/disk/by-uuid/d1e77924-0945-457d-b924-fe614e87069a";
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "fenixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -102,6 +102,7 @@
     extraOptions = ''
       min-free = ${toString (100 * 1024 * 1024)}
       max-free = ${toString (1024 * 1024 * 1024)}
+      trusted-users = root ben
       experimental-features = nix-command flakes
     '';
   };
@@ -148,6 +149,7 @@
     wget
     jq
     gh
+    devenv
 
     # core gui tools
     vlc
