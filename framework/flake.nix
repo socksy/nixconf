@@ -47,6 +47,9 @@
       username = "ben";
       overlay-unstable = final: prev: { unstable = nixpkgs-unstable.legacyPackages.${prev.system}; };
       overlay-stable = final: prev: { stable = nixpkgs-stable.legacyPackages.${prev.system}; };
+      overlay-force-newer-blueman = final: prev: {
+        blueman = nixpkgs-unstable.legacyPackages.${prev.system}.blueman;
+      };
     in
     {
       nixosConfigurations.fenixos = nixpkgs.lib.nixosSystem {
@@ -61,6 +64,7 @@
               nixpkgs.overlays = [
                 overlay-unstable
                 overlay-stable
+                overlay-force-newer-blueman
               ];
             }
           )
