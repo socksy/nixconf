@@ -185,6 +185,7 @@
     # probably related to hyprland using different version
     # however, at time of writing, unstable version fails to build
     #unstable.quickgui
+    distrobox
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -280,6 +281,7 @@
   security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];
 
   virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu = {

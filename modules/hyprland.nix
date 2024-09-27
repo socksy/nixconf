@@ -89,6 +89,7 @@ in
       cliphist # clipboard history manager
 
       mako # notification system developed by swaywm maintainer
+      polkit_gnome
     ];
 
     systemd = {
