@@ -21,8 +21,22 @@
   hyprland.enable = true;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+    gfxmodeEfi = "2880x1920";
+    font = "${pkgs.fira-code}/share/fonts/truetype/FiraCode-VF.ttf";
+    fontSize = 24;
+    theme = (
+      pkgs.sleek-grub-theme.override {
+        withBanner = "Hi Ben";
+        withStyle = "dark";
+      }
+    );
+  };
 
   boot.initrd.luks.devices."luks-d1e77924-0945-457d-b924-fe614e87069a".device = "/dev/disk/by-uuid/d1e77924-0945-457d-b924-fe614e87069a";
   networking.hostName = "fenixos"; # Define your hostname.
@@ -151,10 +165,11 @@
     jq
     gh
     devenv
+    eza # better ls
 
     # core gui tools
     vlc
-    ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
+    ((emacsPackagesFor unstable.emacs29-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
     #emacs29-pgtk
     # use later version
     #logseq
