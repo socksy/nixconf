@@ -149,6 +149,7 @@
     ripgrep
     fd
     tldr
+    fzf
     btop
     htop
     python3
