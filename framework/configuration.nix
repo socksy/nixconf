@@ -216,6 +216,7 @@
 
   programs.direnv.enable = true;
   programs.autojump.enable = true;
+  programs.geary.enable = true;
 
   # List services that you want to enable:
 
