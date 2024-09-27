@@ -221,11 +221,39 @@
 
   # ability to flash firmware updates
   services.fwupd.enable = true;
+
   services.fprintd.enable = true;
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
   };
+
+  # see https://github.com/NixOS/nixpkgs/issues/171136
+  security.pam.services.login.fprintAuth = false;
+  security.pam.services.swaylock.fprintAuth = false;
+  security.pam.services.swaylock.allowNullPassword = true;
+
+  # a bit useless
+  security.pam.services.gdm = {
+    text = ''
+      auth       required                    pam_shells.so
+      auth       requisite                   pam_nologin.so
+      auth       requisite                   pam_faillock.so      preauth
+      auth       required                    ${pkgs.fprintd}/lib/security/pam_fprintd.so
+      auth       optional                    pam_permit.so
+      auth       required                    pam_env.so
+      auth       [success=ok default=1]      ${pkgs.gnome.gdm}/lib/security/pam_gdm.so
+      auth       optional                    ${pkgs.gnome.gnome-keyring}/lib/security/pam_gnome_keyring.so
+
+      account    include                     login
+
+      password   required                    pam_deny.so
+
+      session    include                     login
+      session    optional                    ${pkgs.gnome.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
+    '';
+  };
+
   # brightness keys
   services.illum.enable = true;
   # SSH server
