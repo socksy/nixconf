@@ -66,6 +66,7 @@ in
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       wl-clipboard-x11 # legacy support for tools expecting x11
       wl-clip-persist # wayland only keeps things in clipboard while the app that put it there is open(!)
+      xdg-utils
       swaylock
       swayidle
 
