@@ -92,6 +92,7 @@ in
       mako # notification system developed by swaywm maintainer
       polkit_gnome
     ];
+    programs.firefox.package = hyprland-nixpkgs.firefox;
 
     systemd = {
       user.services.polkit-gnome-authentication-agent-1 = {
