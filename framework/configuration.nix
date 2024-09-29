@@ -231,7 +231,12 @@
     serviceConfig.Type = "simple";
   };
 
-  services.syncthing.enable = true;
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = username;
+    dataDir = "/home/${username}/";
+  };
 
   # see https://github.com/NixOS/nixpkgs/issues/171136
   security.pam.services.login.fprintAuth = false;
