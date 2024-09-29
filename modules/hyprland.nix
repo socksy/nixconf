@@ -92,6 +92,7 @@ in
       mako # notification system developed by swaywm maintainer
       polkit_gnome
     ];
+    # to match opengl versions
     programs.firefox.package = hyprland-nixpkgs.firefox;
 
     systemd = {

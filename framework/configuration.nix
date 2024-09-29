@@ -184,6 +184,7 @@
     todoist-electron
     xfce.thunar
     mesa-demos
+    unstable.chromium
 
     # nice to haves
     anki-bin
