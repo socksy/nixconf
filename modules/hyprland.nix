@@ -94,6 +94,7 @@ in
     ];
     # to match opengl versions
     programs.firefox.package = hyprland-nixpkgs.firefox;
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     systemd = {
       user.services.polkit-gnome-authentication-agent-1 = {
