@@ -27,7 +27,7 @@
     enable = true;
     efiSupport = true;
     device = "nodev";
-    gfxmodeEfi = "1440x960";
+    #gfxmodeEfi = "1440x960";
     #font = "${pkgs.fira-code}/share/fonts/truetype/FiraCode-VF.ttf";
     #fontSize = 24;
     theme = (
