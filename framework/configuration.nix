@@ -37,6 +37,13 @@
       }
     );
   };
+  boot.plymouth = {
+    enable = true;
+    theme = "cuts";
+    themePackages = with pkgs; [
+      (adi1090x-plymouth-themes.override { selected_themes = [ "cuts" ]; })
+    ];
+  };
 
   boot.initrd.luks.devices."luks-d1e77924-0945-457d-b924-fe614e87069a".device = "/dev/disk/by-uuid/d1e77924-0945-457d-b924-fe614e87069a";
   networking.hostName = "fenixos"; # Define your hostname.
