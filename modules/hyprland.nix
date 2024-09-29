@@ -300,7 +300,7 @@ in
         libertine
         powerline-fonts
         terminus_font
-        nerdfonts
+        #nerdfonts
         noto-fonts
         noto-fonts-emoji
         noto-fonts-cjk
