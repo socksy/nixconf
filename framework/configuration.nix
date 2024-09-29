@@ -60,7 +60,7 @@
   # Hide the OS choice for bootloaders.
   # It's still possible to open the bootloader list by pressing any key
   # It will just not appear on screen unless a key is pressed
-  boot.loader.timeout = 0;
+  boot.loader.timeout = 5;
 
   boot.initrd.luks.devices."luks-d1e77924-0945-457d-b924-fe614e87069a".device = "/dev/disk/by-uuid/d1e77924-0945-457d-b924-fe614e87069a";
   networking.hostName = "fenixos"; # Define your hostname.
