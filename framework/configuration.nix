@@ -81,6 +81,7 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "audio"
     ];
     shell = "${pkgs.zsh}/bin/zsh";
     uid = 1000;
