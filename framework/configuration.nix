@@ -27,22 +27,22 @@
     enable = true;
     efiSupport = true;
     device = "nodev";
-    gfxmodeEfi = "2880x1920";
+    gfxmodeEfi = "1440x960";
     font = "${pkgs.fira-code}/share/fonts/truetype/FiraCode-VF.ttf";
     fontSize = 24;
     theme = (
       pkgs.sleek-grub-theme.override {
         withBanner = "Hi Ben";
-        withStyle = "dark";
+        withStyle = "bigSur";
       }
     );
   };
   boot.plymouth = {
     enable = true;
-    theme = "cuts";
-    themePackages = with pkgs; [
-      (adi1090x-plymouth-themes.override { selected_themes = [ "cuts" ]; })
-    ];
+    #theme = "cuts";
+    #themePackages = with pkgs; [
+    #  (adi1090x-plymouth-themes.override { selected_themes = [ "" ]; })
+    #];
   };
 
   # Enable "Silent Boot"
