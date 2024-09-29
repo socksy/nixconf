@@ -230,6 +230,8 @@
     serviceConfig.Type = "simple";
   };
 
+  services.syncthing.enable = true;
+
   # see https://github.com/NixOS/nixpkgs/issues/171136
   security.pam.services.login.fprintAuth = false;
   security.pam.services.swaylock.fprintAuth = false;
