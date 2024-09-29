@@ -85,6 +85,9 @@ in
 
       # so that it keeps in sync with hyprland's
       hyprland-nixpkgs.kitty
+      hyprland-nixpkgs.wezterm
+      hyprland-nixpkgs.contour
+      hyprland-nixpkgs.darktile
       xdg-utils
       wdisplays # tool to configure displays
       cliphist # clipboard history manager

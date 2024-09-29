@@ -28,12 +28,12 @@
     efiSupport = true;
     device = "nodev";
     gfxmodeEfi = "1440x960";
-    font = "${pkgs.fira-code}/share/fonts/truetype/FiraCode-VF.ttf";
-    fontSize = 24;
+    #font = "${pkgs.fira-code}/share/fonts/truetype/FiraCode-VF.ttf";
+    #fontSize = 24;
     theme = (
       pkgs.sleek-grub-theme.override {
         withBanner = "Hi Ben";
-        withStyle = "bigSur";
+        withStyle = "white";
       }
     );
   };
