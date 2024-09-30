@@ -209,6 +209,7 @@
     xfce.thunar
     mesa-demos
     unstable.chromium
+    mailspring
 
     # nice to haves
     anki-bin
@@ -238,7 +239,7 @@
   };
 
   programs.firefox.enable = true;
-  programs.chromium.enable = true;
+  programs.chromium.enable = true; # not enough, need to add package too
   programs.command-not-found.enable = false;
 
   programs.direnv.enable = true;
