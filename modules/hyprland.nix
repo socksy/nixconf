@@ -317,10 +317,14 @@ in
         symbola
         #vistafonts
         ubuntu_font_family
-        twemoji-color-font
+        joypixels
       ];
-      fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
+      fontconfig.defaultFonts.emoji = [
+        "JoyPixels"
+        "Noto Color Emoji"
+      ];
     };
+    nixpkgs.config.joypixels.acceptLicense = true;
 
     hardware.opengl = {
       package = hyprland-nixpkgs.mesa.drivers;
