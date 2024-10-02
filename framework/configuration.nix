@@ -221,6 +221,10 @@
     pinta
     signal-desktop
     telegram-desktop
+    unstable.ardour
+
+    # fun
+    unstable.zeroad
 
     qemu_full
     quickemu

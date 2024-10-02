@@ -89,7 +89,7 @@ in
       hyprland-nixpkgs.contour
       hyprland-nixpkgs.darktile
       xdg-utils
-      wdisplays # tool to configure displays
+      hyprland-nixpkgs.wdisplays # tool to configure displays
       cliphist # clipboard history manager
 
       mako # notification system developed by swaywm maintainer
