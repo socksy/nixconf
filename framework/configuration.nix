@@ -267,6 +267,7 @@
     user = username;
     dataDir = "/home/${username}/";
   };
+  services.netbird.enable = true;
 
   # see https://github.com/NixOS/nixpkgs/issues/171136
   security.pam.services.login.fprintAuth = false;
