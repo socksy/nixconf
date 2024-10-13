@@ -72,6 +72,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "8.8.8.8"
+  ];
+  services.resolved.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
