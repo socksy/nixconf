@@ -207,15 +207,14 @@
     #logseq
     discord
     keepassxc
-    mplayer
-    mpv
+    unstable.mplayer
+    unstable.mpv
     slack
     spotify
     todoist-electron
     xfce.thunar
     mesa-demos
     unstable.chromium
-    mailspring
 
     # nice to haves
     anki-bin
