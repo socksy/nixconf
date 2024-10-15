@@ -23,8 +23,6 @@ in
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
 
-    #services.xserver.displayManager.startx.enable = true;
-
     programs.hyprland = {
       enable = true;
       package = hyprland-package;
@@ -259,22 +257,28 @@ in
         };
       };
 
-      xserver.enable = true;
-      xserver.displayManager.sddm.enable = true;
+      #xserver.enable = true;
+      #xserver.displayManager.startx.enable = true;
+      #xserver.displayManager.lightdm.enable = true;
+      #xserver.displayManager.defaultSession = "hyprland";
       #xserver.displayManager.sddm.wayland.enable = true;
 
-    };
+      # I have no idea if, or why this should be necessary, but I
+      # saw someone else do this for wayland so let's give it a shot
+      xserver.videoDrivers = [ "amdgpu" ];
 
-    #services.greetd = {
-    #  enable = true;
-    #  settings = rec {
-    #    initial_session = {
-    #      command = "${hyprland-package}/bin/Hyprland";
-    #      user = username;
-    #    };
-    #    default_session = initial_session;
-    #  };
-    #};
+      greetd = {
+        enable = true;
+        settings = rec {
+          initial_session = {
+            command = "${hyprland-package}/bin/Hyprland";
+            user = username;
+          };
+          default_session = initial_session;
+        };
+      };
+
+    };
 
     systemd.tmpfiles.rules = [ "d '/var/cache/greeter' - greeter greeter - -" ];
     fonts = {
@@ -368,10 +372,6 @@ in
     environment.sessionVariables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qt5ct";
     environment.sessionVariables.AQ_DRM_DEVICES = "/dev/dri/card1";
-
-    # I have no idea if, or why this should be necessary, but I
-    # saw someone else do this for wayland so let's give it a shot
-    services.xserver.videoDrivers = [ "amdgpu" ];
 
     #system.activationScripts.wallpaper = let
     #  wp = pkgs.writeShellScript "wp" ''
