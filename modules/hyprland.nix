@@ -23,7 +23,7 @@ in
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
 
-    services.xserver.displayManager.startx.enable = true;
+    #services.xserver.displayManager.startx.enable = true;
 
     programs.hyprland = {
       enable = true;
@@ -94,6 +94,8 @@ in
       hyprland-nixpkgs.amdgpu_top
       hyprland-nixpkgs.libva-utils # to analyse with vainfo
       hyprland-nixpkgs.opencl-headers
+      hyprland-nixpkgs.qt6.qtwayland
+      hyprland-nixpkgs.qt5.qtwayland
       cliphist # clipboard history manager
 
       mako # notification system developed by swaywm maintainer
@@ -101,7 +103,6 @@ in
     ];
     # to match opengl versions
     programs.firefox.package = hyprland-nixpkgs.firefox;
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     systemd = {
       user.services.polkit-gnome-authentication-agent-1 = {
@@ -127,6 +128,7 @@ in
       power-profiles-daemon.enable = true;
       accounts-daemon.enable = true;
       illum.enable = true;
+      tumbler.enable = true;
       gnome = {
         evolution-data-server.enable = true;
         glib-networking.enable = true;
@@ -257,18 +259,22 @@ in
         };
       };
 
+      xserver.enable = true;
+      xserver.displayManager.sddm.enable = true;
+      #xserver.displayManager.sddm.wayland.enable = true;
+
     };
 
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${hyprland-package}/bin/Hyprland";
-          user = username;
-        };
-        default_session = initial_session;
-      };
-    };
+    #services.greetd = {
+    #  enable = true;
+    #  settings = rec {
+    #    initial_session = {
+    #      command = "${hyprland-package}/bin/Hyprland";
+    #      user = username;
+    #    };
+    #    default_session = initial_session;
+    #  };
+    #};
 
     systemd.tmpfiles.rules = [ "d '/var/cache/greeter' - greeter greeter - -" ];
     fonts = {
@@ -347,6 +353,7 @@ in
       ];
     };
     # trying to force radeon, and things to use wayland
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     environment.sessionVariables.VDPAU_DRIVER = "radeonsi";
     environment.sessionVariables.LIBVA_DRIVER_NAME = "radeonsi";
     environment.sessionVariables.ROC_ENABLE_PRE_VEGA = "1";
