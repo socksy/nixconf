@@ -333,6 +333,10 @@ in
       package32 = hyprland-nixpkgs.pkgsi686Linux.mesa.drivers;
       driSupport = true;
       driSupport32Bit = true;
+      extraPackages = with hyprland-nixpkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
     };
     # I have no idea if, or why this should be necessary, but I
     # saw someone else do this for wayland so let's give it a shot
