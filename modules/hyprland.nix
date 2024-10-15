@@ -336,10 +336,15 @@ in
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with hyprland-nixpkgs; [
+        rocmPackages.clr
+        rocmPackages.clr.icd
         vaapiVdpau
         libvdpau-va-gl
+        amdvlk
       ];
     };
+    environment.sessionVariables.VDPAU_DRIVER = "radeonsi";
+    environment.sessionVariables.LIBVA_DRIVER_NAME = "radeonsi";
     # I have no idea if, or why this should be necessary, but I
     # saw someone else do this for wayland so let's give it a shot
     services.xserver.videoDrivers = [ "amdgpu" ];

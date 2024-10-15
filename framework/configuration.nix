@@ -254,6 +254,9 @@
   programs.direnv.enable = true;
   programs.autojump.enable = true;
   programs.geary.enable = true;
+  programs.steam.enable = true;
+  programs.gamescope.enable = true;
+  programs.gamescope.capSysNice = true;
 
   # List services that you want to enable:
 
