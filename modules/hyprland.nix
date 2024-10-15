@@ -360,6 +360,7 @@ in
     environment.sessionVariables.QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     environment.sessionVariables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qt5ct";
+    environment.sessionVariables.AQ_DRM_DEVICES = "/dev/dri/card1";
 
     # I have no idea if, or why this should be necessary, but I
     # saw someone else do this for wayland so let's give it a shot
