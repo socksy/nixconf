@@ -9,6 +9,7 @@
 }:
 let
   hyprland-package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  hyprland-portals-package = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
 in
 {
@@ -27,16 +28,17 @@ in
     programs.hyprland = {
       enable = true;
       package = hyprland-package;
+      portalPackage = hyprland-portals-package;
       xwayland.enable = true;
     };
     programs.waybar.enable = true;
 
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      wlr.enable = true;
-      config.common.default = "*";
-    };
+    #xdg.portal = {
+    #  enable = true;
+    #  extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    #  wlr.enable = true;
+    #  config.common.default = "*";
+    #};
     i18n.inputMethod.enabled = "ibus";
 
     security = {
@@ -86,7 +88,6 @@ in
       # so that it keeps in sync with hyprland's
       hyprland-nixpkgs.kitty
       hyprland-nixpkgs.wezterm
-      hyprland-nixpkgs.contour
       hyprland-nixpkgs.darktile
       xdg-utils
       hyprland-nixpkgs.wdisplays # tool to configure displays
