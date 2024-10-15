@@ -329,6 +329,7 @@ in
     hardware.opengl = {
       package = hyprland-nixpkgs.mesa.drivers;
       package32 = hyprland-nixpkgs.pkgsi686Linux.mesa.drivers;
+      driSupport = true;
     };
 
     #system.activationScripts.wallpaper = let
