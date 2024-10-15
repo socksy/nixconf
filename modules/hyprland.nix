@@ -131,6 +131,7 @@ in
         gnome-online-accounts.enable = true;
         tracker-miners.enable = true;
         tracker.enable = true;
+        sushi.enable = true;
       };
       xremap = {
         withWlroots = true;
