@@ -213,7 +213,7 @@
     spotify
     todoist-electron
     xfce.thunar
-    mesa-demos
+    unstable.mesa-demos
     unstable.chromium
 
     # nice to haves

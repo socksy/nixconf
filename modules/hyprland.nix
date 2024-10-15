@@ -93,6 +93,7 @@ in
       hyprland-nixpkgs.wdisplays # tool to configure displays
       hyprland-nixpkgs.amdgpu_top
       hyprland-nixpkgs.libva-utils # to analyse with vainfo
+      hyprland-nixpkgs.opencl-headers
       cliphist # clipboard history manager
 
       mako # notification system developed by swaywm maintainer
@@ -338,13 +339,28 @@ in
       extraPackages = with hyprland-nixpkgs; [
         rocmPackages.clr
         rocmPackages.clr.icd
+        rocmPackages.rocminfo
+        rocmPackages.rocm-runtime
         vaapiVdpau
         libvdpau-va-gl
-        amdvlk
+        #amdvlk
       ];
     };
+    # trying to force radeon, and things to use wayland
     environment.sessionVariables.VDPAU_DRIVER = "radeonsi";
     environment.sessionVariables.LIBVA_DRIVER_NAME = "radeonsi";
+    environment.sessionVariables.ROC_ENABLE_PRE_VEGA = "1";
+    environment.sessionVariables.MESA_LOADER_DRIVER_OVERRIDE = "radeonsi";
+    environment.sessionVariables.SDL_VIDEODRIVER = "wayland";
+    environment.sessionVariables.CLUTTER_BACKEND = "wayland";
+    environment.sessionVariables.GDK_BACKEND = "wayland,x11,*";
+    environment.sessionVariables.QT_QPA_PLATFORM = "wayland;xcb";
+
+    # hidpi forcing/detection
+    environment.sessionVariables.QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    environment.sessionVariables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qt5ct";
+
     # I have no idea if, or why this should be necessary, but I
     # saw someone else do this for wayland so let's give it a shot
     services.xserver.videoDrivers = [ "amdgpu" ];
