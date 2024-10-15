@@ -30,6 +30,7 @@ in
       xwayland.enable = true;
     };
     programs.waybar.enable = true;
+    programs.xwayland.package = hyprland-nixpkgs.xwayland;
 
     #xdg.portal = {
     #  enable = true;
