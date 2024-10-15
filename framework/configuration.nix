@@ -56,6 +56,7 @@
     "rd.systemd.show_status=false"
     "rd.udev.log_level=3"
     "udev.log_priority=3"
+    "initcall_blacklist=simpledrm_platform_driver_init"
   ];
   # Hide the OS choice for bootloaders.
   # It's still possible to open the bootloader list by pressing any key
