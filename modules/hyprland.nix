@@ -330,7 +330,11 @@ in
       package = hyprland-nixpkgs.mesa.drivers;
       package32 = hyprland-nixpkgs.pkgsi686Linux.mesa.drivers;
       driSupport = true;
+      driSupport32Bit = true;
     };
+    # I have no idea if, or why this should be necessary, but I
+    # saw someone else do this for wayland so let's give it a shot
+    services.xserver.videoDrivers = [ "amdgpu" ];
 
     #system.activationScripts.wallpaper = let
     #  wp = pkgs.writeShellScript "wp" ''
