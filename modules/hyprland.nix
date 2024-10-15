@@ -92,7 +92,7 @@ in
       xdg-utils
       hyprland-nixpkgs.wdisplays # tool to configure displays
       hyprland-nixpkgs.amdgpu_top
-      hyprland-nixpkgs.vulkan-tools # to analyse with vainfo
+      hyprland-nixpkgs.libva-utils # to analyse with vainfo
       cliphist # clipboard history manager
 
       mako # notification system developed by swaywm maintainer
