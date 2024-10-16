@@ -97,6 +97,13 @@ in
       hyprland-nixpkgs.qt5.qtwayland
       cliphist # clipboard history manager
 
+      # I don't know if I should have these twice since they're already in
+      # the mesa extra packages, but I can't e.g. access clinfo there
+      hyprland-nixpkgs.rocmPackages.clr
+      hyprland-nixpkgs.rocmPackages.clr.icd
+      hyprland-nixpkgs.rocmPackages.rocminfo
+      hyprland-nixpkgs.rocmPackages.rocm-runtime
+
       mako # notification system developed by swaywm maintainer
       polkit_gnome
     ];

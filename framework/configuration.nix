@@ -328,12 +328,30 @@
   services.fstrim.enable = true;
 
   # AI stuff
-  services.ollama.enable = true;
-  services.ollama.package = pkgs.unstable.ollama;
-  # ollama gui
-  services.open-webui.enable = true;
-  services.open-webui.port = 10203;
-  services.open-webui.package = pkgs.unstable.open-webui;
+  services.ollama = {
+    enable = true;
+    package = pkgs.unstable.ollama;
+    acceleration = "rocm";
+    environmentVariables = {
+      # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
+      HCC_AMDGPU_TARGET = "gfx1103";
+      HCC_OVERRIDE_GFX_VERSION = "11.0.3";
+      # switch from using system direct memory access to 'blit' kernels
+      # trade-off - use up some compute kernels in order for it to not
+      # think that there's only 4G RAM, which is what the chip reports
+      # (integrated graphics goes variably up to half the system memory
+      # depending on usage, i.e. 32G in this case)
+      HSA_ENABLE_SDMA = "0";
+    };
+    # will only be available in nixos > 24.05 unfortunately
+    #rocmOverrideGfx = "11.0.3";
+  };
+  services.open-webui = {
+    # ollama gui
+    enable = true;
+    port = 10203;
+    package = pkgs.unstable.open-webui;
+  };
 
   hardware = {
     bluetooth = {
