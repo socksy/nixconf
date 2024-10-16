@@ -331,8 +331,9 @@
   services.ollama.enable = true;
   services.ollama.package = pkgs.unstable.ollama;
   # ollama gui
-  #services.open-webui.enable = true;
-  #services.open-webui.port = 10203;
+  services.open-webui.enable = true;
+  services.open-webui.port = 10203;
+  services.open-webui.package = pkgs.unstable.open-webui;
 
   hardware = {
     bluetooth = {
