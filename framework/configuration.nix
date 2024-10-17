@@ -353,6 +353,9 @@
     package = pkgs.unstable.open-webui;
   };
 
+  # tweak mouse dpi etc
+  services.ratbagd.enable = true;
+
   hardware = {
     bluetooth = {
       enable = true;
