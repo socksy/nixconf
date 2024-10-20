@@ -139,6 +139,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.rocmSupport = true;
+  nixpkgs.config.firefox.speechSynthesisSupport = true;
   nix = {
     package = pkgs.nixVersions.latest;
     gc = {
