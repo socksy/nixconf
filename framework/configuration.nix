@@ -203,7 +203,7 @@
 
     # core gui tools
     vlc
-    ((emacsPackagesFor unstable.emacs29-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
+    ((emacsPackagesFor unstable.emacs30-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
     #emacs29-pgtk
     # use later version
     #logseq
