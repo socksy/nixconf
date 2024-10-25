@@ -192,6 +192,8 @@
     evince
     clojure
     clojure-lsp
+    go
+    gopls
     unzip
     tree
     #killall # useless on nixos?
@@ -229,6 +231,7 @@
     signal-desktop
     telegram-desktop
     unstable.ardour
+    piper-tts
 
     # fun
     unstable.zeroad
@@ -250,6 +253,7 @@
   };
 
   programs.firefox.enable = true;
+
   programs.chromium.enable = true; # not enough, need to add package too
   programs.command-not-found.enable = false;
 
