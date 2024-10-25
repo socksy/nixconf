@@ -190,10 +190,6 @@
     bc
     playerctl
     evince
-    clojure
-    clojure-lsp
-    go
-    gopls
     unzip
     tree
     #killall # useless on nixos?
@@ -220,6 +216,13 @@
     unstable.mesa-demos
     unstable.chromium
 
+    # programming tools
+    clojure
+    clojure-lsp
+    go
+    gopls
+    nixd
+
     # nice to haves
     anki-bin
     acpi
@@ -232,6 +235,9 @@
     telegram-desktop
     unstable.ardour
     piper-tts
+
+    # miracast
+    gnome-network-displays
 
     # fun
     unstable.zeroad
