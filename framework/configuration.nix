@@ -169,6 +169,7 @@
     delta
 
     # basic survival
+    git
     vim
     neovim
     starship
@@ -198,13 +199,15 @@
     gh
     devenv
     eza # better ls
+    expect
+    unstable.zed-editor
+    ispell
 
     # core gui tools
     vlc
     ((emacsPackagesFor unstable.emacs30-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
-    #emacs29-pgtk
     # use later version
-    #logseq
+    unstable.logseq
     discord
     keepassxc
     unstable.mplayer
@@ -235,9 +238,10 @@
     telegram-desktop
     unstable.ardour
     piper-tts
+    speechd
 
     # miracast
-    gnome-network-displays
+    #gnome-network-displays
 
     # fun
     unstable.zeroad
@@ -249,6 +253,7 @@
     # however, at time of writing, unstable version fails to build
     #unstable.quickgui
     distrobox
+
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

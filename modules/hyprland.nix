@@ -63,6 +63,7 @@ in
       gnome.gnome-calculator
       gnome.gnome-clocks
       gnome.gnome-software # for flatpak
+      gnome.gnome-control-center
       wl-gammactl
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       wl-clipboard-x11 # legacy support for tools expecting x11
