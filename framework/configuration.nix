@@ -351,7 +351,7 @@
     environmentVariables = {
       # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
       HCC_AMDGPU_TARGET = "gfx1103";
-      HCC_OVERRIDE_GFX_VERSION = "11.0.3";
+      HSA_OVERRIDE_GFX_VERSION = "11.0.3";
       # switch from using system direct memory access to 'blit' kernels
       # trade-off - use up some compute kernels in order for it to not
       # think that there's only 4G RAM, which is what the chip reports
