@@ -45,7 +45,12 @@
     let
       system = "x86_64-linux";
       username = "ben";
-      overlay-unstable = final: prev: { unstable = nixpkgs-unstable.legacyPackages.${prev.system}; };
+      overlay-unstable = final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      };
       overlay-stable = final: prev: { stable = nixpkgs-stable.legacyPackages.${prev.system}; };
       overlay-force-newer-blueman = final: prev: {
         blueman = nixpkgs-unstable.legacyPackages.${prev.system}.blueman;

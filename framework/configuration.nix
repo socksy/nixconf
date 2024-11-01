@@ -165,7 +165,6 @@
     yadm
     nix-output-monitor
     nixfmt-rfc-style
-    git
     delta
 
     # basic survival
@@ -272,7 +271,10 @@
   programs.autojump.enable = true;
   programs.geary.enable = true;
   programs.steam.enable = true;
+  #programs.steam.package = pkgs.unstable.steam;
+  programs.steam.gamescopeSession.enable = true;
   programs.gamescope.enable = true;
+  programs.gamescope.package = pkgs.unstable.gamescope;
   programs.gamescope.capSysNice = true;
 
   # List services that you want to enable:
@@ -350,8 +352,8 @@
     acceleration = "rocm";
     environmentVariables = {
       # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
-      HCC_AMDGPU_TARGET = "gfx1103";
-      HSA_OVERRIDE_GFX_VERSION = "11.0.3";
+      HCC_AMDGPU_TARGET = "gfx1102";
+      HSA_OVERRIDE_GFX_VERSION = "11.0.2";
       # switch from using system direct memory access to 'blit' kernels
       # trade-off - use up some compute kernels in order for it to not
       # think that there's only 4G RAM, which is what the chip reports
