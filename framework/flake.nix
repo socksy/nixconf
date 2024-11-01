@@ -13,6 +13,7 @@
   };
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
   inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -38,6 +39,7 @@
       nixpkgs,
       nixpkgs-unstable,
       nixpkgs-stable,
+      nixpkgs-staging-next,
       hyprland,
       bens-ags,
       ...
@@ -52,6 +54,9 @@
         };
       };
       overlay-stable = final: prev: { stable = nixpkgs-stable.legacyPackages.${prev.system}; };
+      overlay-staging-next = final: prev: {
+        staging = nixpkgs-staging-next.legacyPackages.${prev.system};
+      };
       overlay-force-newer-blueman = final: prev: {
         blueman = nixpkgs-unstable.legacyPackages.${prev.system}.blueman;
       };
@@ -69,6 +74,7 @@
               nixpkgs.overlays = [
                 overlay-unstable
                 overlay-stable
+                overlay-staging-next
                 overlay-force-newer-blueman
               ];
             }

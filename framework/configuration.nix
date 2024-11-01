@@ -138,6 +138,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
   nixpkgs.config.rocmSupport = true;
   nixpkgs.config.firefox.speechSynthesisSupport = true;
   nix = {
@@ -206,14 +207,14 @@
     vlc
     ((emacsPackagesFor unstable.emacs30-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
     # use later version
-    unstable.logseq
+    logseq
     discord
-    keepassxc
+    unstable.keepassxc
     unstable.mplayer
     unstable.mpv
-    slack
-    spotify
-    todoist-electron
+    unstable.slack
+    unstable.spotify
+    unstable.todoist-electron
     xfce.thunar
     unstable.mesa-demos
     unstable.chromium
@@ -295,6 +296,7 @@
     dataDir = "/home/${username}/";
   };
   services.netbird.enable = true;
+  services.searx.enable = true;
 
   # see https://github.com/NixOS/nixpkgs/issues/171136
   security.pam.services.login.fprintAuth = false;
@@ -368,7 +370,7 @@
     # ollama gui
     enable = true;
     port = 10203;
-    package = pkgs.unstable.open-webui;
+    package = pkgs.staging.open-webui;
   };
 
   # tweak mouse dpi etc
