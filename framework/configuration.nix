@@ -301,6 +301,10 @@
   age.secrets.searx_password.file = ../secrets/searx_password.age;
   services.searx.enable = true;
   services.searx.environmentFile = config.age.secrets.searx_password.path;
+  services.searx.settings.server = {
+    bind_address = "127.0.0.1";
+    port = 8584;
+  };
 
   age.identityPaths = [ "/home/ben/.ssh/id_ed25519" ];
 
