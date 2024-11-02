@@ -304,7 +304,7 @@
     enable = true;
     environmentFile = config.age.secrets.searx_password.path;
     settings.server = {
-      bind_address = "127.0.0.1";
+      bind_address = "0.0.0.0";
       port = 8584;
     };
     settings.search = {
@@ -389,6 +389,7 @@
     # ollama gui
     enable = true;
     port = 10203;
+    host = "0.0.0.0";
     package = pkgs.staging.open-webui;
   };
 
