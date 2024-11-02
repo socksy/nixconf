@@ -297,7 +297,12 @@
     dataDir = "/home/${username}/";
   };
   services.netbird.enable = true;
+
+  age.secrets.searx_password.file = ../secrets/searx_password.age;
   services.searx.enable = true;
+  services.searx.environmentFile = config.age.secrets.searx_password.path;
+
+  age.identityPaths = [ "/home/ben/.ssh/id_ed25519" ];
 
   # see https://github.com/NixOS/nixpkgs/issues/171136
   security.pam.services.login.fprintAuth = false;
