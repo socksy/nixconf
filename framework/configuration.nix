@@ -172,7 +172,7 @@
     # basic survival
     git
     vim
-    neovim
+    unstable.neovim
     starship
     keychain
     tarsnap
