@@ -299,11 +299,20 @@
   services.netbird.enable = true;
 
   age.secrets.searx_password.file = ../secrets/searx_password.age;
-  services.searx.enable = true;
-  services.searx.environmentFile = config.age.secrets.searx_password.path;
-  services.searx.settings.server = {
-    bind_address = "127.0.0.1";
-    port = 8584;
+
+  services.searx = {
+    enable = true;
+    environmentFile = config.age.secrets.searx_password.path;
+    settings.server = {
+      bind_address = "127.0.0.1";
+      port = 8584;
+    };
+    settings.search = {
+      formats = [
+        "html"
+        "json"
+      ];
+    };
   };
 
   age.identityPaths = [ "/home/ben/.ssh/id_ed25519" ];
