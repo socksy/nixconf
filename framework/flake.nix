@@ -32,6 +32,10 @@
     url = "github:socksy/bens-ags";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  inputs.agenix = {
+    url = "github:ryantm/agenix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
     {
@@ -42,6 +46,7 @@
       nixpkgs-staging-next,
       hyprland,
       bens-ags,
+      agenix,
       ...
     }@inputs:
     let
@@ -83,6 +88,7 @@
           inputs.nix-index-database.nixosModules.nix-index
           #inputs.nixos-hardware.nixosModules.framework-13-7040-amd
           { programs.nix-index-database.comma.enable = true; }
+          agenix.nixosModules.default
           ./configuration.nix
         ];
       };

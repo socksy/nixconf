@@ -167,6 +167,7 @@
     nix-output-monitor
     nixfmt-rfc-style
     delta
+    inputs.agenix.packages."${system}".default
 
     # basic survival
     git
