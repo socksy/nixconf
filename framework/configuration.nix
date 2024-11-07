@@ -240,6 +240,7 @@
     unstable.ardour
     piper-tts
     speechd
+    unstable.aider-chat
 
     # miracast
     #gnome-network-displays
