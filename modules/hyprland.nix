@@ -87,7 +87,7 @@ in
 
       # so that it keeps in sync with hyprland's
       hyprland-nixpkgs.kitty
-      hyprland-nixpkgs.wezterm
+      #hyprland-nixpkgs.wezterm
       hyprland-nixpkgs.darktile
       xdg-utils
       hyprland-nixpkgs.wdisplays # tool to configure displays
