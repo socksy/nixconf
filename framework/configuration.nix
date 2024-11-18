@@ -295,6 +295,11 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
   };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   services.syncthing = {
     enable = true;
