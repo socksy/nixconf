@@ -313,6 +313,7 @@ in
         fira-code
         fira-code-nerdfont
         fira
+        fira-math
         font-awesome
         gentium
         google-fonts
