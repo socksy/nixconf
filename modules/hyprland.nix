@@ -38,7 +38,8 @@ in
     #  wlr.enable = true;
     #  config.common.default = "*";
     #};
-    i18n.inputMethod.enabled = "ibus";
+    i18n.inputMethod.enable = true;
+    i18n.inputMethod.type = "ibus";
 
     security = {
       polkit.enable = true;
@@ -48,26 +49,26 @@ in
 
     environment.systemPackages = with pkgs; [
       morewaita-icon-theme
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
       qogir-icon-theme
       papirus-icon-theme
       loupe
-      gnome.nautilus
+      nautilus
       baobab
       gnome-text-editor
-      gnome.gnome-calendar
-      gnome.gnome-boxes
-      gnome.gnome-system-monitor
-      gnome.gnome-control-center
-      gnome.gnome-weather
-      gnome.gnome-calculator
-      gnome.gnome-clocks
-      gnome.gnome-software # for flatpak
-      gnome.gnome-control-center
+      gnome-calendar
+      gnome-boxes
+      gnome-system-monitor
+      gnome-control-center
+      gnome-weather
+      gnome-calculator
+      gnome-clocks
+      gnome-software # for flatpak
+      gnome-control-center
       wl-gammactl
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       wl-clipboard-x11 # legacy support for tools expecting x11
-      wl-clip-persist # wayland only keeps things in clipboard while the app that put it there is open(!)
+      wl-clip-persist # wayland only keeps things in clipboard while the app that put it there is open
       xdg-utils
       swaylock
       swayidle
@@ -141,8 +142,8 @@ in
         glib-networking.enable = true;
         gnome-keyring.enable = true;
         gnome-online-accounts.enable = true;
-        tracker-miners.enable = true;
-        tracker.enable = true;
+        localsearch.enable = true;
+        tinysparql.enable = true;
         sushi.enable = true;
       };
       xremap = {
@@ -333,7 +334,7 @@ in
         #nerdfonts
         noto-fonts
         noto-fonts-emoji
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         ipaexfont
         kochi-substitute
         roboto
@@ -351,11 +352,9 @@ in
     };
     nixpkgs.config.joypixels.acceptLicense = true;
 
-    hardware.opengl = {
+    hardware.graphics = {
       package = hyprland-nixpkgs.mesa.drivers;
       package32 = hyprland-nixpkgs.pkgsi686Linux.mesa.drivers;
-      driSupport = true;
-      driSupport32Bit = true;
       extraPackages = with hyprland-nixpkgs; [
         rocmPackages.clr
         rocmPackages.clr.icd

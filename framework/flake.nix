@@ -11,15 +11,16 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
-  inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+  inputs.nixpkgs-for-hyprland.url = "github:NixOS/nixpkgs/nixos-24.11";
+  inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   inputs.hyprland = {
     url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    inputs.nixpkgs.follows = "nixpkgs-unstable";
+    inputs.nixpkgs.follows = "nixpkgs-for-hyprland";
   };
   inputs.xremap-flake.url = "github:xremap/nix-flake";
   #inputs.emacs.url = github:nix-community/emacs-overlay/2e23449;
@@ -42,6 +43,7 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      nixpkgs-for-hyprland,
       nixpkgs-stable,
       nixpkgs-staging-next,
       hyprland,
@@ -54,6 +56,12 @@
       username = "ben";
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      };
+      overlay-hyprland = final: prev: {
+        hyprland-pkgs = import nixpkgs-for-hyprland {
           system = prev.system;
           config.allowUnfree = true;
         };
@@ -78,6 +86,7 @@
             {
               nixpkgs.overlays = [
                 overlay-unstable
+                overlay-hyprland
                 overlay-stable
                 overlay-staging-next
                 overlay-force-newer-blueman

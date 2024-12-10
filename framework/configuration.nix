@@ -33,7 +33,7 @@
     theme = (
       pkgs.sleek-grub-theme.override {
         withBanner = "Hi Ben";
-        withStyle = "white";
+        withStyle = "bigSur";
       }
     );
   };
@@ -172,7 +172,7 @@
     # basic survival
     git
     vim
-    unstable.neovim
+    neovim
     starship
     keychain
     tarsnap
@@ -201,26 +201,30 @@
     devenv
     eza # better ls
     expect
-    unstable.zed-editor
+    hyprland-pkgs.zed-editor
     ispell
     mosh
     mob
 
     # core gui tools
     vlc
-    ((emacsPackagesFor unstable.emacs30-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]))
+    ((emacsPackagesFor hyprland-pkgs.emacs30-pgtk).emacsWithPackages (epkgs: [
+      epkgs.vterm
+      epkgs.tree-sitter-langs
+      epkgs.treesit-grammars.with-all-grammars
+    ]))
     # use later version
     logseq
     discord
-    unstable.keepassxc
-    unstable.mplayer
-    unstable.mpv
-    unstable.slack
-    unstable.spotify
-    unstable.todoist-electron
+    hyprland-pkgs.keepassxc
+    hyprland-pkgs.mplayer
+    hyprland-pkgs.mpv
+    hyprland-pkgs.slack
+    hyprland-pkgs.spotify
+    hyprland-pkgs.todoist-electron
     xfce.thunar
-    unstable.mesa-demos
-    unstable.chromium
+    hyprland-pkgs.mesa-demos
+    hyprland-pkgs.chromium
 
     # programming tools
     clojure
@@ -241,16 +245,17 @@
     pinta
     signal-desktop
     telegram-desktop
-    unstable.ardour
+    hyprland-pkgs.ardour
     piper-tts
     speechd
-    unstable.aider-chat
+    hyprland-pkgs.aider-chat
+    vscode-fhs
 
     # miracast
     #gnome-network-displays
 
     # fun
-    unstable.zeroad
+    hyprland-pkgs.zeroad
 
     qemu_full
     quickemu
@@ -260,7 +265,7 @@
     #unstable.quickgui
     distrobox
 
-    unstable.lmstudio
+    hyprland-pkgs.lmstudio
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -279,10 +284,10 @@
   programs.autojump.enable = true;
   programs.geary.enable = true;
   programs.steam.enable = true;
-  #programs.steam.package = pkgs.unstable.steam;
+  #programs.steam.package = pkgs.hyprland-pkgs.steam;
   programs.steam.gamescopeSession.enable = true;
-  programs.gamescope.enable = true;
-  programs.gamescope.package = pkgs.unstable.gamescope;
+  #programs.gamescope.enable = true;
+  programs.gamescope.package = pkgs.hyprland-pkgs.gamescope;
   programs.gamescope.capSysNice = true;
 
   # List services that you want to enable:
@@ -380,7 +385,7 @@
   # AI stuff
   services.ollama = {
     enable = true;
-    package = pkgs.unstable.ollama;
+    package = pkgs.hyprland-pkgs.ollama;
     acceleration = "rocm";
     environmentVariables = {
       # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
@@ -401,7 +406,7 @@
     enable = true;
     port = 10203;
     host = "0.0.0.0";
-    package = pkgs.staging.open-webui;
+    package = pkgs.hyprland-pkgs.open-webui;
   };
 
   # tweak mouse dpi etc
