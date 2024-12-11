@@ -63,7 +63,8 @@
   # It will just not appear on screen unless a key is pressed
   boot.loader.timeout = 5;
 
-  boot.initrd.luks.devices."luks-d1e77924-0945-457d-b924-fe614e87069a".device = "/dev/disk/by-uuid/d1e77924-0945-457d-b924-fe614e87069a";
+  boot.initrd.luks.devices."luks-d1e77924-0945-457d-b924-fe614e87069a".device =
+    "/dev/disk/by-uuid/d1e77924-0945-457d-b924-fe614e87069a";
   networking.hostName = "fenixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -250,6 +251,7 @@
     speechd
     hyprland-pkgs.aider-chat
     vscode-fhs
+    shotwell
 
     # miracast
     #gnome-network-displays

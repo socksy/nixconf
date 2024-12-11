@@ -5,7 +5,7 @@ in
 {
   environment.systemPackages = [
     #put stable packages here
-    # stable.haskellPackages.xmonad 
-    # stable.haskellPackages.yeganesh 
+    # stable.haskellPackages.xmonad
+    # stable.haskellPackages.yeganesh
   ];
 }
