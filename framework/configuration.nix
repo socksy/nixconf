@@ -260,11 +260,8 @@
     hyprland-pkgs.zeroad
 
     qemu_full
-    quickemu
-    # quickgui is flutter, which can't seem to find GL
-    # probably related to hyprland using different version
-    # however, at time of writing, unstable version fails to build
-    #unstable.quickgui
+    hyprland-pkgs.quickemu
+    #hyprland-pkgs.quickgui
     distrobox
 
     hyprland-pkgs.lmstudio
