@@ -235,6 +235,8 @@
     nixd
     fennel
     fennel-ls
+    opentofu
+    terraform-ls
 
     # nice to haves
     anki-bin
