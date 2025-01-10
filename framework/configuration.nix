@@ -291,6 +291,8 @@
   programs.gamescope.package = pkgs.hyprland-pkgs.gamescope;
   programs.gamescope.capSysNice = true;
 
+  programs.nm-applet.enable = true;
+
   # List services that you want to enable:
 
   # ability to flash firmware updates
