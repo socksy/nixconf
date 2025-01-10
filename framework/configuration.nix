@@ -74,7 +74,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.nameservers = [
+  networking.networkmanager.insertNameservers = [
     "1.1.1.1"
     "1.0.0.1"
     "8.8.8.8"
