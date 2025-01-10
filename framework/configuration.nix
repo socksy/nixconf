@@ -79,6 +79,11 @@
     "1.0.0.1"
     "8.8.8.8"
   ];
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "8.8.8.8"
+  ];
   services.resolved.enable = true;
 
   # Set your time zone.
