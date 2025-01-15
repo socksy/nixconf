@@ -178,7 +178,6 @@
     # basic survival
     git
     vim
-    neovim
     starship
     keychain
     tarsnap
@@ -297,6 +296,10 @@
   programs.gamescope.capSysNice = true;
 
   programs.nm-applet.enable = true;
+
+  programs.neovim = {
+    enable = true;
+  };
 
   # List services that you want to enable:
 
