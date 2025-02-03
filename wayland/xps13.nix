@@ -24,11 +24,18 @@
   boot.extraModprobeConfig = ''
     options hid_apple swap_opt_cmd=1
   '';
-  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
-  boot.kernelParams = [ "i915.enable_fbc=1" "i915.enable_psr=2" ];
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 1;
+  };
+  boot.kernelParams = [
+    "i915.enable_fbc=1"
+    "i915.enable_psr=2"
+  ];
 
   # much better youtube performance, but broken rn
-  environment.variables = { MESA_LOADER_DRIVER_OVERRIDE = "iris"; };
+  environment.variables = {
+    MESA_LOADER_DRIVER_OVERRIDE = "iris";
+  };
   #hardware.opengl.package = (pkgs.mesa.override {
   #  galliumDrivers = ["nouveau" "virgl" "swrast" "iris" ];
   #}).drivers;

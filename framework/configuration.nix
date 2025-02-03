@@ -230,6 +230,8 @@
     xfce.thunar
     hyprland-pkgs.mesa-demos
     hyprland-pkgs.chromium
+    hyprland-pkgs.popcorntime
+    hyprland-pkgs.ffmpeg-full
 
     # programming tools
     clojure
@@ -263,7 +265,7 @@
     #gnome-network-displays
 
     # fun
-    hyprland-pkgs.zeroad
+    #hyprland-pkgs.zeroad
 
     qemu_full
     hyprland-pkgs.quickemu

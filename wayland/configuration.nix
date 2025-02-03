@@ -1,11 +1,19 @@
-{ config, pkgs, system, user, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  system,
+  user,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
   # see
   # https://github.com/emersion/xdg-desktop-portal-wlr/wiki/"It-doesn't-work"-Troubleshooting-Checklist
-  # note: this is pretty much the same as  /etc/sway/config.d/nixos.conf but also restarts  
+  # note: this is pretty much the same as  /etc/sway/config.d/nixos.conf but also restarts
   # some user services to make sure they have the correct environment variables
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -29,21 +37,24 @@ let
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
     executable = true;
-    text = let
-      schema = pkgs.gsettings-desktop-schemas;
-      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-    in ''
-      export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-      gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Dracula'
-    '';
+    text =
+      let
+        schema = pkgs.gsettings-desktop-schemas;
+        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+      in
+      ''
+        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+        gnome_schema=org.gnome.desktop.interface
+        gsettings set $gnome_schema gtk-theme 'Dracula'
+      '';
   };
   hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  hyprland-nixpkgs =
-    inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
+  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
 
-in {
-  imports = [ # Include the results of the hardware scan.
+in
+{
+  imports = [
+    # Include the results of the hardware scan.
     ../hardware-configuration.nix
     ./xps13.nix
   ];
@@ -160,7 +171,9 @@ in {
     bluetooth = {
       enable = true;
       settings = {
-        Policy = { AutoEnable = true; };
+        Policy = {
+          AutoEnable = true;
+        };
         General = {
           PairableTimeout = 0;
           DiscoverableTimeout = 0;
@@ -199,16 +212,27 @@ in {
     #put your favourite hosts file stuff here
     192.168.178.61 rpi0
   '';
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
-  networking.firewall.allowedTCPPortRanges = [{
-    from = 8000;
-    to = 8100;
-  }];
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
+  networking.firewall.allowedTCPPortRanges = [
+    {
+      from = 8000;
+      to = 8100;
+    }
+  ];
   networking.networkmanager.enable = true;
 
   # no atime because it's to prevent so many USB drive writes
-  fileSystems."/".options = [ "defaults" "noatime" ];
-  fileSystems."/home".options = [ "defaults" "noatime" ];
+  fileSystems."/".options = [
+    "defaults"
+    "noatime"
+  ];
+  fileSystems."/home".options = [
+    "defaults"
+    "noatime"
+  ];
 
   time.timeZone = "Europe/Berlin";
 
@@ -403,7 +427,10 @@ in {
               "Super-t" = "C-t";
               "C-a" = "home";
               "C-e" = "end";
-              "C-w" = [ "C-Shift-left" "delete" ];
+              "C-w" = [
+                "C-Shift-left"
+                "delete"
+              ];
             };
             application.not = [ "kitty" ];
           }
@@ -482,7 +509,11 @@ in {
     ];
   };
 
-  users.users.root.extraGroups = [ "grsecurity" "audio" "syncthing" ];
+  users.users.root.extraGroups = [
+    "grsecurity"
+    "audio"
+    "syncthing"
+  ];
 
   environment.variables = {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -492,7 +523,10 @@ in {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
-  environment.shells = with pkgs; [ zsh bashInteractive ];
+  environment.shells = with pkgs; [
+    zsh
+    bashInteractive
+  ];
 
   #virtualisation.virtualbox.host.enable = true;
   virtualisation.docker.enable = true;
@@ -577,13 +611,18 @@ in {
   };
 
   nix.settings = {
-    substituters =
-      [ "https://nix-community.cachix.org" "https://hyprland.cachix.org" ];
+    substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8ZY7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
-    trusted-users = [ "root" "@wheel" ];
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
   };
   nixpkgs.config.allowUnfree = true;
 }
