@@ -273,6 +273,7 @@
     distrobox
 
     hyprland-pkgs.lmstudio
+    hyprland-pkgs.zoom-us
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
