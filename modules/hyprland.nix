@@ -377,7 +377,8 @@ in
     environment.sessionVariables.QT_QPA_PLATFORM = "wayland;xcb";
 
     # hidpi forcing/detection
-    environment.sessionVariables.QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    environment.variables.QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    environment.variables.QT_ENABLE_HIGHDPI_SCALING = "1";
     environment.sessionVariables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qt5ct";
     environment.sessionVariables.AQ_DRM_DEVICES = "/dev/dri/card1";

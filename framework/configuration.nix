@@ -412,8 +412,7 @@
       # depending on usage, i.e. 32G in this case)
       HSA_ENABLE_SDMA = "0";
     };
-    # will only be available in nixos > 24.05 unfortunately
-    #rocmOverrideGfx = "11.0.3";
+    rocmOverrideGfx = "11.0.3";
   };
   services.open-webui = {
     # ollama gui
