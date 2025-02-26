@@ -159,6 +159,8 @@
       max-free = ${toString (1024 * 1024 * 1024)}
       trusted-users = root ben
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 
