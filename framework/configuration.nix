@@ -120,6 +120,7 @@
       "libvirtd"
       "audio"
     ];
+    linger = true;
     shell = "${pkgs.zsh}/bin/zsh";
     uid = 1000;
     packages = with pkgs; [
@@ -316,6 +317,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
   };
+  systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -395,6 +397,8 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
+    # headless too slow
+    socketActivation = false;
   };
   services.fstrim.enable = true;
 
@@ -482,8 +486,14 @@
   virtualisation.waydroid.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    # spotify detect devices local network
+    57621
+  ];
+  networking.firewall.allowedUDPPorts = [
+    # spotify mdns (e.g. chromecast?)
+    5353
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
