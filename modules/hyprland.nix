@@ -126,6 +126,11 @@ in
           TimeoutStopSec = 10;
         };
       };
+      #user.services.kanshi = {
+      #  Unit = {
+      #    PartOf
+      #  };
+      #};
     };
 
     services = {
@@ -365,6 +370,7 @@ in
         #amdvlk
       ];
     };
+
     # trying to force radeon, and things to use wayland
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
     environment.sessionVariables.VDPAU_DRIVER = "radeonsi";

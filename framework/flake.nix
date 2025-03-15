@@ -11,7 +11,8 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  #
+  #inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
   inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -19,7 +20,8 @@
 
   inputs.hyprland = {
     url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    inputs.nixpkgs.follows = "nixpkgs";
+    # gonna try this the other way around to hopefully hit the hyprland cachix
+    #inputs.nixpkgs.follows = "nixpkgs";
   };
   inputs.xremap-flake.url = "github:xremap/nix-flake";
   #inputs.emacs.url = github:nix-community/emacs-overlay/2e23449;
@@ -36,6 +38,7 @@
     url = "github:ryantm/agenix";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  inputs.nixpkgs.follows = "hyprland/nixpkgs";
 
   outputs =
     {

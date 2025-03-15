@@ -177,6 +177,7 @@
     nixfmt-rfc-style
     delta
     inputs.agenix.packages."${system}".default
+    kanshi
 
     # basic survival
     git
@@ -222,7 +223,7 @@
       epkgs.treesit-grammars.with-all-grammars
     ]))
     # use later version
-    logseq
+    #logseq
     discord
     hyprland-pkgs.keepassxc
     hyprland-pkgs.mplayer
@@ -318,6 +319,7 @@
     serviceConfig.Type = "simple";
   };
   systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
