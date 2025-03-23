@@ -270,7 +270,8 @@
     #gnome-network-displays
 
     # fun
-    #hyprland-pkgs.zeroad
+    hyprland-pkgs.zeroad
+    hyprland-pkgs.superTuxKart
 
     qemu_full
     hyprland-pkgs.quickemu
