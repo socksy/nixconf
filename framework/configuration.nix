@@ -247,6 +247,7 @@
     fennel-ls
     opentofu
     terraform-ls
+    rust-analyzer
 
     # nice to haves
     anki-bin
