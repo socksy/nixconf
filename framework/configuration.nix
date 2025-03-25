@@ -210,7 +210,7 @@
     devenv
     eza # better ls
     expect
-    hyprland-pkgs.zed-editor
+    stable.zed-editor
     ispell
     mosh
     mob
@@ -429,7 +429,7 @@
     enable = true;
     port = 10203;
     host = "0.0.0.0";
-    package = pkgs.hyprland-pkgs.open-webui;
+    package = pkgs.stable.open-webui;
   };
 
   # tweak mouse dpi etc
