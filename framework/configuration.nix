@@ -401,8 +401,7 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-    # headless too slow
-    socketActivation = false;
+    wireplumber.enable = true;
   };
   services.fstrim.enable = true;
 
