@@ -32,12 +32,15 @@ in
     programs.waybar.enable = true;
     programs.xwayland.package = hyprland-nixpkgs.xwayland;
 
-    #xdg.portal = {
-    #  enable = true;
-    #  extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-    #  wlr.enable = true;
-    #  config.common.default = "*";
-    #};
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        hyprland-portals-package
+        xdg-desktop-portal-gtk
+      ];
+      #wlr.enable = true;
+      config.common.default = "*";
+    };
     i18n.inputMethod.enable = true;
     i18n.inputMethod.type = "ibus";
 
@@ -90,7 +93,6 @@ in
       hyprland-nixpkgs.kitty
       #hyprland-nixpkgs.wezterm
       hyprland-nixpkgs.darktile
-      xdg-utils
       hyprland-nixpkgs.wdisplays # tool to configure displays
       hyprland-nixpkgs.amdgpu_top
       hyprland-nixpkgs.libva-utils # to analyse with vainfo
