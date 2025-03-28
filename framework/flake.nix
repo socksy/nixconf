@@ -65,6 +65,7 @@
         hyprland-pkgs = import hyprland.inputs.nixpkgs {
           system = prev.system;
           config.allowUnfree = true;
+          config.joypixels.acceptLicense = true;
         };
       };
       overlay-stable = final: prev: { stable = nixpkgs-stable.legacyPackages.${prev.system}; };

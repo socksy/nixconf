@@ -16,8 +16,10 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../modules/graphics_stuff.nix
     ../modules/hyprland.nix
   ];
+  graphicsStuff.enable = true;
   hyprland.enable = true;
 
   # Bootloader.
@@ -401,7 +403,7 @@
   # run updatedb every night so locate works
   services.locate.enable = true;
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
