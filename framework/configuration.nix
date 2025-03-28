@@ -18,9 +18,11 @@
     ./hardware-configuration.nix
     ../modules/graphics_stuff.nix
     ../modules/hyprland.nix
+    ../modules/gnome.nix
   ];
   graphicsStuff.enable = true;
-  hyprland.enable = true;
+  hyprland.enable = false;
+  gnome.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
