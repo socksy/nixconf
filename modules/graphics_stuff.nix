@@ -47,7 +47,6 @@
 
       kitty
 
-      kitty
       darktile
       wdisplays # tool to configure displays
       amdgpu_top
