@@ -238,12 +238,14 @@
     xfce.thunar
     hyprland-pkgs.mesa-demos
     hyprland-pkgs.chromium
+    hyprland-pkgs.google-chrome
     hyprland-pkgs.popcorntime
     hyprland-pkgs.ffmpeg-full
 
     # programming tools
     clojure
     clojure-lsp
+    deno
     go
     gopls
     nixd
@@ -251,6 +253,8 @@
     fennel-ls
     opentofu
     terraform-ls
+    typescript
+    typescript-language-server
     rust-analyzer
 
     # nice to haves
