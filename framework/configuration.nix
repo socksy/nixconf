@@ -21,8 +21,8 @@
     ../modules/gnome.nix
   ];
   graphicsStuff.enable = true;
-  hyprland.enable = false;
-  gnome.enable = true;
+  hyprland.enable = true;
+  gnome.enable = false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
