@@ -219,6 +219,13 @@
     mosh
     mob
 
+    lshw
+    usbutils # for lsusb
+    cyme # better lsusb
+    appimage-run
+
+    easyeffects # pipewire fx
+
     # core gui tools
     vlc
     ((emacsPackagesFor hyprland-pkgs.emacs30-pgtk).emacsWithPackages (epkgs: [
