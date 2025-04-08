@@ -259,6 +259,8 @@
     fennel
     fennel-ls
     opentofu
+    python3Packages.ruff
+    python3Packages.jedi
     terraform-ls
     typescript
     typescript-language-server
