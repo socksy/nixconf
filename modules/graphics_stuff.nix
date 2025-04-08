@@ -231,7 +231,6 @@
         libertine
         powerline-fonts
         terminus_font
-        #nerdfonts
         noto-fonts
         noto-fonts-emoji
         noto-fonts-cjk-sans
