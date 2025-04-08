@@ -212,7 +212,7 @@
         etBook
         fantasque-sans-mono
         fira-code
-        fira-code-nerdfont
+        nerd-fonts.fira-code
         fira
         fira-math
         font-awesome
