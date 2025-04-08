@@ -260,8 +260,8 @@
     nixpkgs.config.allowUnfree = true;
 
     hardware.graphics = {
-      package = config.graphicsStuff.pkgs.mesa.drivers;
-      package32 = config.graphicsStuff.pkgs.pkgsi686Linux.mesa.drivers;
+      package = config.graphicsStuff.pkgs.mesa;
+      package32 = config.graphicsStuff.pkgs.pkgsi686Linux.mesa;
       extraPackages = with config.graphicsStuff.pkgs; [
         rocmPackages.clr
         rocmPackages.clr.icd
