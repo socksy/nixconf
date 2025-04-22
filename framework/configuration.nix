@@ -123,6 +123,7 @@
       "wheel"
       "libvirtd"
       "audio"
+      "docker"
     ];
     linger = true;
     shell = "${pkgs.zsh}/bin/zsh";
