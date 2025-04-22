@@ -438,8 +438,8 @@
     acceleration = "rocm";
     environmentVariables = {
       # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
-      HCC_AMDGPU_TARGET = "gfx1103";
-      HSA_OVERRIDE_GFX_VERSION = "11.0.3";
+      HCC_AMDGPU_TARGET = "gfx1102";
+      HSA_OVERRIDE_GFX_VERSION = "11.0.2";
       # switch from using system direct memory access to 'blit' kernels
       # trade-off - use up some compute kernels in order for it to not
       # think that there's only 4G RAM, which is what the chip reports
@@ -447,7 +447,7 @@
       # depending on usage, i.e. 32G in this case)
       HSA_ENABLE_SDMA = "0";
     };
-    rocmOverrideGfx = "11.0.3";
+    rocmOverrideGfx = "11.0.2";
   };
   services.open-webui = {
     # ollama gui
