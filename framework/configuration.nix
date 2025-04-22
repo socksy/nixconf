@@ -499,8 +499,10 @@
   security.sudo.enable = true;
   security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];
 
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerCompat = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = true;
+  #virtualisation.podman.enable = true;
+  #virtualisation.podman.dockerCompat = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
