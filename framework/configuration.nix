@@ -469,9 +469,10 @@
         };
         General = {
           PairableTimeout = 0;
-          DiscoverableTimeout = 0;
+          DiscoverableTimeout = 360;
           RememberPowered = false;
           MultiProfile = "multiple";
+          FastConnectable = true;
         };
       };
     };
