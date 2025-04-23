@@ -249,6 +249,9 @@
         "JoyPixels"
         "Noto Color Emoji"
       ];
+      fontconfig.hinting.enable = true;
+      fontconfig.hinting.style = "full";
+      fontconfig.subpixel.rgba = "rgb";
     };
 
     # if using alternative pkgs, needs to be done elsewhere as
