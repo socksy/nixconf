@@ -262,7 +262,9 @@
     opentofu
     python3Packages.ruff
     python3Packages.jedi
-    vscode-extensions.ms-python.vscode-pylance
+    python3Packages.python-lsp-server
+    python3Packages.python-lsp-ruff
+    python3Packages.python-lsp-black
     pyright
     terraform-ls
     typescript
