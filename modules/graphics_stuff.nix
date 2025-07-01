@@ -243,6 +243,7 @@
         #vistafonts
         ubuntu_font_family
         joypixels
+        nerd-fonts.zed-mono
       ];
 
       fontconfig.defaultFonts.emoji = [
