@@ -15,7 +15,7 @@
   #inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
-  inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+  inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   inputs.hyprland = {
