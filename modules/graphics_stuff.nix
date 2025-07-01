@@ -236,7 +236,7 @@
         noto-fonts-cjk-sans
         ipaexfont
         kochi-substitute
-        roboto
+        roboto-mono
         source-code-pro
         source-sans-pro
         symbola
