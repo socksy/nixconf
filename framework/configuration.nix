@@ -287,6 +287,7 @@
     hyprland-pkgs.aider-chat
     vscode-fhs
     shotwell
+    deskflow
 
     # miracast
     #gnome-network-displays
