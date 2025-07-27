@@ -211,9 +211,8 @@
         emacs-all-the-icons-fonts
         etBook
         fantasque-sans-mono
-        fira-code
-        nerd-fonts.fira-code
         fira
+        fira-code
         fira-math
         font-awesome
         gentium
@@ -222,27 +221,30 @@
         hack-font
         hasklig
         helvetica-neue-lt-std
-        iosevka
         inconsolata
         inter
+        iosevka
+        ipaexfont
         jetbrains-mono
-        #  ipafont
+        joypixels
+        kochi-substitute
         liberation_ttf
         libertine
-        powerline-fonts
-        terminus_font
         noto-fonts
-        noto-fonts-emoji
         noto-fonts-cjk-sans
-        ipaexfont
-        kochi-substitute
+        noto-fonts-emoji
+        powerline-fonts
         roboto-mono
         source-code-pro
         source-sans-pro
         symbola
-        #vistafonts
+        terminus_font
         ubuntu_font_family
-        joypixels
+
+        nerd-fonts.caskaydia-cove
+        nerd-fonts.fira-code
+        nerd-fonts.recursive-mono
+        nerd-fonts.roboto-mono
         nerd-fonts.zed-mono
       ];
 

@@ -249,6 +249,8 @@
     hyprland-pkgs.google-chrome
     hyprland-pkgs.popcorntime
     hyprland-pkgs.ffmpeg-full
+    hyprland-pkgs.rawtherapee
+    hyprland-pkgs.art
 
     # programming tools
     clojure
