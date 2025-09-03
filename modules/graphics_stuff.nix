@@ -82,6 +82,7 @@
                 "Capslock" = {
                   "held" = "Control_R";
                   "alone" = "Esc";
+                  "free_hold" = true;
                   #"skip_key_event" = true;
                 };
                 "Esc" = {
@@ -90,6 +91,7 @@
                   # actually give you the compose key
                   "alone" = "Compose";
                   "held" = "RightAlt";
+                  "free_hold" = true;
                   #"skip_key_event" = true;
                 };
               };
@@ -102,10 +104,12 @@
                 "LeftShift" = {
                   "held" = "LeftShift";
                   "alone" = "KPLeftParen";
+                  "free_hold" = true;
                 };
                 "RightShift" = {
                   "held" = "RightShift";
                   "alone" = "KPRightParen";
+                  "free_hold" = true;
                 };
               };
             }
