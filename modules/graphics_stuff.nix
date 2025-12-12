@@ -236,14 +236,14 @@
         libertine
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         powerline-fonts
         roboto-mono
         source-code-pro
         source-sans-pro
         symbola
         terminus_font
-        ubuntu_font_family
+        ubuntu-classic
 
         nerd-fonts.caskaydia-cove
         nerd-fonts.fira-code
@@ -276,7 +276,7 @@
         rocmPackages.clr.icd
         rocmPackages.rocminfo
         rocmPackages.rocm-runtime
-        vaapiVdpau
+        libva-vdpau-driver
         libvdpau-va-gl
         #amdvlk
       ];

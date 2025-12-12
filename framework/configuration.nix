@@ -259,7 +259,7 @@
     go
     gopls
     nixd
-    fennel
+    luaPackages.fennel
     fennel-ls
     opentofu
     python3Packages.ruff
@@ -440,30 +440,30 @@
   services.fstrim.enable = true;
 
   # AI stuff
-  services.ollama = {
-    enable = true;
-    package = pkgs.hyprland-pkgs.ollama;
-    acceleration = "rocm";
-    environmentVariables = {
-      # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
-      HCC_AMDGPU_TARGET = "gfx1102";
-      HSA_OVERRIDE_GFX_VERSION = "11.0.2";
-      # switch from using system direct memory access to 'blit' kernels
-      # trade-off - use up some compute kernels in order for it to not
-      # think that there's only 4G RAM, which is what the chip reports
-      # (integrated graphics goes variably up to half the system memory
-      # depending on usage, i.e. 32G in this case)
-      HSA_ENABLE_SDMA = "0";
-    };
-    rocmOverrideGfx = "11.0.2";
-  };
-  services.open-webui = {
-    # ollama gui
-    enable = true;
-    port = 10203;
-    host = "0.0.0.0";
-    package = pkgs.stable.open-webui;
-  };
+  #services.ollama = {
+  #  enable = true;
+  #  package = pkgs.hyprland-pkgs.ollama;
+  #  acceleration = "rocm";
+  #  environmentVariables = {
+  #    # `nix run nixpkgs#rocmPackages.rocminfo | grep gfx` to get latest
+  #    HCC_AMDGPU_TARGET = "gfx1102";
+  #    HSA_OVERRIDE_GFX_VERSION = "11.0.2";
+  #    # switch from using system direct memory access to 'blit' kernels
+  #    # trade-off - use up some compute kernels in order for it to not
+  #    # think that there's only 4G RAM, which is what the chip reports
+  #    # (integrated graphics goes variably up to half the system memory
+  #    # depending on usage, i.e. 32G in this case)
+  #    HSA_ENABLE_SDMA = "0";
+  #  };
+  #  rocmOverrideGfx = "11.0.2";
+  #};
+  #services.open-webui = {
+  #  # ollama gui
+  #  enable = true;
+  #  port = 10203;
+  #  host = "0.0.0.0";
+  #  package = pkgs.stable.open-webui;
+  #};
 
   # tweak mouse dpi etc
   services.ratbagd.enable = true;
@@ -518,9 +518,6 @@
       package = pkgs.qemu_full;
       runAsRoot = true;
       swtpm.enable = true;
-      ovmf = {
-        enable = true;
-      };
     };
   };
   virtualisation.waydroid.enable = true;

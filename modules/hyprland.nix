@@ -63,7 +63,7 @@ in
       xdg-utils
       swayidle
 
-      rofi-wayland
+      rofi
 
       mako # notification system developed by swaywm maintainer
       polkit_gnome
