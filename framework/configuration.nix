@@ -281,7 +281,7 @@
     inkscape
     #libreoffice
     pinta
-    signal-desktop
+    signal-desktop-bin
     telegram-desktop
     hyprland-pkgs.ardour
     piper-tts
