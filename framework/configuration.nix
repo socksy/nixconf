@@ -253,15 +253,21 @@
     hyprland-pkgs.art
 
     # programming tools
+    babashka
+    bun
     clojure
     clojure-lsp
     deno
     go
     gopls
+    graphviz
+    hcloud
+    httpie
     nixd
     luaPackages.fennel
     fennel-ls
     opentofu
+    protobuf
     python3Packages.ruff
     python3Packages.jedi
     python3Packages.python-lsp-server
@@ -269,27 +275,46 @@
     python3Packages.python-lsp-black
     pyright
     terraform-ls
+    tmate
+    trufflehog
     typescript
     typescript-language-server
     rust-analyzer
+    uv
 
     # nice to haves
     anki-bin
     acpi
     baobab
+    cheese
+    darktable
+    encfs
+    exiftool
+    fw-ectool
+    hueadm
+    immich-go
+    libnotify
     ncdu
     inkscape
     #libreoffice
     pinta
+    unstable.planify
+    powertop
     signal-desktop-bin
+    simple-scan
+    sox
     telegram-desktop
     hyprland-pkgs.ardour
     piper-tts
     speechd
     hyprland-pkgs.aider-chat
+    uxn
+    viu
     vscode-fhs
     shotwell
     deskflow
+    yazi
+    yt-dlp
 
     # miracast
     #gnome-network-displays
