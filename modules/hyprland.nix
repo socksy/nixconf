@@ -121,7 +121,7 @@ in
         enable = true;
         settings = rec {
           initial_session = {
-            command = "${hyprland-package}/bin/Hyprland";
+            command = "${hyprland-package}/bin/start-hyprland";
             user = username;
           };
           default_session = initial_session;
