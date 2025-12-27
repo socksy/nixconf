@@ -372,6 +372,11 @@
 
   programs.neovim = {
     enable = true;
+    configure = {
+      packages.all.start = [
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (_: pkgs.vimPlugins.nvim-treesitter.allGrammars))
+      ];
+    };
   };
 
   programs.obs-studio = {
