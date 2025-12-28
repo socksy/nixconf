@@ -68,6 +68,7 @@ in
 
       # Shell components (ashell replaces waybar/ags bar)
       ashell
+      zenity # for calendar popup
       swaynotificationcenter # notification daemon + center (replaces mako)
       swayosd # on-screen display for volume/brightness
       wlogout # logout/power menu
