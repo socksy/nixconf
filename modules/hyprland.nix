@@ -30,7 +30,6 @@ in
       portalPackage = hyprland-portals-package;
       xwayland.enable = true;
     };
-    programs.waybar.enable = true;
     programs.xwayland.package = hyprland-nixpkgs.xwayland;
 
     xdg.portal = {
@@ -63,9 +62,17 @@ in
       xdg-utils
       swayidle
 
-      rofi
+      # Launchers
+      rofi # legacy, keeping for now
+      vicinae # raycast-style launcher
 
-      mako # notification system developed by swaywm maintainer
+      # Shell components (ashell replaces waybar/ags bar)
+      ashell
+      swaynotificationcenter # notification daemon + center (replaces mako)
+      swayosd # on-screen display for volume/brightness
+      wlogout # logout/power menu
+
+      # mako # replaced by swaynotificationcenter
       polkit_gnome
     ];
     # to match opengl versions
