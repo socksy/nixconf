@@ -68,7 +68,7 @@ in
 
       # Shell components (ashell replaces waybar/ags bar)
       ashell
-      zenity # for calendar popup
+      yad # for calendar popup
       swaynotificationcenter # notification daemon + center (replaces mako)
       swayosd # on-screen display for volume/brightness
       wlogout # logout/power menu
@@ -107,7 +107,7 @@ in
       upower.enable = true;
       power-profiles-daemon.enable = true;
       accounts-daemon.enable = true;
-      illum.enable = true;
+      # illum.enable = true; # using swayosd instead
       tumbler.enable = true;
       gnome = {
         evolution-data-server.enable = true;
