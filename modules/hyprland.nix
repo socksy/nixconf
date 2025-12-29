@@ -11,6 +11,13 @@ let
   hyprland-package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   hyprland-portals-package = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
+  hyprland-plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+  hypr-plugin-dir = pkgs.symlinkJoin {
+    name = "hyprland-plugins";
+    paths = with hyprland-plugins; [
+      hyprexpo
+    ];
+  };
 in
 {
   options.hyprland = {
@@ -19,6 +26,9 @@ in
 
   config = lib.mkIf config.hyprland.enable {
     graphicsStuff.pkgs = pkgs.hyprland-pkgs;
+
+    # Set plugin directory for Hyprland plugins
+    environment.sessionVariables.HYPR_PLUGIN_DIR = "${hypr-plugin-dir}";
     nix.settings = {
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
@@ -30,6 +40,7 @@ in
       portalPackage = hyprland-portals-package;
       xwayland.enable = true;
     };
+
     programs.xwayland.package = hyprland-nixpkgs.xwayland;
 
     xdg.portal = {
@@ -75,6 +86,9 @@ in
 
       # mako # replaced by swaynotificationcenter
       polkit_gnome
+
+      # Hyprland plugins
+      hyprland-plugins.hyprexpo
     ];
     # to match opengl versions
     programs.firefox.package = hyprland-nixpkgs.firefox;

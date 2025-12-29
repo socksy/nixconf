@@ -246,7 +246,9 @@
     ((emacsPackagesFor hyprland-pkgs.emacs30-pgtk).emacsWithPackages (epkgs: [
       epkgs.vterm
       epkgs.tree-sitter-langs
-      epkgs.treesit-grammars.with-all-grammars
+      (epkgs.treesit-grammars.with-grammars (
+        grammars: builtins.attrValues (removeAttrs grammars [ "tree-sitter-razor" ])
+      ))
     ]))
     # use later version
     #logseq
@@ -374,7 +376,12 @@
     enable = true;
     configure = {
       packages.all.start = [
-        (pkgs.vimPlugins.nvim-treesitter.withPlugins (_: pkgs.vimPlugins.nvim-treesitter.allGrammars))
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+          p:
+          builtins.filter (
+            g: (g.grammarName or g.pname or "") != "razor"
+          ) pkgs.vimPlugins.nvim-treesitter.allGrammars
+        ))
       ];
     };
   };

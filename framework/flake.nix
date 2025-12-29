@@ -23,6 +23,10 @@
     # gonna try this the other way around to hopefully hit the hyprland cachix
     #inputs.nixpkgs.follows = "nixpkgs";
   };
+  inputs.hyprland-plugins = {
+    url = "github:hyprwm/hyprland-plugins";
+    inputs.hyprland.follows = "hyprland";
+  };
   inputs.xremap-flake.url = "github:xremap/nix-flake";
   #inputs.emacs.url = github:nix-community/emacs-overlay/2e23449;
 
