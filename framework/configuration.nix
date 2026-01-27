@@ -82,9 +82,6 @@
   networking.wireless.iwd = {
     enable = true;
     settings = {
-      General = {
-        AddressRandomization = "network"; # Randomize MAC per network for privacy
-      };
       Settings = {
         AutoConnect = true;
       };
