@@ -18,6 +18,25 @@ let
       hyprexpo
     ];
   };
+  mkGraphicalService =
+    {
+      description,
+      exec,
+      extraConfig ? { },
+    }:
+    {
+      inherit description;
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = exec;
+        Restart = "on-failure";
+        RestartSec = 1;
+      }
+      // extraConfig;
+    };
 in
 {
   options.hyprland = {
@@ -93,25 +112,16 @@ in
     # to match opengl versions
     programs.firefox.package = hyprland-nixpkgs.firefox;
 
-    systemd = {
-      user.services.polkit-gnome-authentication-agent-1 = {
-        description = "polkit-gnome-authentication-agent-1";
-        wantedBy = [ "graphical-session.target" ];
-        wants = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
+    systemd.user.services = {
+      polkit-gnome-authentication-agent-1 = mkGraphicalService {
+        description = "Polkit authentication agent";
+        exec = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        extraConfig.TimeoutStopSec = 10;
       };
-      #user.services.kanshi = {
-      #  Unit = {
-      #    PartOf
-      #  };
-      #};
+      swayosd = mkGraphicalService {
+        description = "SwayOSD volume/brightness OSD";
+        exec = "${pkgs.swayosd}/bin/swayosd-server";
+      };
     };
 
     services = {
