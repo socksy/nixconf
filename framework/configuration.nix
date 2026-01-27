@@ -202,6 +202,7 @@
     #glib # gsettings
     #dracula-theme # gtk theme
     #gnome3.adwaita-icon-theme # default gnome cursors
+    networkmanagerapplet # nm-connection-editor
     papirus-icon-theme
     yadm
     nix-output-monitor
