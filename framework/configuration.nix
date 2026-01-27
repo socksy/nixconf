@@ -78,6 +78,18 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General = {
+        AddressRandomization = "network"; # Randomize MAC per network for privacy
+      };
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+  };
   networking.networkmanager.insertNameservers = [
     "1.1.1.1"
     "1.0.0.1"
