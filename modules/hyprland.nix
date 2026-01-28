@@ -118,10 +118,14 @@ in
         exec = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         extraConfig.TimeoutStopSec = 10;
       };
-      swayosd = mkGraphicalService {
-        description = "SwayOSD volume/brightness OSD";
-        exec = "${pkgs.swayosd}/bin/swayosd-server";
-      };
+      swayosd =
+        mkGraphicalService {
+          description = "SwayOSD volume/brightness OSD";
+          exec = "${pkgs.swayosd}/bin/swayosd-server";
+        }
+        // {
+          startLimitBurst = 0;
+        }; # disable restart rate limit
     };
 
     services = {
