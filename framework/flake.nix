@@ -42,6 +42,11 @@
     url = "github:ryantm/agenix";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  inputs.lan-mouse = {
+    url = "github:feschber/lan-mouse/main";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   inputs.nixpkgs.follows = "hyprland/nixpkgs";
 
   outputs =
@@ -54,6 +59,7 @@
       hyprland,
       bens-ags,
       agenix,
+      lan-mouse,
       ...
     }@inputs:
     let
@@ -79,6 +85,12 @@
       overlay-force-newer-blueman = final: prev: {
         blueman = nixpkgs-unstable.legacyPackages.${prev.system}.blueman;
       };
+      overlay-flakes = final: prev: {
+        flakes = {
+          agenix = agenix.packages.${prev.system}.default;
+          lan-mouse = lan-mouse.packages.${prev.system}.default;
+        };
+      };
     in
     {
       nixosConfigurations.fenixos = nixpkgs.lib.nixosSystem {
@@ -96,6 +108,7 @@
                 overlay-stable
                 overlay-staging-next
                 overlay-force-newer-blueman
+                overlay-flakes
               ];
             }
           )
