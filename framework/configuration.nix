@@ -87,25 +87,15 @@
       };
     };
   };
-  networking.networkmanager.insertNameservers = [
-    "1.1.1.1"
-    "1.0.0.1"
-    "8.8.8.8"
-  ];
   networking.nameservers = [
     "1.1.1.1"
     "1.0.0.1"
     "8.8.8.8"
   ];
-
   services.resolved = {
     enable = true;
     dnssec = "true";
     domains = [ "~." ];
-    fallbackDns = [
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
     dnsovertls = "true";
   };
   services.mullvad-vpn = {
@@ -205,7 +195,7 @@
     nix-output-monitor
     nixfmt-rfc-style
     delta
-    inputs.agenix.packages."${system}".default
+    flakes.agenix
     kanshi
 
     # basic survival
@@ -339,6 +329,7 @@
     vscode-fhs
     shotwell
     deskflow
+    flakes.lan-mouse
     yazi
     yt-dlp
 
@@ -591,6 +582,7 @@
   networking.firewall.allowedUDPPorts = [
     # spotify mdns (e.g. chromecast?)
     5353
+    4242
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
