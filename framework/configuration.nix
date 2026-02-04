@@ -79,6 +79,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.dns = "systemd-resolved";
   networking.wireless.iwd = {
     enable = true;
     settings = {
