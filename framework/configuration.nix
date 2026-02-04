@@ -327,7 +327,7 @@
     hyprland-pkgs.aider-chat
     uxn
     viu
-    vscode-fhs
+    vscodium-fhs
     shotwell
     deskflow
     flakes.lan-mouse
