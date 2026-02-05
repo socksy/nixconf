@@ -76,7 +76,7 @@ in
       pam.services.swaylock = { };
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with hyprland-nixpkgs; [
       loupe
       nautilus
       gnome-text-editor
