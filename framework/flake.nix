@@ -67,28 +67,28 @@
       username = "ben";
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
-          system = prev.system;
+          inherit system;
           config.allowUnfree = true;
         };
       };
       overlay-hyprland = final: prev: {
         hyprland-pkgs = import hyprland.inputs.nixpkgs {
-          system = prev.system;
+          inherit system;
           config.allowUnfree = true;
           config.joypixels.acceptLicense = true;
         };
       };
-      overlay-stable = final: prev: { stable = nixpkgs-stable.legacyPackages.${prev.system}; };
+      overlay-stable = final: prev: { stable = nixpkgs-stable.legacyPackages.${system}; };
       overlay-staging-next = final: prev: {
-        staging = nixpkgs-staging-next.legacyPackages.${prev.system};
+        staging = nixpkgs-staging-next.legacyPackages.${system};
       };
       overlay-force-newer-blueman = final: prev: {
-        blueman = nixpkgs-unstable.legacyPackages.${prev.system}.blueman;
+        blueman = nixpkgs-unstable.legacyPackages.${system}.blueman;
       };
       overlay-flakes = final: prev: {
         flakes = {
-          agenix = agenix.packages.${prev.system}.default;
-          lan-mouse = lan-mouse.packages.${prev.system}.default;
+          agenix = agenix.packages.${system}.default;
+          lan-mouse = lan-mouse.packages.${system}.default;
         };
       };
     in

@@ -8,10 +8,11 @@
   ...
 }:
 let
-  hyprland-package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  hyprland-portals-package = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system};
-  hyprland-plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+  system = pkgs.stdenv.hostPlatform.system;
+  hyprland-package = inputs.hyprland.packages.${system}.hyprland;
+  hyprland-portals-package = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
+  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
+  hyprland-plugins = inputs.hyprland-plugins.packages.${system};
   hypr-plugin-dir = pkgs.symlinkJoin {
     name = "hyprland-plugins";
     paths = with hyprland-plugins; [

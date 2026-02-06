@@ -5,7 +5,6 @@
 {
   config,
   pkgs,
-  system,
   username,
   lib,
   inputs,
@@ -95,9 +94,11 @@
   ];
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    domains = [ "~." ];
-    dnsovertls = "true";
+    settings.Resolve = {
+      DNSSEC = "true";
+      Domains = [ "~." ];
+      DNSOverTLS = "true";
+    };
   };
   services.mullvad-vpn = {
     enable = true;
@@ -194,7 +195,7 @@
     papirus-icon-theme
     yadm
     nix-output-monitor
-    nixfmt-rfc-style
+    nixfmt
     delta
     flakes.agenix
     kanshi
@@ -230,7 +231,7 @@
     devenv
     eza # better ls
     expect
-    zed-editor
+    zed-editor-fhs
     ispell
     mosh
     mob
@@ -260,7 +261,7 @@
     hyprland-pkgs.slack
     hyprland-pkgs.spotify
     hyprland-pkgs.todoist-electron
-    xfce.thunar
+    thunar
     hyprland-pkgs.mesa-demos
     hyprland-pkgs.chromium
     hyprland-pkgs.google-chrome
