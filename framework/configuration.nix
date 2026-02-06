@@ -230,7 +230,7 @@
     devenv
     eza # better ls
     expect
-    stable.zed-editor
+    zed-editor
     ispell
     mosh
     mob
