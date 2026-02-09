@@ -254,21 +254,22 @@
     ]))
     # use later version
     #logseq
+    art
+    chromium
     discord
-    hyprland-pkgs.keepassxc
-    hyprland-pkgs.mplayer
-    hyprland-pkgs.mpv
-    hyprland-pkgs.slack
-    hyprland-pkgs.spotify
-    hyprland-pkgs.todoist-electron
+    ffmpeg-full
+    google-chrome
+    keepassxc
+    mesa-demos
+    mplayer
+    mpv
+    popcorntime
+    rawtherapee
+    slack
+    spotify
     thunar
-    hyprland-pkgs.mesa-demos
-    hyprland-pkgs.chromium
-    hyprland-pkgs.google-chrome
-    hyprland-pkgs.popcorntime
-    hyprland-pkgs.ffmpeg-full
-    hyprland-pkgs.rawtherapee
-    hyprland-pkgs.art
+    todoist-electron
+    qutebrowser
 
     # programming tools
     babashka
@@ -494,6 +495,24 @@
   services.fstrim.enable = true;
 
   # AI stuff
+  #services.llama-cpp = {
+  #  enable = true;
+  #  package = pkgs.llama-cpp-vulkan;
+  #  model = "/home/ben/models/GLM-4.7-Flash-Q4_K_M.gguf";
+  #  port = 11435;
+  #  host = "127.0.0.1";
+  #  extraFlags = [
+  #    "--jinja"
+  #    "-c"
+  #    "32768"
+  #  ];
+  #};
+  #systemd.services.llama-cpp = {
+  #  serviceConfig.ProtectHome = lib.mkForce false;
+  #  serviceConfig.CacheDirectory = "llama.cpp";
+  #  environment.XDG_CACHE_HOME = "/var/cache/llama.cpp";
+  #};
+
   #services.ollama = {
   #  enable = true;
   #  package = pkgs.hyprland-pkgs.ollama;
@@ -511,13 +530,13 @@
   #  };
   #  rocmOverrideGfx = "11.0.2";
   #};
-  #services.open-webui = {
-  #  # ollama gui
-  #  enable = true;
-  #  port = 10203;
-  #  host = "0.0.0.0";
-  #  package = pkgs.stable.open-webui;
-  #};
+  services.open-webui = {
+    # ollama gui
+    enable = true;
+    port = 10203;
+    host = "0.0.0.0";
+    package = pkgs.open-webui;
+  };
 
   # tweak mouse dpi etc
   services.ratbagd.enable = true;
