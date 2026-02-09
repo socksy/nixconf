@@ -447,6 +447,10 @@
   security.pam.services.swaylock.fprintAuth = false;
   security.pam.services.swaylock.allowNullPassword = true;
 
+  security.pam.services.sudo.rules.auth.fprintd.settings = {
+    max-tries = 10;
+  };
+
   # a bit useless
   #security.pam.services.gdm = {
   #  text = ''
