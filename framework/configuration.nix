@@ -312,6 +312,7 @@
     libnotify
     ncdu
     inkscape
+    llama-cpp-vulkan
     #libreoffice
     pinta
     unstable.planify
