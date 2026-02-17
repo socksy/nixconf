@@ -71,7 +71,6 @@
   networking.hostName = "fenixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-
   # Enable networking
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
@@ -100,6 +99,11 @@
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn;
+  };
+  services.guacamole-server = {
+    enable = true;
+    host = "127.0.0.1";
+    port = 4822;
   };
 
   # Set your time zone.
