@@ -60,7 +60,9 @@
     "rd.udev.log_level=3"
     "udev.log_priority=3"
     #"initcall_blacklist=simpledrm_platform_driver_init"
+    "cfg80211.ieee80211_regdom=DE"
   ];
+  hardware.wirelessRegulatoryDatabase = true;
   # Hide the OS choice for bootloaders.
   # It's still possible to open the bootloader list by pressing any key
   # It will just not appear on screen unless a key is pressed
