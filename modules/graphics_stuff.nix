@@ -42,10 +42,11 @@
       brightnessctl
       playerctl
 
-      swww
+      awww
       swaybg
 
       kitty
+      ghostty
 
       darktile
       wdisplays # tool to configure displays
@@ -214,7 +215,7 @@
         dina-font
         eb-garamond
         emacs-all-the-icons-fonts
-        etBook
+        et-book
         fantasque-sans-mono
         fira
         fira-code
