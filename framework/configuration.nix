@@ -255,11 +255,13 @@
     ispell
     mosh
     mob
+    zellij
 
     lshw
     usbutils # for lsusb
     cyme # better lsusb
     appimage-run
+    iw
 
     easyeffects # pipewire fx
 
@@ -340,7 +342,7 @@
     pinta
     unstable.planify
     powertop
-    signal-desktop-bin
+    signal-desktop
     simple-scan
     sox
     telegram-desktop
