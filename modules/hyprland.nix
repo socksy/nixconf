@@ -60,6 +60,7 @@ in
       package = hyprland-package;
       portalPackage = hyprland-portals-package;
       xwayland.enable = true;
+      withUWSM = true;
     };
 
     programs.xwayland.package = hyprland-nixpkgs.xwayland;

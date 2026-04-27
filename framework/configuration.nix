@@ -88,6 +88,13 @@
         BandModifier5GHz = 1.0;
         BandModifier2_4GHz = 0.2;
       };
+      Scan = {
+        InitialPeriodicScanInterval = 2;
+        MaximumPeriodicScanInterval = 30;
+      };
+      DriverQuirks = {
+        PowerSaveDisable = "*";
+      };
     };
   };
   networking.nameservers = [
