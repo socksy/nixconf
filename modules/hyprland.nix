@@ -15,8 +15,9 @@ let
   hyprland-plugins = inputs.hyprland-plugins.packages.${system};
   hypr-plugin-dir = pkgs.symlinkJoin {
     name = "hyprland-plugins";
-    paths = with hyprland-plugins; [
-      hyprexpo
+    paths = [
+      inputs.Hyprspace.packages.${system}.Hyprspace
+      # hyprexpo  # broken against hyprland 0.54+ as of 2026-04-27, see hyprland-plugins#640
     ];
   };
   mkGraphicalService =
@@ -108,7 +109,9 @@ in
       polkit_gnome
 
       # Hyprland plugins
-      hyprland-plugins.hyprexpo
+      # hyprland-plugins.hyprexpo  # broken against hyprland 0.54+ as of 2026-04-27
+      inputs.Hyprspace.packages.${system}.Hyprspace
+
     ];
     # to match opengl versions
     programs.firefox.package = hyprland-nixpkgs.firefox;

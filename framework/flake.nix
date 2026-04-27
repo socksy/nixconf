@@ -19,12 +19,15 @@
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   inputs.hyprland = {
-    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    # gonna try this the other way around to hopefully hit the hyprland cachix
-    #inputs.nixpkgs.follows = "nixpkgs";
+    url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.54.3";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
   inputs.hyprland-plugins = {
     url = "github:hyprwm/hyprland-plugins";
+    inputs.hyprland.follows = "hyprland";
+  };
+  inputs.Hyprspace = {
+    url = "github:KZDKM/Hyprspace";
     inputs.hyprland.follows = "hyprland";
   };
   inputs.xremap-flake.url = "github:xremap/nix-flake";
@@ -47,7 +50,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  inputs.nixpkgs.follows = "hyprland/nixpkgs";
+  inputs.nixpkgs.follows = "nixpkgs-unstable";
 
   outputs =
     {
