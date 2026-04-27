@@ -81,6 +81,11 @@
       Settings = {
         AutoConnect = true;
       };
+      Rank = {
+        BandModifier6GHz = 5.0;
+        BandModifier5GHz = 1.0;
+        BandModifier2_4GHz = 0.2;
+      };
     };
   };
   networking.nameservers = [
@@ -100,11 +105,25 @@
     enable = true;
     package = pkgs.mullvad-vpn;
   };
-  services.guacamole-server = {
-    enable = true;
-    host = "127.0.0.1";
-    port = 4822;
-  };
+  #services.guacamole-server = {
+  #  enable = true;
+  #  host = "127.0.0.1";
+  #  port = 4822;
+  #};
+  #services.guacamole-client = {
+  #  enable = true;
+  #  enableWebserver = true;
+  #  settings = {
+  #    guacd-port = 4822;
+  #    guacd-hostname = "localhost";
+  #  };
+  #  userMappingXml = pkgs.writeText "user-mapping.xml" ''
+  #    <user-mapping>
+  #      <authorize username="ben" password="a1b699e30ae2c85d1b361a9181eef8eefcfc7e20d0c699cb8e404ca960f7e0d1" encoding="sha256">
+  #      </authorize>
+  #    </user-mapping>
+  #  '';
+  #};
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
