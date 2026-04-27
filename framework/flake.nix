@@ -27,7 +27,9 @@
     inputs.hyprland.follows = "hyprland";
   };
   inputs.Hyprspace = {
-    url = "github:KZDKM/Hyprspace";
+    # Fork with fix for v0.54.3 onKeyPress null-deref on virtual keyboards
+    # (xremap/vicinae). Upstream KZDKM/Hyprspace#227. Revisit when upstream merges a fix.
+    url = "github:0xl30/Hyprspace/9de2dc4041";
     inputs.hyprland.follows = "hyprland";
   };
   inputs.xremap-flake.url = "github:xremap/nix-flake";

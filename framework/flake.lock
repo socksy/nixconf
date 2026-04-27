@@ -8,15 +8,16 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1775071961,
-        "narHash": "sha256-LXkeeH9Blr6ohS1LAsVZbkJ/EAkkMDATh5qu45hC7Zo=",
-        "owner": "KZDKM",
+        "lastModified": 1775981343,
+        "narHash": "sha256-AaYdsh9mCmCxgaXzagaVLouZBAWPfw8BnU2GEpVGHkY=",
+        "owner": "0xl30",
         "repo": "Hyprspace",
-        "rev": "12ddde04f8584bf7de3151e6169918e0dda9f822",
+        "rev": "9de2dc4041f57a7baf817559b2e6e9a20f9a671b",
         "type": "github"
       },
       "original": {
-        "owner": "KZDKM",
+        "owner": "0xl30",
+        "ref": "9de2dc4041",
         "repo": "Hyprspace",
         "type": "github"
       }
