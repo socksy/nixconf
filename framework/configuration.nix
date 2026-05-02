@@ -566,13 +566,13 @@
   #  };
   #  rocmOverrideGfx = "11.0.2";
   #};
-  services.open-webui = {
-    # ollama gui
-    enable = true;
-    port = 10203;
-    host = "0.0.0.0";
-    package = pkgs.open-webui;
-  };
+  #services.open-webui = {
+  #  # ollama gui
+  #  enable = true;
+  #  port = 10203;
+  #  host = "0.0.0.0";
+  #  package = pkgs.open-webui;
+  #};
 
   # tweak mouse dpi etc
   services.ratbagd.enable = true;
