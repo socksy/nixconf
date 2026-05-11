@@ -162,7 +162,7 @@ in
         enable = true;
         settings = rec {
           initial_session = {
-            command = "${pkgs.uwsm}/bin/uwsm start -- hyprlanda-uwsm.desktop";
+            command = "${pkgs.uwsm}/bin/uwsm start -- hyprland-uwsm.desktop";
             user = username;
           };
           default_session = initial_session;
