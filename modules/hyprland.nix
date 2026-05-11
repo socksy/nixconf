@@ -101,6 +101,7 @@ in
 
       # Shell components (ashell replaces waybar/ags bar)
       ashell
+      awww # wallpaper daemon (formerly swww)
       yad # for calendar popup
       swaynotificationcenter # notification daemon + center (replaces mako)
       swayosd # on-screen display for volume/brightness
@@ -131,6 +132,58 @@ in
         // {
           startLimitBurst = 0;
         }; # disable restart rate limit
+
+      kanshi = mkGraphicalService {
+        description = "Kanshi dynamic output configuration";
+        exec = "${pkgs.kanshi}/bin/kanshi";
+      };
+
+      wl-clip-persist = mkGraphicalService {
+        description = "Keep wayland clipboard contents after source app closes";
+        exec = "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular";
+      };
+
+      cliphist-store = mkGraphicalService {
+        description = "Watch clipboard and append history to cliphist";
+        exec = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
+      };
+
+      ashell = mkGraphicalService {
+        description = "ashell status bar";
+        exec = "${hyprland-nixpkgs.ashell}/bin/ashell";
+      };
+
+      swaync = mkGraphicalService {
+        description = "SwayNotificationCenter notification daemon";
+        exec = "${hyprland-nixpkgs.swaynotificationcenter}/bin/swaync";
+      };
+
+      vicinae = mkGraphicalService {
+        description = "Vicinae launcher server";
+        exec = "${hyprland-nixpkgs.vicinae}/bin/vicinae server";
+      };
+
+      swayidle = mkGraphicalService {
+        description = "Swayidle idle management daemon";
+        exec = "${hyprland-nixpkgs.swayidle}/bin/swayidle";
+      };
+
+      awww-daemon = mkGraphicalService {
+        description = "awww wallpaper daemon";
+        exec = "${pkgs.awww}/bin/awww-daemon";
+      };
+
+      awww-wallpaper = {
+        description = "Apply wallpaper from ~/.config/background";
+        wantedBy = [ "graphical-session.target" ];
+        after = [ "awww-daemon.service" ];
+        requires = [ "awww-daemon.service" ];
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStartPre = "${pkgs.coreutils}/bin/sleep 1";
+          ExecStart = "${pkgs.awww}/bin/awww img %h/.config/background";
+        };
+      };
     };
 
     services = {
