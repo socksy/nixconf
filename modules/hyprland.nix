@@ -31,6 +31,12 @@ let
       wantedBy = [ "graphical-session.target" ];
       wants = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
+      path = [
+        "/run/wrappers"
+        "/run/current-system/sw"
+        "/etc/profiles/per-user/${username}"
+        "/home/${username}"
+      ];
       serviceConfig = {
         Type = "simple";
         ExecStart = exec;
@@ -48,8 +54,10 @@ in
   config = lib.mkIf config.hyprland.enable {
     graphicsStuff.pkgs = pkgs.hyprland-pkgs;
 
-    # Set plugin directory for Hyprland plugins
-    environment.sessionVariables.HYPR_PLUGIN_DIR = "${hypr-plugin-dir}";
+    environment.sessionVariables = {
+      HYPR_PLUGIN_DIR = "${hypr-plugin-dir}";
+      IBUS_USE_PORTAL = "1";
+    };
 
     # uwsm searches XDG_CONFIG_DIRS for uwsm/env (so /etc/xdg/uwsm/env, not /etc/uwsm/env)
     environment.etc."xdg/uwsm/env".text = ''
