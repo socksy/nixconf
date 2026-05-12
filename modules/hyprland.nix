@@ -50,6 +50,12 @@ in
 
     # Set plugin directory for Hyprland plugins
     environment.sessionVariables.HYPR_PLUGIN_DIR = "${hypr-plugin-dir}";
+
+    # uwsm finalize pushes UWSM_FINALIZE_VARNAMES into systemd --user env
+    environment.etc."uwsm/env".text = ''
+      export PATH=$HOME/bin:/run/wrappers/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:$PATH
+      export UWSM_FINALIZE_VARNAMES="PATH XDG_DATA_DIRS XDG_CONFIG_DIRS NIX_PROFILES"
+    '';
     nix.settings = {
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
@@ -119,6 +125,13 @@ in
     programs.firefox.package = hyprland-nixpkgs.firefox;
 
     systemd.user.services = {
+      xremap = {
+        wantedBy = lib.mkForce [ "graphical-session.target" ];
+        partOf = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+
       polkit-gnome-authentication-agent-1 = mkGraphicalService {
         description = "Polkit authentication agent";
         exec = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -175,7 +188,7 @@ in
 
       awww-wallpaper = {
         description = "Apply wallpaper from ~/.config/background";
-        wantedBy = [ "graphical-session.target" ];
+        wantedBy = [ "awww-daemon.service" ];
         after = [ "awww-daemon.service" ];
         requires = [ "awww-daemon.service" ];
         serviceConfig = {

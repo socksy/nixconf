@@ -373,7 +373,7 @@
 
     # fun
     hyprland-pkgs.zeroad
-    hyprland-pkgs.superTuxKart
+    hyprland-pkgs.supertuxkart
 
     qemu_full
     hyprland-pkgs.quickemu
