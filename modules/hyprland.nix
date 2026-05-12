@@ -51,8 +51,8 @@ in
     # Set plugin directory for Hyprland plugins
     environment.sessionVariables.HYPR_PLUGIN_DIR = "${hypr-plugin-dir}";
 
-    # uwsm finalize pushes UWSM_FINALIZE_VARNAMES into systemd --user env
-    environment.etc."uwsm/env".text = ''
+    # uwsm searches XDG_CONFIG_DIRS for uwsm/env (so /etc/xdg/uwsm/env, not /etc/uwsm/env)
+    environment.etc."xdg/uwsm/env".text = ''
       export PATH=$HOME/bin:/run/wrappers/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:$PATH
       export UWSM_FINALIZE_VARNAMES="PATH XDG_DATA_DIRS XDG_CONFIG_DIRS NIX_PROFILES"
     '';

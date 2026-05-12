@@ -19,7 +19,7 @@
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   inputs.hyprland = {
-    url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.54.3";
+    url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.55.0";
     inputs.nixpkgs.follows = "nixpkgs";
   };
   inputs.hyprland-plugins = {
@@ -27,9 +27,10 @@
     inputs.hyprland.follows = "hyprland";
   };
   inputs.Hyprspace = {
-    # Fork with fix for v0.54.3 onKeyPress null-deref on virtual keyboards
-    # (xremap/vicinae). Upstream KZDKM/Hyprspace#227. Revisit when upstream merges a fix.
-    url = "github:0xl30/Hyprspace/9de2dc4041";
+    # Fork: targets Hyprland v0.55.0 and includes the m_xkbSymState null-guard
+    # in onKeyPress that fixes the virtual-keyboard (xremap/vicinae) crash.
+    # Upstream KZDKM/Hyprspace#227 still open as of 2026-05-12.
+    url = "github:0xl30/Hyprspace/5f12222eea";
     inputs.hyprland.follows = "hyprland";
   };
   inputs.xremap-flake.url = "github:xremap/nix-flake";
